@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PWRCIL — Professional Trading Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #060810;
@@ -15,344 +15,151 @@
   --border2: #242c45;
   --gold: #d4a843;
   --gold2: #f0c96a;
-  --blue: #1e6fff;
-  --blue2: #4d8fff;
   --green: #00c97a;
   --red: #ff3d5a;
   --white: #e8eaf0;
   --muted: #5a6380;
   --muted2: #7a84a0;
+  --blue: #1e6fff;
 }
-
-- { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior: smooth; }
-
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-background: var(–bg);
-color: var(–white);
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 13px;
-overflow-x: hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  overflow-x: hidden;
 }
-
-/* SCANLINE EFFECT */
-body::after {
-content:’’;
-position:fixed;
-inset:0;
-background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-pointer-events:none;
-z-index:9998;
-}
-
 ::-webkit-scrollbar { width:4px; }
-::-webkit-scrollbar-track { background: var(–bg); }
-::-webkit-scrollbar-thumb { background: var(–border2); border-radius:2px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius:2px; }
 
-/* ─── TOP STATUS BAR ─── */
+/* STATUS BAR */
 .status-bar {
 background: var(–bg2);
 border-bottom: 1px solid var(–border);
-padding: 6px 24px;
+padding: 6px 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
 font-size: 10px;
 letter-spacing: 1.5px;
 color: var(–muted);
+flex-wrap: wrap;
+gap: 6px;
 }
-
-.status-left { display:flex; gap:24px; align-items:center; }
+.status-left { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
 .status-dot { width:6px; height:6px; border-radius:50%; background:var(–green); display:inline-block; margin-right:6px; animation: blink 2s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 .status-live { color:var(–green); font-weight:600; }
 
-/* ─── TICKER ─── */
-.ticker-wrap {
-background: var(–bg3);
-border-bottom: 1px solid var(–border);
-overflow: hidden;
-padding: 8px 0;
-}
-.ticker-track {
-display:flex;
-gap:48px;
-animation: scroll-left 35s linear infinite;
-width: max-content;
-}
-@keyframes scroll-left {
-from { transform: translateX(0); }
-to { transform: translateX(-50%); }
-}
-.tick {
-display:flex;
-align-items:center;
-gap:10px;
-white-space:nowrap;
-font-size:11px;
-letter-spacing:1px;
-}
-.tick-sym { color:var(–gold); font-weight:600; }
-.tick-price { color:var(–white); }
-.tick-up { color:var(–green); }
-.tick-dn { color:var(–red); }
-.tick-sep { color:var(–border2); }
-
-/* ─── NAV ─── */
+/* NAV */
 nav {
-position: sticky;
-top:0;
-z-index:100;
-background: rgba(6,8,16,0.96);
+position: sticky; top:0; z-index:100;
+background: rgba(6,8,16,0.97);
 backdrop-filter: blur(16px);
 border-bottom: 1px solid var(–border);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding: 0 24px;
-height: 56px;
+display:flex; align-items:center; justify-content:space-between;
+padding: 0 20px; height: 52px;
 }
-
 .nav-logo {
 font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 22px;
-font-weight: 900;
-letter-spacing: 4px;
-color: var(–gold);
-text-decoration:none;
-display:flex;
-align-items:center;
-gap:10px;
+font-size: 22px; font-weight: 900; letter-spacing: 4px;
+color: var(–gold); text-decoration:none;
+display:flex; align-items:center; gap:8px;
 }
-.nav-logo::before {
-content:’’;
-width:3px; height:22px;
-background: var(–gold);
-display:block;
-}
-
-.nav-tabs {
-display:flex;
-height:100%;
-list-style:none;
-}
+.nav-logo::before { content:’’; width:3px; height:22px; background:var(–gold); display:block; }
+.nav-tabs { display:flex; height:100%; list-style:none; }
 .nav-tabs li a {
-display:flex;
-align-items:center;
-height:100%;
-padding: 0 20px;
-font-size:11px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(–muted);
-text-decoration:none;
-border-bottom: 2px solid transparent;
-transition: all 0.2s;
+display:flex; align-items:center; height:100%; padding:0 14px;
+font-size:10px; letter-spacing:2px; text-transform:uppercase;
+color:var(–muted); text-decoration:none;
+border-bottom:2px solid transparent; transition:all 0.2s;
 }
-.nav-tabs li a:hover,
-.nav-tabs li a.active {
-color:var(–white);
-border-bottom-color: var(–gold);
-}
-
-.nav-right { display:flex; align-items:center; gap:12px; }
-
+.nav-tabs li a:hover, .nav-tabs li a.active { color:var(–white); border-bottom-color:var(–gold); }
+.nav-right { display:flex; align-items:center; gap:10px; }
 .btn-tg {
-display:flex;
-align-items:center;
-gap:8px;
-background: #229ED9;
-color:#fff;
-padding: 8px 16px;
-font-size:11px;
-letter-spacing:1.5px;
-text-decoration:none;
-font-family:‘JetBrains Mono’,monospace;
-font-weight:500;
-border-radius:2px;
-transition: opacity 0.2s;
+display:flex; align-items:center; gap:7px;
+background:#229ED9; color:#fff; padding:7px 14px;
+font-size:10px; letter-spacing:1.5px; text-decoration:none;
+font-family:‘JetBrains Mono’,monospace; font-weight:500;
+border-radius:2px; transition:opacity 0.2s;
 }
 .btn-tg:hover { opacity:0.85; }
-
 .btn-access {
-background: var(–gold);
-color: var(–bg);
-padding: 8px 20px;
-font-size:11px;
-letter-spacing:2px;
-text-transform:uppercase;
-font-family:‘JetBrains Mono’,monospace;
-font-weight:600;
-border:none;
-cursor:pointer;
-border-radius:2px;
-transition: background 0.2s;
-text-decoration:none;
+background:var(–gold); color:var(–bg); padding:7px 16px;
+font-size:10px; letter-spacing:2px; text-transform:uppercase;
+font-family:‘JetBrains Mono’,monospace; font-weight:600;
+border:none; cursor:pointer; border-radius:2px;
+transition:background 0.2s; text-decoration:none;
 }
-.btn-access:hover { background: var(–gold2); }
+.btn-access:hover { background:var(–gold2); }
 
-/* ─── LAYOUT ─── */
-.main-layout {
-display: grid;
-grid-template-columns: 1fr 320px;
-gap: 0;
-min-height: calc(100vh - 112px);
-}
+/* TABS */
+.tab-content { display:none; }
+.tab-content.active { display:block; }
 
-.content-area {
-border-right: 1px solid var(–border);
-padding: 0;
-}
-
-.sidebar { padding: 0; }
-
-/* ─── SECTION HEADERS ─── */
+/* SECTION HEADER */
 .sec-head {
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding: 14px 20px;
-border-bottom: 1px solid var(–border);
-background: var(–bg2);
+display:flex; align-items:center; justify-content:space-between;
+padding:12px 20px; border-bottom:1px solid var(–border);
+background:var(–bg2);
 }
 .sec-title {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:13px;
-font-weight:700;
-letter-spacing:3px;
-text-transform:uppercase;
-color:var(–white);
-display:flex;
-align-items:center;
-gap:10px;
+font-family:‘Barlow Condensed’,sans-serif; font-size:13px;
+font-weight:700; letter-spacing:3px; text-transform:uppercase;
+color:var(–white); display:flex; align-items:center; gap:8px;
 }
-.sec-title::before {
-content:’’;
-width:3px; height:13px;
-background:var(–gold);
-display:block;
+.sec-title::before { content:’’; width:3px; height:13px; background:var(–gold); display:block; }
+.badge {
+display:inline-block; font-size:8px; letter-spacing:1.5px;
+padding:2px 6px; border-radius:2px; font-weight:600; text-transform:uppercase;
 }
-.sec-action {
-font-size:10px;
-letter-spacing:2px;
-color:var(–muted);
-text-decoration:none;
-transition:color 0.2s;
+.badge-live { background:rgba(0,201,122,0.15); color:var(–green); border:1px solid rgba(0,201,122,0.3); }
+.badge-high { background:rgba(255,61,90,0.15); color:var(–red); border:1px solid rgba(255,61,90,0.3); }
+.badge-med { background:rgba(212,168,67,0.15); color:var(–gold); border:1px solid rgba(212,168,67,0.3); }
+.badge-low { background:rgba(90,99,128,0.15); color:var(–muted2); border:1px solid rgba(90,99,128,0.2); }
+
+/* MAIN LAYOUT */
+.main-layout {
+display:grid; grid-template-columns:1fr 280px; min-height:calc(100vh - 100px);
 }
-.sec-action:hover { color:var(–gold); }
+.content-area { border-right:1px solid var(–border); overflow:hidden; }
 
-/* ─── MARKET TABLE ─── */
-.market-table-wrap { overflow-x:auto; }
-
-.market-table {
-width:100%;
-border-collapse:collapse;
+/* TRADINGVIEW WIDGETS */
+.tv-widget-wrap {
+background:var(–bg);
+border-bottom:1px solid var(–border);
 }
-.market-table thead th {
-padding: 10px 16px;
-font-size:9px;
-letter-spacing:2.5px;
-text-transform:uppercase;
-color:var(–muted);
-text-align:left;
-border-bottom: 1px solid var(–border);
-background: var(–bg);
-white-space:nowrap;
-font-weight:400;
-}
-.market-table thead th.r { text-align:right; }
+.tv-widget-wrap iframe { display:block; }
 
-.market-table tbody tr {
-border-bottom: 1px solid rgba(26,32,53,0.6);
-transition: background 0.15s;
-cursor:pointer;
-}
-.market-table tbody tr:hover { background: rgba(30,111,255,0.04); }
-
-.market-table tbody td {
-padding: 11px 16px;
-white-space:nowrap;
-font-size:12px;
-}
-.market-table tbody td.r { text-align:right; }
-
-.asset-cell { display:flex; align-items:center; gap:10px; }
-.asset-icon {
-width:28px; height:28px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:‘Barlow Condensed’,sans-serif;
-font-size:10px;
-font-weight:700;
-letter-spacing:0.5px;
-flex-shrink:0;
-}
-.asset-name { font-weight:500; color:var(–white); font-size:12px; }
-.asset-sym { font-size:10px; color:var(–muted); letter-spacing:1px; }
-
-.price-cell { font-weight:500; color:var(–white); font-variant-numeric:tabular-nums; }
-.chg-up { color:var(–green); font-weight:500; }
-.chg-dn { color:var(–red); font-weight:500; }
-.vol-cell { color:var(–muted2); }
-
-/* SPARKLINE */
-.spark { display:inline-flex; align-items:flex-end; gap:2px; height:28px; }
-.spark-bar { width:3px; border-radius:1px; }
-
-/* CATEGORY FILTERS */
+/* CATEGORY TABS */
 .cat-filters {
-display:flex;
-gap:0;
-padding: 0;
-border-bottom: 1px solid var(–border);
-background: var(–bg);
-overflow-x:auto;
+display:flex; border-bottom:1px solid var(–border);
+background:var(–bg); overflow-x:auto;
 }
 .cat-btn {
-padding: 10px 20px;
-font-size:10px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(–muted);
-background:none;
-border:none;
-border-bottom:2px solid transparent;
-cursor:pointer;
-white-space:nowrap;
-font-family:‘JetBrains Mono’,monospace;
-transition:all 0.2s;
+padding:10px 18px; font-size:10px; letter-spacing:2px;
+text-transform:uppercase; color:var(–muted); background:none;
+border:none; border-bottom:2px solid transparent; cursor:pointer;
+white-space:nowrap; font-family:‘JetBrains Mono’,monospace; transition:all 0.2s;
 }
 .cat-btn:hover { color:var(–white); }
 .cat-btn.active { color:var(–gold); border-bottom-color:var(–gold); }
 
-/* ─── ECONOMIC CALENDAR ─── */
-.calendar-table {
-width:100%;
-border-collapse:collapse;
-}
+/* CALENDAR */
 .cal-date-header {
-padding: 10px 16px;
-font-size:10px;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(–gold);
-background: rgba(212,168,67,0.06);
-border-bottom: 1px solid var(–border);
-border-top: 1px solid var(–border);
-font-weight:500;
+padding:10px 16px; font-size:10px; letter-spacing:2px;
+text-transform:uppercase; color:var(–gold);
+background:rgba(212,168,67,0.06);
+border-bottom:1px solid var(–border); border-top:1px solid var(–border);
 }
 .cal-row {
-display:grid;
-grid-template-columns: 56px 32px 1fr 80px 80px 80px;
-align-items:center;
-padding: 10px 16px;
-border-bottom: 1px solid rgba(26,32,53,0.5);
-transition: background 0.15s;
-cursor:pointer;
-gap:8px;
+display:grid; grid-template-columns:56px 28px 1fr 75px 75px 75px;
+align-items:center; padding:10px 16px;
+border-bottom:1px solid rgba(26,32,53,0.5);
+transition:background 0.15s; cursor:pointer; gap:8px;
 }
 .cal-row:hover { background:rgba(30,111,255,0.04); }
 .cal-time { font-size:11px; color:var(–muted2); }
@@ -361,201 +168,70 @@ gap:8px;
 .imp-h .imp-dot { background:var(–red); }
 .imp-m .imp-dot { background:var(–gold); }
 .imp-l .imp-dot { background:var(–muted); }
-.cal-event { font-size:11px; color:var(–white); }
+.cal-event { font-size:11px; color:var(–white); line-height:1.4; }
 .cal-country { font-size:9px; color:var(–muted); letter-spacing:1px; display:block; margin-top:2px; }
-.cal-val { font-size:11px; text-align:right; }
 .cal-prev { color:var(–muted2); font-size:10px; text-align:right; }
-.cal-fore { font-size:10px; text-align:right; color:var(–blue2); }
+.cal-fore { font-size:10px; text-align:right; color:#4d8fff; }
 .cal-actual { font-size:11px; font-weight:600; text-align:right; }
 .cal-actual.up { color:var(–green); }
 .cal-actual.dn { color:var(–red); }
 .cal-actual.neu { color:var(–muted2); }
 
-/* ─── SIDEBAR ─── */
-.sidebar-block {
-border-bottom: 1px solid var(–border);
-}
+/* SIDEBAR */
+.sidebar { overflow-y:auto; }
+.sidebar-block { border-bottom:1px solid var(–border); }
 
-/* MINI WATCHLIST */
-.watch-item {
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding: 12px 16px;
-border-bottom: 1px solid rgba(26,32,53,0.5);
-transition:background 0.15s;
-cursor:pointer;
-}
-.watch-item:hover { background: rgba(212,168,67,0.04); }
-.watch-left { display:flex; flex-direction:column; gap:3px; }
-.watch-sym { font-size:12px; font-weight:600; color:var(–white); }
-.watch-name { font-size:10px; color:var(–muted); }
-.watch-right { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
-.watch-price { font-size:12px; font-weight:500; color:var(–white); font-variant-numeric:tabular-nums; }
-.watch-chg { font-size:10px; font-weight:600; }
-
-/* MARKET SENTIMENT */
-.sentiment-bar {
-margin: 16px 16px;
-background: var(–bg3);
-border: 1px solid var(–border);
-border-radius:2px;
-overflow:hidden;
-height:6px;
-display:flex;
-}
-.sent-bull { background:var(–green); transition:width 1s ease; }
-.sent-bear { background:var(–red); transition:width 1s ease; }
-.sentiment-labels {
-display:flex;
-justify-content:space-between;
-padding: 4px 16px 12px;
-font-size:10px;
-}
-.s-bull { color:var(–green); }
-.s-bear { color:var(–red); }
-
-/* CEO CARD */
-.ceo-card {
-padding: 20px 16px;
-display:flex;
-flex-direction:column;
-gap:12px;
-}
-.ceo-avatar {
-width:48px; height:48px;
-border-radius:2px;
-background: linear-gradient(135deg, var(–gold) 0%, #a07020 100%);
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:‘Barlow Condensed’,sans-serif;
-font-size:20px;
-font-weight:900;
-color:var(–bg);
-letter-spacing:1px;
-flex-shrink:0;
-}
-.ceo-info { display:flex; flex-direction:column; gap:3px; }
-.ceo-row { display:flex; align-items:center; gap:12px; }
-.ceo-name {
-font-family:‘Barlow Condensed’,sans-serif;
-font-size:16px;
-font-weight:700;
-letter-spacing:1px;
-color:var(–white);
-}
-.ceo-title { font-size:10px; color:var(–gold); letter-spacing:2px; text-transform:uppercase; }
-.ceo-bio { font-size:11px; color:var(–muted2); line-height:1.7; }
-.ceo-tg {
-display:flex;
-align-items:center;
-gap:6px;
-font-size:10px;
-color:#229ED9;
-text-decoration:none;
-letter-spacing:1px;
-transition:opacity 0.2s;
-}
-.ceo-tg:hover { opacity:0.8; }
-
-/* SUPPORT BOX */
-.support-box {
-margin: 16px;
-background: var(–bg3);
-border: 1px solid var(–border);
-padding: 16px;
-border-radius:2px;
-}
-.support-title { font-size:11px; color:var(–muted2); letter-spacing:1.5px; margin-bottom:10px; text-transform:uppercase; }
-.support-link {
-display:flex;
-align-items:center;
-gap:8px;
-background:#229ED9;
-color:#fff;
-padding: 10px 14px;
-border-radius:2px;
-text-decoration:none;
-font-size:11px;
-letter-spacing:1.5px;
-font-weight:500;
-transition:opacity 0.2s;
-}
-.support-link:hover { opacity:0.85; }
-
-/* FEAR/GREED */
-.fg-widget {
-padding: 16px;
-}
-.fg-label { font-size:10px; color:var(–muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
-.fg-arc {
-width:100%;
-display:flex;
-justify-content:center;
-margin-bottom:8px;
-}
-.fg-score {
-font-family:‘Barlow Condensed’,sans-serif;
-font-size:48px;
-font-weight:900;
-text-align:center;
-color:var(–gold);
-line-height:1;
-}
-.fg-text { text-align:center; font-size:11px; color:var(–gold); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
-.fg-scale {
-display:flex;
-height:6px;
-border-radius:3px;
-overflow:hidden;
-margin-bottom:6px;
-}
+.fg-widget { padding:16px; }
+.fg-score { font-family:‘Barlow Condensed’,sans-serif; font-size:52px; font-weight:900; text-align:center; line-height:1; margin-bottom:4px; }
+.fg-text { text-align:center; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.fg-scale { display:flex; height:6px; border-radius:3px; overflow:hidden; margin-bottom:4px; }
 .fg-scale div { flex:1; }
 
-/* TABS */
-.tab-content { display:none; }
-.tab-content.active { display:block; }
+.ceo-card { padding:16px; display:flex; flex-direction:column; gap:10px; }
+.ceo-avatar {
+width:44px; height:44px; border-radius:2px;
+background:linear-gradient(135deg,var(–gold) 0%,#a07020 100%);
+display:flex; align-items:center; justify-content:center;
+font-family:‘Barlow Condensed’,sans-serif; font-size:18px; font-weight:900; color:var(–bg);
+}
+.ceo-row { display:flex; align-items:center; gap:10px; }
+.ceo-name { font-family:‘Barlow Condensed’,sans-serif; font-size:15px; font-weight:700; letter-spacing:1px; color:var(–white); }
+.ceo-title { font-size:9px; color:var(–gold); letter-spacing:2px; text-transform:uppercase; }
+.ceo-bio { font-size:10px; color:var(–muted2); line-height:1.7; }
+.ceo-tg { display:flex; align-items:center; gap:6px; font-size:10px; color:#229ED9; text-decoration:none; }
+
+.support-box { margin:14px; background:var(–bg3); border:1px solid var(–border); padding:14px; border-radius:2px; }
+.support-title { font-size:10px; color:var(–muted2); letter-spacing:1.5px; margin-bottom:10px; text-transform:uppercase; }
+.support-link {
+display:flex; align-items:center; gap:8px; background:#229ED9;
+color:#fff; padding:10px 12px; border-radius:2px; text-decoration:none;
+font-size:11px; letter-spacing:1.5px; font-weight:500;
+}
+
+.sent-wrap { padding:8px 0 4px; }
+.sent-label { padding:0 14px; font-size:10px; color:var(–muted); margin-bottom:6px; }
+.sent-bar { margin:0 14px 2px; background:var(–bg3); border:1px solid var(–border); border-radius:2px; overflow:hidden; height:6px; display:flex; }
+.sent-bull { background:var(–green); }
+.sent-bear { background:var(–red); }
+.sent-vals { display:flex; justify-content:space-between; padding:4px 14px 10px; font-size:10px; }
 
 /* FOOTER */
 footer {
-border-top: 1px solid var(–border);
-background: var(–bg2);
-padding: 20px 24px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-font-size:10px;
-color:var(–muted);
-letter-spacing:1.5px;
+border-top:1px solid var(–border); background:var(–bg2);
+padding:16px 20px; display:flex; align-items:center;
+justify-content:space-between; font-size:10px; color:var(–muted);
+letter-spacing:1.5px; flex-wrap:wrap; gap:10px;
 }
 .footer-brand { font-family:‘Barlow Condensed’,sans-serif; font-size:16px; font-weight:900; letter-spacing:4px; color:var(–gold); }
-.footer-links { display:flex; gap:24px; }
-.footer-links a { color:var(–muted); text-decoration:none; transition:color 0.2s; }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { color:var(–muted); text-decoration:none; }
 .footer-links a:hover { color:var(–gold); }
 
-/* BADGE */
-.badge {
-display:inline-block;
-font-size:8px;
-letter-spacing:1.5px;
-padding:2px 6px;
-border-radius:2px;
-font-weight:600;
-text-transform:uppercase;
-}
-.badge-live { background:rgba(0,201,122,0.15); color:var(–green); border:1px solid rgba(0,201,122,0.3); }
-.badge-high { background:rgba(255,61,90,0.15); color:var(–red); border:1px solid rgba(255,61,90,0.3); }
-.badge-med { background:rgba(212,168,67,0.15); color:var(–gold); border:1px solid rgba(212,168,67,0.3); }
-.badge-low { background:rgba(90,99,128,0.15); color:var(–muted2); border:1px solid rgba(90,99,128,0.2); }
-
-/* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:850px){
 .main-layout { grid-template-columns:1fr; }
 .content-area { border-right:none; }
-.sidebar { border-top:1px solid var(–border); }
 nav .nav-tabs { display:none; }
-.cal-row { grid-template-columns: 50px 28px 1fr 70px 70px; }
+.cal-row { grid-template-columns:50px 24px 1fr 65px 65px; }
 .cal-fore { display:none; }
 }
 </style>
@@ -568,17 +244,11 @@ nav .nav-tabs { display:none; }
 <div class="status-bar">
   <div class="status-left">
     <span><span class="status-dot"></span><span class="status-live">LIVE</span></span>
-    <span>NEW YORK: <span id="ny-time">--:--:--</span></span>
-    <span>LONDON: <span id="ld-time">--:--:--</span></span>
-    <span>TOKYO: <span id="tk-time">--:--:--</span></span>
+    <span>NY: <span id="ny-time">--:--:--</span></span>
+    <span>LDN: <span id="ld-time">--:--:--</span></span>
+    <span>TKY: <span id="tk-time">--:--:--</span></span>
   </div>
-  <div>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; LSE CLOSED</div>
-</div>
-
-<!-- TICKER -->
-
-<div class="ticker-wrap">
-  <div class="ticker-track" id="ticker"></div>
+  <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW</span>
 </div>
 
 <!-- NAV -->
@@ -586,435 +256,439 @@ nav .nav-tabs { display:none; }
 <nav>
   <a href="#" class="nav-logo">PWRCIL</a>
   <ul class="nav-tabs">
-    <li><a href="#" class="active" onclick="showTab('markets',this)">Markets</a></li>
-    <li><a href="#" onclick="showTab('calendar',this)">Economic Calendar</a></li>
-    <li><a href="#" onclick="showTab('crypto',this)">Crypto</a></li>
-    <li><a href="#" onclick="showTab('forex',this)">Forex</a></li>
-    <li><a href="#" onclick="showTab('commodities',this)">Commodities</a></li>
+    <li><a href="#" class="active" onclick="showTab('markets',this);return false;">Markets</a></li>
+    <li><a href="#" onclick="showTab('crypto',this);return false;">Crypto</a></li>
+    <li><a href="#" onclick="showTab('forex',this);return false;">Forex</a></li>
+    <li><a href="#" onclick="showTab('calendar',this);return false;">Calendar</a></li>
   </ul>
   <div class="nav-right">
     <a href="https://t.me/pwrcil" target="_blank" class="btn-tg">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
       @pwrcil
     </a>
-    <a href="#" class="btn-access">Get Access</a>
+    <a href="https://t.me/pwrcil" target="_blank" class="btn-access">Get Access</a>
   </div>
 </nav>
 
-<!-- MAIN -->
-
 <div class="main-layout">
+<div class="content-area">
 
-  <!-- CONTENT -->
+<!-- ═══ MARKETS TAB ═══ -->
 
-  <div class="content-area">
-
-```
-<!-- MARKETS TAB -->
 <div id="tab-markets" class="tab-content active">
-  <div class="cat-filters">
-    <button class="cat-btn active" onclick="filterMkt(this,'all')">All</button>
-    <button class="cat-btn" onclick="filterMkt(this,'indices')">Indices</button>
-    <button class="cat-btn" onclick="filterMkt(this,'crypto')">Crypto</button>
-    <button class="cat-btn" onclick="filterMkt(this,'forex')">Forex</button>
-    <button class="cat-btn" onclick="filterMkt(this,'commodities')">Commodities</button>
-    <button class="cat-btn" onclick="filterMkt(this,'stocks')">Stocks</button>
-  </div>
   <div class="sec-head">
-    <span class="sec-title">Market Overview</span>
-    <span class="badge badge-live">Live Data</span>
+    <span class="sec-title">Live Market Ticker</span>
+    <span class="badge badge-live">Real-Time</span>
   </div>
-  <div class="market-table-wrap">
-    <table class="market-table">
-      <thead>
-        <tr>
-          <th style="width:36px">#</th>
-          <th>Asset</th>
-          <th class="r">Price</th>
-          <th class="r">24h %</th>
-          <th class="r">7d %</th>
-          <th class="r">Volume 24h</th>
-          <th class="r">Mkt Cap</th>
-          <th class="r">7D Chart</th>
-          <th class="r">Category</th>
-        </tr>
-      </thead>
-      <tbody id="mkt-body"></tbody>
-    </table>
+
+  <!-- TradingView Ticker Tape -->
+
+  <div class="tv-widget-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+          {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},
+          {"proName":"BINANCE:BNBUSDT","title":"BNB"},
+          {"proName":"BINANCE:SOLUSDT","title":"Solana"},
+          {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+          {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
+          {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
+          {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
+          {"proName":"TVC:GOLD","title":"Gold"},
+          {"proName":"TVC:SILVER","title":"Silver"},
+          {"proName":"NYMEX:CL1!","title":"Oil WTI"},
+          {"proName":"BINANCE:XRPUSDT","title":"XRP"},
+          {"proName":"BINANCE:DOGEUSDT","title":"DOGE"}
+        ],
+        "showSymbolLogo": true,
+        "isTransparent": true,
+        "displayMode": "adaptive",
+        "colorTheme": "dark",
+        "locale": "en"
+      }
+      </script>
+    </div>
+  </div>
+
+  <!-- TradingView Market Overview -->
+
+  <div class="sec-head" style="margin-top:0;">
+    <span class="sec-title">Market Overview</span>
+    <span style="font-size:10px;color:var(--muted)">Powered by TradingView</span>
+  </div>
+  <div class="tv-widget-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+      {
+        "colorTheme": "dark",
+        "dateRange": "1D",
+        "showChart": true,
+        "locale": "en",
+        "isTransparent": true,
+        "showSymbolLogo": true,
+        "showFloatingTooltip": false,
+        "width": "100%",
+        "height": "660",
+        "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+        "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+        "gridLineColor": "rgba(26, 32, 53, 1)",
+        "scaleFontColor": "rgba(120, 123, 134, 1)",
+        "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+        "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+        "tabs": [
+          {
+            "title": "Indices",
+            "symbols": [
+              {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
+              {"s":"FOREXCOM:NSXUSD","d":"Nasdaq 100"},
+              {"s":"FOREXCOM:DJI","d":"Dow Jones"},
+              {"s":"INDEX:DEU40","d":"DAX"},
+              {"s":"FOREXCOM:UKXGBP","d":"FTSE 100"},
+              {"s":"INDEX:NI225","d":"Nikkei 225"}
+            ],
+            "originalTitle": "Indices"
+          },
+          {
+            "title": "Crypto",
+            "symbols": [
+              {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},
+              {"s":"BITSTAMP:ETHUSD","d":"Ethereum"},
+              {"s":"BINANCE:BNBUSDT","d":"BNB"},
+              {"s":"BINANCE:SOLUSDT","d":"Solana"},
+              {"s":"BINANCE:XRPUSDT","d":"XRP"},
+              {"s":"BINANCE:DOGEUSDT","d":"Dogecoin"}
+            ],
+            "originalTitle": "Crypto"
+          },
+          {
+            "title": "Forex",
+            "symbols": [
+              {"s":"FX_IDC:EURUSD","d":"EUR/USD"},
+              {"s":"FX_IDC:GBPUSD","d":"GBP/USD"},
+              {"s":"FX_IDC:USDJPY","d":"USD/JPY"},
+              {"s":"FX_IDC:USDCHF","d":"USD/CHF"},
+              {"s":"FX_IDC:AUDUSD","d":"AUD/USD"},
+              {"s":"FX_IDC:USDCAD","d":"USD/CAD"}
+            ],
+            "originalTitle": "Forex"
+          },
+          {
+            "title": "Commodities",
+            "symbols": [
+              {"s":"TVC:GOLD","d":"Gold"},
+              {"s":"TVC:SILVER","d":"Silver"},
+              {"s":"NYMEX:CL1!","d":"Crude Oil WTI"},
+              {"s":"NYMEX:NG1!","d":"Natural Gas"},
+              {"s":"CBOT:ZW1!","d":"Wheat"},
+              {"s":"CBOT:ZC1!","d":"Corn"}
+            ],
+            "originalTitle": "Commodities"
+          }
+        ]
+      }
+      </script>
+    </div>
   </div>
 </div>
 
-<!-- CALENDAR TAB -->
+<!-- ═══ CRYPTO TAB ═══ -->
+
+<div id="tab-crypto" class="tab-content">
+  <div class="sec-head">
+    <span class="sec-title">Crypto Markets</span>
+    <span class="badge badge-live">Live</span>
+  </div>
+  <div class="tv-widget-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+      {
+        "width": "100%",
+        "height": "700",
+        "defaultColumn": "overview",
+        "screener_type": "crypto_mkt",
+        "displayCurrency": "USD",
+        "colorTheme": "dark",
+        "locale": "en",
+        "isTransparent": true
+      }
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOREX TAB ═══ -->
+
+<div id="tab-forex" class="tab-content">
+  <div class="sec-head">
+    <span class="sec-title">Forex Pairs</span>
+    <span class="badge badge-live">Live</span>
+  </div>
+  <div class="tv-widget-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+      {
+        "width": "100%",
+        "height": "700",
+        "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD"],
+        "isTransparent": true,
+        "colorTheme": "dark",
+        "locale": "en"
+      }
+      </script>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CALENDAR TAB ═══ -->
+
 <div id="tab-calendar" class="tab-content">
   <div class="sec-head">
     <span class="sec-title">Economic Calendar</span>
-    <span style="font-size:10px;color:var(--muted)">Week of June 2–6, 2026</span>
+    <span style="font-size:10px;color:var(--muted)">June 2–6, 2026</span>
   </div>
   <div id="cal-body"></div>
 </div>
 
-<!-- CRYPTO TAB -->
-<div id="tab-crypto" class="tab-content">
-  <div class="sec-head"><span class="sec-title">Crypto Markets</span><span class="badge badge-live">Live</span></div>
-  <div class="market-table-wrap">
-    <table class="market-table">
-      <thead><tr><th>#</th><th>Asset</th><th class="r">Price</th><th class="r">24h %</th><th class="r">Volume</th><th class="r">Mkt Cap</th><th class="r">7D</th></tr></thead>
-      <tbody id="crypto-body"></tbody>
-    </table>
-  </div>
-</div>
+</div><!-- end content-area -->
 
-<!-- FOREX TAB -->
-<div id="tab-forex" class="tab-content">
-  <div class="sec-head"><span class="sec-title">Forex Pairs</span><span class="badge badge-live">Live</span></div>
-  <div class="market-table-wrap">
-    <table class="market-table">
-      <thead><tr><th>#</th><th>Pair</th><th class="r">Bid</th><th class="r">Ask</th><th class="r">Spread</th><th class="r">24h %</th><th class="r">7D</th></tr></thead>
-      <tbody id="forex-body"></tbody>
-    </table>
-  </div>
-</div>
+<!-- SIDEBAR -->
 
-<!-- COMMODITIES TAB -->
-<div id="tab-commodities" class="tab-content">
-  <div class="sec-head"><span class="sec-title">Commodities</span><span class="badge badge-live">Live</span></div>
-  <div class="market-table-wrap">
-    <table class="market-table">
-      <thead><tr><th>#</th><th>Asset</th><th class="r">Price</th><th class="r">24h %</th><th class="r">Unit</th><th class="r">7D</th></tr></thead>
-      <tbody id="comm-body"></tbody>
-    </table>
-  </div>
-</div>
-```
+<div class="sidebar">
 
-  </div>
+  <!-- Fear & Greed -->
 
-  <!-- SIDEBAR -->
-
-  <div class="sidebar">
-
-```
-<!-- FEAR & GREED -->
-<div class="sidebar-block">
-  <div class="sec-head"><span class="sec-title">Fear & Greed</span><span class="badge badge-live">Index</span></div>
-  <div class="fg-widget">
-    <div class="fg-score">68</div>
-    <div class="fg-text">Greed</div>
-    <div class="fg-scale">
-      <div style="background:#ff3d5a"></div>
-      <div style="background:#ff7a3d"></div>
-      <div style="background:#ffc13d"></div>
-      <div style="background:#c9f03d"></div>
-      <div style="background:#00c97a"></div>
-    </div>
-    <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px;">
-      <span>FEAR</span><span>NEUTRAL</span><span>GREED</span>
-    </div>
-  </div>
-</div>
-
-<!-- MARKET SENTIMENT -->
-<div class="sidebar-block">
-  <div class="sec-head"><span class="sec-title">Market Sentiment</span></div>
-  <div style="padding-top:8px;">
-    <div style="padding:0 16px;font-size:10px;color:var(--muted);margin-bottom:6px;">OVERALL MARKET</div>
-    <div class="sentiment-bar"><div class="sent-bull" style="width:62%"></div><div class="sent-bear" style="width:38%"></div></div>
-    <div class="sentiment-labels"><span class="s-bull">▲ Bullish 62%</span><span class="s-bear">Bearish 38% ▼</span></div>
-    <div style="padding:0 16px;font-size:10px;color:var(--muted);margin-bottom:6px;">CRYPTO</div>
-    <div class="sentiment-bar"><div class="sent-bull" style="width:71%"></div><div class="sent-bear" style="width:29%"></div></div>
-    <div class="sentiment-labels"><span class="s-bull">▲ 71%</span><span class="s-bear">29% ▼</span></div>
-  </div>
-</div>
-
-<!-- WATCHLIST -->
-<div class="sidebar-block">
-  <div class="sec-head"><span class="sec-title">Top Movers</span><span class="badge badge-live">24h</span></div>
-  <div id="movers-list"></div>
-</div>
-
-<!-- CEO -->
-<div class="sidebar-block">
-  <div class="sec-head"><span class="sec-title">Leadership</span></div>
-  <div class="ceo-card">
-    <div class="ceo-row">
-      <div class="ceo-avatar">HN</div>
-      <div class="ceo-info">
-        <div class="ceo-name">HUSNIDDIN NOMONOV</div>
-        <div class="ceo-title">Chief Executive Officer</div>
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">Fear & Greed</span></div>
+    <div class="fg-widget">
+      <div class="fg-score" id="fg-score" style="color:var(--gold)">--</div>
+      <div class="fg-text" id="fg-text" style="color:var(--muted)">Loading...</div>
+      <div class="fg-scale">
+        <div style="background:#ff3d5a"></div>
+        <div style="background:#ff7a3d"></div>
+        <div style="background:#ffc13d"></div>
+        <div style="background:#c9f03d"></div>
+        <div style="background:#00c97a"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px;">
+        <span>FEAR</span><span>NEUTRAL</span><span>GREED</span>
       </div>
     </div>
-    <div class="ceo-bio">Founder & CEO of PWRCIL. Professional trader and financial analyst delivering institutional-grade intelligence to retail investors worldwide.</div>
-    <a href="https://t.me/pwrcil" target="_blank" class="ceo-tg">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
-      @pwrcil
-    </a>
   </div>
-</div>
 
-<!-- SUPPORT -->
-<div class="sidebar-block">
-  <div class="sec-head"><span class="sec-title">Support</span></div>
-  <div class="support-box">
-    <div class="support-title">Need help? Chat with us</div>
-    <a href="https://t.me/pwrcil" target="_blank" class="support-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
-      Telegram: @pwrcil
-    </a>
-    <div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.6;">24/7 support · Market signals · Trading ideas</div>
+  <!-- Mini Chart BTC -->
+
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">BTC/USD</span><span class="badge badge-live">Live</span></div>
+    <div class="tv-widget-wrap">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {
+          "symbol": "BITSTAMP:BTCUSD",
+          "width": "100%",
+          "height": "200",
+          "locale": "en",
+          "dateRange": "1D",
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "autosize": false,
+          "largeChartUrl": ""
+        }
+        </script>
+      </div>
+    </div>
   </div>
-</div>
-```
 
+  <!-- Mini Chart ETH -->
+
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">ETH/USD</span><span class="badge badge-live">Live</span></div>
+    <div class="tv-widget-wrap">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+        {
+          "symbol": "BITSTAMP:ETHUSD",
+          "width": "100%",
+          "height": "200",
+          "locale": "en",
+          "dateRange": "1D",
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "autosize": false
+        }
+        </script>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- FOOTER -->
+  <!-- Sentiment -->
+
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">Market Sentiment</span></div>
+    <div class="sent-wrap">
+      <div class="sent-label">CRYPTO</div>
+      <div class="sent-bar"><div class="sent-bull" id="sb1" style="width:50%"></div><div class="sent-bear" id="sr1" style="width:50%"></div></div>
+      <div class="sent-vals"><span style="color:var(--green)" id="sv1">▲ --</span><span style="color:var(--red)" id="sv2">-- ▼</span></div>
+    </div>
+  </div>
+
+  <!-- CEO -->
+
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">Leadership</span></div>
+    <div class="ceo-card">
+      <div class="ceo-row">
+        <div class="ceo-avatar">HN</div>
+        <div>
+          <div class="ceo-name">HUSNIDDIN NOMONOV</div>
+          <div class="ceo-title">Chief Executive Officer</div>
+        </div>
+      </div>
+      <div class="ceo-bio">Founder & CEO of PWRCIL. Professional trader and financial analyst delivering institutional-grade market intelligence worldwide.</div>
+      <a href="https://t.me/pwrcil" target="_blank" class="ceo-tg">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
+        @pwrcil
+      </a>
+    </div>
+  </div>
+
+  <!-- Support -->
+
+  <div class="sidebar-block">
+    <div class="sec-head"><span class="sec-title">Support</span></div>
+    <div class="support-box">
+      <div class="support-title">24/7 Professional Support</div>
+      <a href="https://t.me/pwrcil" target="_blank" class="support-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
+        Telegram: @pwrcil
+      </a>
+      <div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.7;">Signals · Analysis · Trading ideas</div>
+    </div>
+  </div>
+
+</div><!-- end sidebar -->
+</div><!-- end main-layout -->
 
 <footer>
   <div class="footer-brand">PWRCIL</div>
-  <div style="font-size:10px;color:var(--muted)">© 2026 PWRCIL · CEO: Husniddin Nomonov · All rights reserved</div>
+  <div>© 2026 PWRCIL · CEO: Husniddin Nomonov · All rights reserved</div>
   <div class="footer-links">
     <a href="https://t.me/pwrcil" target="_blank">Telegram</a>
     <a href="#">Privacy</a>
     <a href="#">Terms</a>
-    <a href="#">API</a>
   </div>
 </footer>
 
 <script>
-// ─── CLOCK ───
+// CLOCKS
 function updateClocks(){
   const now = new Date();
-  const fmt = (d) => d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  const ny = new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'}));
-  const ld = new Date(now.toLocaleString('en-US',{timeZone:'Europe/London'}));
-  const tk = new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tokyo'}));
-  document.getElementById('ny-time').textContent = fmt(ny);
-  document.getElementById('ld-time').textContent = fmt(ld);
-  document.getElementById('tk-time').textContent = fmt(tk);
+  const fmt = d => d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  document.getElementById('ny-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'})));
+  document.getElementById('ld-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'Europe/London'})));
+  document.getElementById('tk-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tokyo'})));
 }
 setInterval(updateClocks,1000); updateClocks();
 
-// ─── MARKET DATA ───
-const markets = [
-  {r:1, name:'Bitcoin',    sym:'BTC',  cat:'crypto',      color:'#f7931a', price:67420.50, d1:2.14,  d7:8.32,  vol:'$38.2B', cap:'$1.32T', spark:[60,55,65,70,68,75,80]},
-  {r:2, name:'Ethereum',   sym:'ETH',  cat:'crypto',      color:'#627eea', price:3812.30,  d1:1.87,  d7:5.14,  vol:'$18.7B', cap:'$457.8B',spark:[50,48,55,60,58,65,70]},
-  {r:3, name:'S&P 500',    sym:'SPX',  cat:'indices',     color:'#1e6fff', price:5321.41,  d1:0.43,  d7:1.82,  vol:'$124B',  cap:'—',       spark:[65,68,64,70,72,71,74]},
-  {r:4, name:'NASDAQ',     sym:'NDX',  cat:'indices',     color:'#00c97a', price:18742.30, d1:0.61,  d7:2.43,  vol:'$98B',   cap:'—',       spark:[60,63,61,68,70,69,73]},
-  {r:5, name:'Apple',      sym:'AAPL', cat:'stocks',      color:'#a2aaad', price:214.90,   d1:-0.28, d7:-1.12, vol:'$4.1B',  cap:'$3.28T',  spark:[80,78,82,76,74,72,70]},
-  {r:6, name:'NVIDIA',     sym:'NVDA', cat:'stocks',      color:'#76b900', price:891.70,   d1:3.62,  d7:12.41, vol:'$22.9B', cap:'$2.19T',  spark:[40,45,55,60,70,75,85]},
-  {r:7, name:'Gold',       sym:'XAU',  cat:'commodities', color:'#d4a843', price:2341.80,  d1:0.91,  d7:2.14,  vol:'$9.3B',  cap:'$14.7T',  spark:[60,62,60,64,66,65,68]},
-  {r:8, name:'EUR/USD',    sym:'EURUSD',cat:'forex',      color:'#003399', price:1.0847,   d1:-0.12, d7:-0.34, vol:'$8.2B',  cap:'—',       spark:[55,54,56,53,52,51,50]},
-  {r:9, name:'BNB',        sym:'BNB',  cat:'crypto',      color:'#f3ba2f', price:612.40,   d1:1.23,  d7:4.56,  vol:'$2.1B',  cap:'$89.4B',  spark:[55,57,60,58,62,65,67]},
-  {r:10,name:'Crude Oil',  sym:'WTI',  cat:'commodities', color:'#8b4513', price:78.34,    d1:-1.05, d7:-3.21, vol:'$12.4B', cap:'—',       spark:[70,68,65,62,60,58,56]},
-  {r:11,name:'GBP/USD',    sym:'GBPUSD',cat:'forex',     color:'#012169', price:1.2734,   d1:0.08,  d7:0.42,  vol:'$4.8B',  cap:'—',       spark:[50,51,52,51,53,52,53]},
-  {r:12,name:'Solana',     sym:'SOL',  cat:'crypto',      color:'#9945ff', price:172.80,   d1:4.21,  d7:15.32, vol:'$3.4B',  cap:'$79.2B',  spark:[35,40,50,55,65,70,80]},
-  {r:13,name:'Silver',     sym:'XAG',  cat:'commodities', color:'#aaa9ad', price:29.42,    d1:1.14,  d7:3.21,  vol:'$2.1B',  cap:'—',       spark:[55,57,56,59,60,62,64]},
-  {r:14,name:'DAX',        sym:'DAX',  cat:'indices',     color:'#1e6fff', price:18240.10, d1:-0.21, d7:0.88,  vol:'$6.2B',  cap:'—',       spark:[62,63,61,64,62,63,62]},
-  {r:15,name:'USD/JPY',    sym:'USDJPY',cat:'forex',     color:'#bc002d', price:157.34,   d1:0.34,  d7:1.12,  vol:'$5.9B',  cap:'—',       spark:[50,51,53,54,55,56,57]},
-];
-
-function spark(data, up){
-  const max=Math.max(...data), min=Math.min(...data);
-  return data.map(v=>{
-    const h = Math.round(6 + ((v-min)/(max-min||1))*22);
-    const last = data[data.length-1];
-    const color = up ? 'var(--green)' : 'var(--red)';
-    return `<div class="spark-bar" style="height:${h}px;background:${color}"></div>`;
-  }).join('');
+// TABS
+function showTab(name, el){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.nav-tabs a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el) el.classList.add('active');
 }
 
-function fmtChg(v){
-  const cls = v>=0?'chg-up':'chg-dn';
-  const sign = v>=0?'+':'';
-  return `<span class="${cls}">${sign}${v.toFixed(2)}%</span>`;
+// FEAR & GREED
+async function fetchFG(){
+  try {
+    const r = await fetch('https://api.alternative.me/fng/?limit=1');
+    const d = await r.json();
+    const val = parseInt(d.data[0].value);
+    const txt = d.data[0].value_classification;
+    const el = document.getElementById('fg-score');
+    const tel = document.getElementById('fg-text');
+    el.textContent = val;
+    el.style.color = val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
+    tel.textContent = txt.toUpperCase();
+    tel.style.color = val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
+    const bull = val, bear = 100-val;
+    document.getElementById('sb1').style.width = bull+'%';
+    document.getElementById('sr1').style.width = bear+'%';
+    document.getElementById('sv1').textContent = `▲ Bullish ${bull}%`;
+    document.getElementById('sv2').textContent = `Bearish ${bear}% ▼`;
+  } catch(e) {
+    document.getElementById('fg-score').textContent = '68';
+    document.getElementById('fg-text').textContent = 'GREED';
+    document.getElementById('sb1').style.width = '68%';
+    document.getElementById('sr1').style.width = '32%';
+    document.getElementById('sv1').textContent = '▲ Bullish 68%';
+    document.getElementById('sv2').textContent = 'Bearish 32% ▼';
+  }
 }
+fetchFG();
 
-let currentFilter='all';
-
-function renderMarkets(filter='all'){
-  const data = filter==='all' ? markets : markets.filter(m=>m.cat===filter);
-  const body = document.getElementById('mkt-body');
-  body.innerHTML = data.map(m=>`
-    <tr data-cat="${m.cat}">
-      <td style="color:var(--muted);font-size:11px">${m.r}</td>
-      <td>
-        <div class="asset-cell">
-          <div class="asset-icon" style="background:${m.color}22;color:${m.color}">${m.sym.substring(0,3)}</div>
-          <div><div class="asset-name">${m.name}</div><div class="asset-sym">${m.sym}</div></div>
-        </div>
-      </td>
-      <td class="r price-cell">$${m.price.toLocaleString()}</td>
-      <td class="r">${fmtChg(m.d1)}</td>
-      <td class="r">${fmtChg(m.d7)}</td>
-      <td class="r vol-cell">${m.vol}</td>
-      <td class="r vol-cell">${m.cap}</td>
-      <td class="r"><div class="spark">${spark(m.spark,m.d7>=0)}</div></td>
-      <td class="r"><span class="badge ${m.cat==='crypto'?'badge-live':m.cat==='stocks'?'badge-med':'badge-low'}">${m.cat}</span></td>
-    </tr>`).join('');
-}
-
-function filterMkt(btn,filter){
-  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  currentFilter=filter;
-  renderMarkets(filter);
-}
-
-// Crypto tab
-const cryptos = markets.filter(m=>m.cat==='crypto');
-document.getElementById('crypto-body').innerHTML = cryptos.map(m=>`
-  <tr>
-    <td style="color:var(--muted);font-size:11px">${m.r}</td>
-    <td><div class="asset-cell"><div class="asset-icon" style="background:${m.color}22;color:${m.color}">${m.sym.substring(0,3)}</div><div><div class="asset-name">${m.name}</div><div class="asset-sym">${m.sym}</div></div></div></td>
-    <td class="r price-cell">$${m.price.toLocaleString()}</td>
-    <td class="r">${fmtChg(m.d1)}</td>
-    <td class="r vol-cell">${m.vol}</td>
-    <td class="r vol-cell">${m.cap}</td>
-    <td class="r"><div class="spark">${spark(m.spark,m.d7>=0)}</div></td>
-  </tr>`).join('');
-
-// Forex tab
-const forexPairs = markets.filter(m=>m.cat==='forex');
-document.getElementById('forex-body').innerHTML = forexPairs.map(m=>`
-  <tr>
-    <td style="color:var(--muted);font-size:11px">${m.r}</td>
-    <td><div class="asset-cell"><div class="asset-icon" style="background:var(--border2);color:var(--muted2);font-size:8px">${m.sym}</div><div><div class="asset-name">${m.sym}</div><div class="asset-sym">${m.name}</div></div></div></td>
-    <td class="r price-cell">${m.price.toFixed(4)}</td>
-    <td class="r price-cell">${(m.price+0.0002).toFixed(4)}</td>
-    <td class="r vol-cell">0.2</td>
-    <td class="r">${fmtChg(m.d1)}</td>
-    <td class="r"><div class="spark">${spark(m.spark,m.d7>=0)}</div></td>
-  </tr>`).join('');
-
-// Commodities tab
-const comms = markets.filter(m=>m.cat==='commodities');
-document.getElementById('comm-body').innerHTML = comms.map(m=>`
-  <tr>
-    <td style="color:var(--muted);font-size:11px">${m.r}</td>
-    <td><div class="asset-cell"><div class="asset-icon" style="background:${m.color}22;color:${m.color}">${m.sym}</div><div><div class="asset-name">${m.name}</div><div class="asset-sym">${m.sym}</div></div></div></td>
-    <td class="r price-cell">$${m.price.toLocaleString()}</td>
-    <td class="r">${fmtChg(m.d1)}</td>
-    <td class="r vol-cell">${m.sym==='XAU'||m.sym==='XAG'?'Troy oz':m.sym==='WTI'?'Barrel':'Unit'}</td>
-    <td class="r"><div class="spark">${spark(m.spark,m.d7>=0)}</div></td>
-  </tr>`).join('');
-
-renderMarkets();
-
-// ─── ECONOMIC CALENDAR ───
+// CALENDAR
 const calData = [
   {date:'MON, JUN 2', events:[
     {time:'08:30',impact:'h',country:'USD',event:'ISM Manufacturing PMI',prev:'49.2',fore:'50.1',actual:'50.3',dir:'up'},
-    {time:'10:00',impact:'m',country:'EUR',event:'Eurozone CPI Flash Estimate YoY',prev:'2.4%',fore:'2.3%',actual:'2.2%',dir:'dn'},
+    {time:'10:00',impact:'m',country:'EUR',event:'Eurozone CPI Flash YoY',prev:'2.4%',fore:'2.3%',actual:'2.2%',dir:'dn'},
     {time:'14:00',impact:'l',country:'GBP',event:'UK Construction PMI',prev:'53.6',fore:'53.0',actual:'—',dir:'neu'},
   ]},
   {date:'TUE, JUN 3', events:[
     {time:'09:00',impact:'h',country:'USD',event:'JOLTS Job Openings',prev:'8.49M',fore:'8.35M',actual:'8.41M',dir:'up'},
-    {time:'10:30',impact:'m',country:'EUR',event:'German Factory Orders MoM',prev:'-0.4%',fore:'0.3%',actual:'—',dir:'neu'},
     {time:'14:30',impact:'h',country:'USD',event:'Fed Chair Powell Speech',prev:'—',fore:'—',actual:'—',dir:'neu'},
-    {time:'20:00',impact:'l',country:'JPY',event:'Bank of Japan Meeting Minutes',prev:'—',fore:'—',actual:'—',dir:'neu'},
+    {time:'10:30',impact:'m',country:'EUR',event:'German Factory Orders MoM',prev:'-0.4%',fore:'0.3%',actual:'—',dir:'neu'},
   ]},
   {date:'WED, JUN 4', events:[
-    {time:'08:15',impact:'h',country:'USD',event:'ADP Non-Farm Employment Change',prev:'192K',fore:'180K',actual:'—',dir:'neu'},
+    {time:'08:15',impact:'h',country:'USD',event:'ADP Non-Farm Employment',prev:'192K',fore:'180K',actual:'—',dir:'neu'},
     {time:'10:00',impact:'h',country:'USD',event:'ISM Services PMI',prev:'51.6',fore:'51.0',actual:'—',dir:'neu'},
-    {time:'11:30',impact:'m',country:'GBP',event:'UK Services PMI Final',prev:'55.0',fore:'55.0',actual:'—',dir:'neu'},
-    {time:'15:00',impact:'m',country:'CAD',event:'Bank of Canada Rate Decision',prev:'4.75%',fore:'4.50%',actual:'—',dir:'neu'},
+    {time:'15:00',impact:'h',country:'CAD',event:'Bank of Canada Rate Decision',prev:'4.75%',fore:'4.50%',actual:'—',dir:'neu'},
   ]},
   {date:'THU, JUN 5', events:[
     {time:'08:30',impact:'h',country:'USD',event:'Initial Jobless Claims',prev:'220K',fore:'218K',actual:'—',dir:'neu'},
-    {time:'08:30',impact:'h',country:'USD',event:'Q1 GDP (Final)',prev:'1.6%',fore:'1.6%',actual:'—',dir:'neu'},
     {time:'12:15',impact:'h',country:'EUR',event:'ECB Interest Rate Decision',prev:'4.50%',fore:'4.25%',actual:'—',dir:'neu'},
     {time:'12:45',impact:'h',country:'EUR',event:'ECB Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
   ]},
   {date:'FRI, JUN 6', events:[
     {time:'08:30',impact:'h',country:'USD',event:'Non-Farm Payrolls',prev:'175K',fore:'182K',actual:'—',dir:'neu'},
     {time:'08:30',impact:'h',country:'USD',event:'Unemployment Rate',prev:'3.9%',fore:'3.9%',actual:'—',dir:'neu'},
-    {time:'08:30',impact:'m',country:'USD',event:'Average Hourly Earnings MoM',prev:'0.2%',fore:'0.3%',actual:'—',dir:'neu'},
-    {time:'10:00',impact:'l',country:'USD',event:'Consumer Sentiment (Prelim)',prev:'67.4',fore:'68.0',actual:'—',dir:'neu'},
+    {time:'08:30',impact:'m',country:'USD',event:'Avg Hourly Earnings MoM',prev:'0.2%',fore:'0.3%',actual:'—',dir:'neu'},
   ]},
 ];
-
-const impLabel = {h:'HIGH',m:'MEDIUM',l:'LOW'};
-const calHtml = calData.map(day=>`
-  <div class="cal-date-header">${day.date}</div>
-  ${day.events.map(e=>`
-    <div class="cal-row">
-      <div class="cal-time">${e.time}</div>
-      <div class="cal-impact imp-${e.impact}">
-        <div class="imp-dot"></div><div class="imp-dot"></div><div class="imp-dot"></div>
-      </div>
-      <div>
-        <div class="cal-event">${e.event}</div>
-        <span class="cal-country">${e.country} &nbsp;·&nbsp; <span class="badge ${e.impact==='h'?'badge-high':e.impact==='m'?'badge-med':'badge-low'}">${impLabel[e.impact]}</span></span>
-      </div>
-      <div class="cal-prev">${e.prev}</div>
-      <div class="cal-fore">${e.fore}</div>
-      <div class="cal-actual ${e.dir}">${e.actual}</div>
-    </div>`).join('')}`).join('');
-
-document.getElementById('cal-body').innerHTML = `
-  <div style="display:grid;grid-template-columns:56px 32px 1fr 80px 80px 80px;padding:8px 16px;gap:8px;border-bottom:1px solid var(--border);background:var(--bg);">
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase">TIME</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase">IMP</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase">EVENT</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-align:right">PREV</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-align:right">FORE</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-align:right">ACTUAL</div>
-  </div>
-${calHtml}`;
-
-// ─── TOP MOVERS ───
-const sorted = [...markets].sort((a,b)=>Math.abs(b.d1)-Math.abs(a.d1)).slice(0,6);
-document.getElementById('movers-list').innerHTML = sorted.map(m=>`
-  <div class="watch-item">
-    <div class="watch-left">
-      <div class="watch-sym">${m.sym}</div>
-      <div class="watch-name">${m.name}</div>
-    </div>
-    <div class="watch-right">
-      <div class="watch-price">$${m.price.toLocaleString()}</div>
-      <div class="watch-chg ${m.d1>=0?'chg-up':'chg-dn'}">${m.d1>=0?'+':''}${m.d1.toFixed(2)}%</div>
-    </div>
-  </div>`).join('');
-
-// ─── TICKER ───
-const tickerData = markets.slice(0,8);
-const tickerHtml = [...tickerData,...tickerData].map(m=>`
-  <div class="tick">
-    <span class="tick-sym">${m.sym}</span>
-    <span class="tick-price">$${m.price.toLocaleString()}</span>
-    <span class="${m.d1>=0?'tick-up':'tick-dn'}">${m.d1>=0?'▲':'▼'} ${Math.abs(m.d1).toFixed(2)}%</span>
-  </div>
-  <span class="tick-sep">·</span>`).join('');
-document.getElementById('ticker').innerHTML = tickerHtml;
-
-// ─── TAB SWITCHING ───
-function showTab(name, el){
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.nav-tabs a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  if(el) el.classList.add('active');
-  return false;
-}
-
-// ─── LIVE PRICE SIMULATION ───
-setInterval(()=>{
-  markets.forEach(m=>{
-    const delta = (Math.random()-0.495)*0.08;
-    m.price = Math.max(0.001, m.price*(1+delta/100));
-    m.d1 += (Math.random()-0.5)*0.05;
-  });
-  renderMarkets(currentFilter);
-  // update ticker
-  const newTicker = [...markets.slice(0,8),...markets.slice(0,8)].map(m=>`
-    <div class="tick">
-      <span class="tick-sym">${m.sym}</span>
-      <span class="tick-price">$${m.price.toLocaleString(undefined,{maximumFractionDigits:2})}</span>
-      <span class="${m.d1>=0?'tick-up':'tick-dn'}">${m.d1>=0?'▲':'▼'} ${Math.abs(m.d1).toFixed(2)}%</span>
-    </div>
-    <span class="tick-sep">·</span>`).join('');
-  document.getElementById('ticker').innerHTML = newTicker;
-}, 3000);
+const impL = {h:'HIGH',m:'MED',l:'LOW'};
+document.getElementById('cal-body').innerHTML =
+  `<div style="display:grid;grid-template-columns:56px 28px 1fr 75px 75px 75px;padding:8px 16px;gap:8px;border-bottom:1px solid var(--border);background:var(--bg);">
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">TIME</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">IMP</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">EVENT</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">PREV</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">FORE</div>
+    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">ACTUAL</div>
+  </div>` +
+  calData.map(day=>`
+    <div class="cal-date-header">${day.date}</div>
+    ${day.events.map(e=>`
+      <div class="cal-row">
+        <div class="cal-time">${e.time}</div>
+        <div class="cal-impact imp-${e.impact}"><div class="imp-dot"></div><div class="imp-dot"></div><div class="imp-dot"></div></div>
+        <div>
+          <div class="cal-event">${e.event}</div>
+          <span class="cal-country">${e.country} · <span class="badge ${e.impact==='h'?'badge-high':e.impact==='m'?'badge-med':'badge-low'}">${impL[e.impact]}</span></span>
+        </div>
+        <div class="cal-prev">${e.prev}</div>
+        <div class="cal-fore">${e.fore}</div>
+        <div class="cal-actual ${e.dir}">${e.actual}</div>
+      </div>`).join('')}`).join('');
 </script>
 
 </body>
