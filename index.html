@@ -4,235 +4,277 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PWRCIL — Professional Trading Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>IFIG — International Financial Institution Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #060810;
-  --bg2: #0a0d18;
-  --bg3: #0f1320;
-  --border: #1a2035;
-  --border2: #242c45;
-  --gold: #d4a843;
-  --gold2: #f0c96a;
-  --green: #00c97a;
-  --red: #ff3d5a;
-  --white: #e8eaf0;
-  --muted: #5a6380;
-  --muted2: #7a84a0;
-  --blue: #1e6fff;
+  --bg:#04080f; --bg2:#070d18; --bg3:#0c1525;
+  --border:#162035; --border2:#1e2d48;
+  --gold:#c9a84c; --gold2:#e8c96a;
+  --white:#dce4f0; --muted:#4a5870; --muted2:#6a7890;
+  --green:#00b87a; --red:#e03d5a; --blue:#1a5fd4;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  overflow-x: hidden;
-}
-::-webkit-scrollbar { width:4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius:2px; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--gold);}
 
 /* STATUS BAR */
-.status-bar {
-background: var(–bg2);
-border-bottom: 1px solid var(–border);
-padding: 6px 20px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-font-size: 10px;
-letter-spacing: 1.5px;
-color: var(–muted);
-flex-wrap: wrap;
-gap: 6px;
+.status-bar{
+background:var(–bg2);border-bottom:1px solid var(–border);
+padding:5px 24px;display:flex;align-items:center;
+justify-content:space-between;font-family:‘IBM Plex Mono’,monospace;
+font-size:10px;letter-spacing:1.5px;color:var(–muted);flex-wrap:wrap;gap:6px;
 }
-.status-left { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
-.status-dot { width:6px; height:6px; border-radius:50%; background:var(–green); display:inline-block; margin-right:6px; animation: blink 2s infinite; }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.status-live { color:var(–green); font-weight:600; }
+.s-left{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.s-dot{width:6px;height:6px;border-radius:50%;background:var(–green);
+display:inline-block;margin-right:6px;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.s-live{color:var(–green);font-weight:600;}
 
 /* NAV */
-nav {
-position: sticky; top:0; z-index:100;
-background: rgba(6,8,16,0.97);
-backdrop-filter: blur(16px);
-border-bottom: 1px solid var(–border);
-display:flex; align-items:center; justify-content:space-between;
-padding: 0 20px; height: 52px;
+nav{
+position:sticky;top:0;z-index:100;
+background:rgba(4,8,15,0.97);backdrop-filter:blur(16px);
+border-bottom:1px solid var(–border);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;height:54px;
 }
-.nav-logo {
-font-family: ‘Barlow Condensed’, sans-serif;
-font-size: 22px; font-weight: 900; letter-spacing: 4px;
-color: var(–gold); text-decoration:none;
-display:flex; align-items:center; gap:8px;
+.nav-brand{
+font-family:‘Playfair Display’,serif;font-size:20px;
+font-weight:900;color:var(–gold);text-decoration:none;
+letter-spacing:2px;display:flex;align-items:center;gap:8px;
 }
-.nav-logo::before { content:’’; width:3px; height:22px; background:var(–gold); display:block; }
-.nav-tabs { display:flex; height:100%; list-style:none; }
-.nav-tabs li a {
-display:flex; align-items:center; height:100%; padding:0 14px;
-font-size:10px; letter-spacing:2px; text-transform:uppercase;
-color:var(–muted); text-decoration:none;
-border-bottom:2px solid transparent; transition:all 0.2s;
+.nav-brand::before{content:’’;width:3px;height:20px;background:var(–gold);display:block;}
+.nav-links{display:flex;height:100%;list-style:none;}
+.nav-links a{
+display:flex;align-items:center;height:100%;padding:0 14px;
+font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;
+text-transform:uppercase;color:var(–muted);text-decoration:none;
+border-bottom:2px solid transparent;transition:all 0.2s;
 }
-.nav-tabs li a:hover, .nav-tabs li a.active { color:var(–white); border-bottom-color:var(–gold); }
-.nav-right { display:flex; align-items:center; gap:10px; }
-.btn-tg {
-display:flex; align-items:center; gap:7px;
-background:#229ED9; color:#fff; padding:7px 14px;
-font-size:10px; letter-spacing:1.5px; text-decoration:none;
-font-family:‘JetBrains Mono’,monospace; font-weight:500;
-border-radius:2px; transition:opacity 0.2s;
+.nav-links a:hover,.nav-links a.active{color:var(–white);border-bottom-color:var(–gold);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.btn-tg{
+display:flex;align-items:center;gap:7px;background:#229ED9;color:#fff;
+padding:7px 14px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
+letter-spacing:1.5px;text-decoration:none;border-radius:2px;transition:opacity 0.2s;
 }
-.btn-tg:hover { opacity:0.85; }
-.btn-access {
-background:var(–gold); color:var(–bg); padding:7px 16px;
-font-size:10px; letter-spacing:2px; text-transform:uppercase;
-font-family:‘JetBrains Mono’,monospace; font-weight:600;
-border:none; cursor:pointer; border-radius:2px;
-transition:background 0.2s; text-decoration:none;
+.btn-tg:hover{opacity:0.85;}
+.btn-gold{
+background:var(–gold);color:var(–bg);padding:7px 16px;
+font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;
+text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
+transition:background 0.2s;text-decoration:none;font-weight:600;
 }
-.btn-access:hover { background:var(–gold2); }
+.btn-gold:hover{background:var(–gold2);}
 
 /* TABS */
-.tab-content { display:none; }
-.tab-content.active { display:block; }
+.tab-content{display:none;}
+.tab-content.active{display:block;}
 
 /* SECTION HEADER */
-.sec-head {
-display:flex; align-items:center; justify-content:space-between;
-padding:12px 20px; border-bottom:1px solid var(–border);
-background:var(–bg2);
+.sec-head{
+display:flex;align-items:center;justify-content:space-between;
+padding:12px 20px;border-bottom:1px solid var(–border);background:var(–bg2);
 }
-.sec-title {
-font-family:‘Barlow Condensed’,sans-serif; font-size:13px;
-font-weight:700; letter-spacing:3px; text-transform:uppercase;
-color:var(–white); display:flex; align-items:center; gap:8px;
+.sec-title{
+font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:500;
+letter-spacing:3px;text-transform:uppercase;color:var(–white);
+display:flex;align-items:center;gap:8px;
 }
-.sec-title::before { content:’’; width:3px; height:13px; background:var(–gold); display:block; }
-.badge {
-display:inline-block; font-size:8px; letter-spacing:1.5px;
-padding:2px 6px; border-radius:2px; font-weight:600; text-transform:uppercase;
+.sec-title::before{content:’’;width:3px;height:12px;background:var(–gold);display:block;}
+.badge{
+display:inline-block;font-family:‘IBM Plex Mono’,monospace;font-size:8px;
+letter-spacing:1.5px;padding:2px 6px;border-radius:1px;font-weight:600;text-transform:uppercase;
 }
-.badge-live { background:rgba(0,201,122,0.15); color:var(–green); border:1px solid rgba(0,201,122,0.3); }
-.badge-high { background:rgba(255,61,90,0.15); color:var(–red); border:1px solid rgba(255,61,90,0.3); }
-.badge-med { background:rgba(212,168,67,0.15); color:var(–gold); border:1px solid rgba(212,168,67,0.3); }
-.badge-low { background:rgba(90,99,128,0.15); color:var(–muted2); border:1px solid rgba(90,99,128,0.2); }
+.badge-live{background:rgba(0,184,122,0.15);color:var(–green);border:1px solid rgba(0,184,122,0.3);}
+.badge-h{background:rgba(224,61,90,0.15);color:var(–red);border:1px solid rgba(224,61,90,0.3);}
+.badge-m{background:rgba(201,168,76,0.15);color:var(–gold);border:1px solid rgba(201,168,76,0.3);}
+.badge-l{background:rgba(74,88,112,0.15);color:var(–muted2);border:1px solid rgba(74,88,112,0.2);}
 
 /* MAIN LAYOUT */
-.main-layout {
-display:grid; grid-template-columns:1fr 280px; min-height:calc(100vh - 100px);
-}
-.content-area { border-right:1px solid var(–border); overflow:hidden; }
+.main-layout{display:grid;grid-template-columns:1fr 290px;min-height:calc(100vh - 90px);}
+.content-area{border-right:1px solid var(–border);overflow:hidden;}
 
-/* TRADINGVIEW WIDGETS */
-.tv-widget-wrap {
-background:var(–bg);
-border-bottom:1px solid var(–border);
-}
-.tv-widget-wrap iframe { display:block; }
+/* TV WIDGET */
+.tv-wrap{background:var(–bg);border-bottom:1px solid var(–border);}
 
-/* CATEGORY TABS */
-.cat-filters {
-display:flex; border-bottom:1px solid var(–border);
-background:var(–bg); overflow-x:auto;
+/* CAT FILTERS */
+.cat-filters{display:flex;border-bottom:1px solid var(–border);background:var(–bg);overflow-x:auto;}
+.cat-btn{
+padding:10px 18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;
+color:var(–muted);background:none;border:none;border-bottom:2px solid transparent;
+cursor:pointer;white-space:nowrap;font-family:‘IBM Plex Mono’,monospace;transition:all 0.2s;
 }
-.cat-btn {
-padding:10px 18px; font-size:10px; letter-spacing:2px;
-text-transform:uppercase; color:var(–muted); background:none;
-border:none; border-bottom:2px solid transparent; cursor:pointer;
-white-space:nowrap; font-family:‘JetBrains Mono’,monospace; transition:all 0.2s;
-}
-.cat-btn:hover { color:var(–white); }
-.cat-btn.active { color:var(–gold); border-bottom-color:var(–gold); }
+.cat-btn:hover{color:var(–white);}
+.cat-btn.active{color:var(–gold);border-bottom-color:var(–gold);}
 
 /* CALENDAR */
-.cal-date-header {
-padding:10px 16px; font-size:10px; letter-spacing:2px;
-text-transform:uppercase; color:var(–gold);
-background:rgba(212,168,67,0.06);
-border-bottom:1px solid var(–border); border-top:1px solid var(–border);
+.cal-head{
+display:grid;grid-template-columns:58px 28px 1fr 80px 80px 80px;
+gap:10px;padding:8px 16px;background:var(–bg3);
+border-bottom:1px solid var(–border);
+font-family:‘IBM Plex Mono’,monospace;font-size:9px;
+letter-spacing:2px;text-transform:uppercase;color:var(–muted);
 }
-.cal-row {
-display:grid; grid-template-columns:56px 28px 1fr 75px 75px 75px;
-align-items:center; padding:10px 16px;
-border-bottom:1px solid rgba(26,32,53,0.5);
-transition:background 0.15s; cursor:pointer; gap:8px;
+.cal-date-row{
+padding:8px 16px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
+letter-spacing:3px;text-transform:uppercase;color:var(–gold);
+background:rgba(201,168,76,0.05);border-top:1px solid var(–border);
+border-bottom:1px solid var(–border);
 }
-.cal-row:hover { background:rgba(30,111,255,0.04); }
-.cal-time { font-size:11px; color:var(–muted2); }
-.cal-impact { display:flex; gap:2px; align-items:center; }
-.imp-dot { width:4px; height:4px; border-radius:50%; }
-.imp-h .imp-dot { background:var(–red); }
-.imp-m .imp-dot { background:var(–gold); }
-.imp-l .imp-dot { background:var(–muted); }
-.cal-event { font-size:11px; color:var(–white); line-height:1.4; }
-.cal-country { font-size:9px; color:var(–muted); letter-spacing:1px; display:block; margin-top:2px; }
-.cal-prev { color:var(–muted2); font-size:10px; text-align:right; }
-.cal-fore { font-size:10px; text-align:right; color:#4d8fff; }
-.cal-actual { font-size:11px; font-weight:600; text-align:right; }
-.cal-actual.up { color:var(–green); }
-.cal-actual.dn { color:var(–red); }
-.cal-actual.neu { color:var(–muted2); }
+.cal-row{
+display:grid;grid-template-columns:58px 28px 1fr 80px 80px 80px;
+gap:10px;padding:11px 16px;border-bottom:1px solid rgba(22,32,53,0.6);
+transition:background 0.15s;cursor:pointer;align-items:center;
+}
+.cal-row:hover{background:rgba(201,168,76,0.03);}
+.cal-time{font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:var(–muted2);}
+.imp-dots{display:flex;gap:2px;}
+.imp-dot{width:4px;height:4px;border-radius:50%;}
+.imp-h .imp-dot{background:var(–red);}
+.imp-m .imp-dot{background:var(–gold);}
+.imp-l .imp-dot{background:var(–muted);}
+.cal-event{font-size:12px;color:var(–white);line-height:1.3;}
+.cal-flag{font-family:‘IBM Plex Mono’,monospace;font-size:9px;color:var(–muted);letter-spacing:1px;margin-top:2px;}
+.cal-num{font-family:‘IBM Plex Mono’,monospace;font-size:11px;text-align:right;color:var(–muted2);}
+.cal-fore{font-family:‘IBM Plex Mono’,monospace;font-size:11px;text-align:right;color:#5a9fff;}
+.cal-act{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:600;text-align:right;}
+.cal-act.up{color:var(–green);}
+.cal-act.dn{color:var(–red);}
+.cal-act.neu{color:var(–muted2);}
+.cal-filter{display:flex;gap:0;padding:12px 16px;border-bottom:1px solid var(–border);background:var(–bg2);}
+.imp-filter{
+padding:6px 14px;font-family:‘IBM Plex Mono’,monospace;font-size:9px;
+letter-spacing:2px;text-transform:uppercase;border:1px solid var(–border);
+border-right:none;color:var(–muted);background:none;cursor:pointer;transition:all 0.2s;
+}
+.imp-filter:last-child{border-right:1px solid var(–border);}
+.imp-filter.active{color:var(–gold);border-color:var(–gold);background:rgba(201,168,76,0.08);}
+
+/* RISK CALCULATOR */
+.calc-wrap{padding:24px;}
+.calc-tabs{display:flex;gap:0;margin-bottom:24px;}
+.c-tab{
+padding:10px 20px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
+letter-spacing:2px;text-transform:uppercase;border:1px solid var(–border);
+border-right:none;color:var(–muted);background:none;cursor:pointer;transition:all 0.2s;
+}
+.c-tab:last-child{border-right:1px solid var(–border);}
+.c-tab.active{color:var(–gold);border-color:var(–gold);background:rgba(201,168,76,0.08);}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.c-tab-content{display:none;}
+.c-tab-content.active{display:block;}
+.field{margin-bottom:16px;}
+.field label{
+display:block;font-family:‘IBM Plex Mono’,monospace;font-size:9px;
+letter-spacing:2px;text-transform:uppercase;color:var(–muted);margin-bottom:6px;
+}
+.field input,.field select{
+width:100%;background:var(–bg3);border:1px solid var(–border);
+color:var(–white);padding:11px 14px;font-family:‘IBM Plex Mono’,monospace;
+font-size:13px;outline:none;transition:border-color 0.2s;
+}
+.field input:focus,.field select:focus{border-color:var(–gold);}
+.calc-btn-wrap{margin-top:20px;}
+.calc-btn{
+width:100%;background:var(–gold);color:var(–bg);padding:14px;
+font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:3px;
+text-transform:uppercase;border:none;cursor:pointer;font-weight:600;transition:background 0.2s;
+}
+.calc-btn:hover{background:var(–gold2);}
+.result-box{background:var(–bg3);border:1px solid var(–border);padding:24px;}
+.res-main-label{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(–muted);margin-bottom:12px;}
+.res-main-val{font-family:‘Playfair Display’,serif;font-size:48px;font-weight:900;color:var(–gold);line-height:1;margin-bottom:6px;}
+.res-sub{font-size:12px;color:var(–muted2);margin-bottom:20px;}
+.res-row{
+display:flex;justify-content:space-between;align-items:center;
+padding:9px 0;border-bottom:1px solid var(–border);
+font-family:‘IBM Plex Mono’,monospace;font-size:11px;
+}
+.res-row:last-child{border-bottom:none;}
+.rk{color:var(–muted2);}
+.rv{color:var(–white);font-weight:500;}
+.rv.g{color:var(–green);}
+.rv.r{color:var(–red);}
 
 /* SIDEBAR */
-.sidebar { overflow-y:auto; }
-.sidebar-block { border-bottom:1px solid var(–border); }
+.sidebar{overflow-y:auto;}
+.sidebar-block{border-bottom:1px solid var(–border);}
 
-.fg-widget { padding:16px; }
-.fg-score { font-family:‘Barlow Condensed’,sans-serif; font-size:52px; font-weight:900; text-align:center; line-height:1; margin-bottom:4px; }
-.fg-text { text-align:center; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
-.fg-scale { display:flex; height:6px; border-radius:3px; overflow:hidden; margin-bottom:4px; }
-.fg-scale div { flex:1; }
+/* FEAR GREED */
+.fg-wrap{padding:16px;}
+.fg-val{font-family:‘Playfair Display’,serif;font-size:56px;font-weight:900;text-align:center;line-height:1;margin-bottom:4px;}
+.fg-label{text-align:center;font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.fg-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:4px;}
+.fg-bar div{flex:1;}
 
-.ceo-card { padding:16px; display:flex; flex-direction:column; gap:10px; }
-.ceo-avatar {
-width:44px; height:44px; border-radius:2px;
-background:linear-gradient(135deg,var(–gold) 0%,#a07020 100%);
-display:flex; align-items:center; justify-content:center;
-font-family:‘Barlow Condensed’,sans-serif; font-size:18px; font-weight:900; color:var(–bg);
+/* WATCHLIST */
+.watch-item{
+display:flex;align-items:center;justify-content:space-between;
+padding:11px 16px;border-bottom:1px solid rgba(22,32,53,0.5);
+transition:background 0.15s;cursor:pointer;
 }
-.ceo-row { display:flex; align-items:center; gap:10px; }
-.ceo-name { font-family:‘Barlow Condensed’,sans-serif; font-size:15px; font-weight:700; letter-spacing:1px; color:var(–white); }
-.ceo-title { font-size:9px; color:var(–gold); letter-spacing:2px; text-transform:uppercase; }
-.ceo-bio { font-size:10px; color:var(–muted2); line-height:1.7; }
-.ceo-tg { display:flex; align-items:center; gap:6px; font-size:10px; color:#229ED9; text-decoration:none; }
+.watch-item:hover{background:rgba(201,168,76,0.04);}
+.w-sym{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:600;color:var(–white);}
+.w-name{font-size:10px;color:var(–muted);}
+.w-price{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:500;color:var(–white);}
+.w-chg{font-family:‘IBM Plex Mono’,monospace;font-size:10px;font-weight:600;}
 
-.support-box { margin:14px; background:var(–bg3); border:1px solid var(–border); padding:14px; border-radius:2px; }
-.support-title { font-size:10px; color:var(–muted2); letter-spacing:1.5px; margin-bottom:10px; text-transform:uppercase; }
-.support-link {
-display:flex; align-items:center; gap:8px; background:#229ED9;
-color:#fff; padding:10px 12px; border-radius:2px; text-decoration:none;
-font-size:11px; letter-spacing:1.5px; font-weight:500;
+/* CEO */
+.ceo-wrap{padding:16px;display:flex;flex-direction:column;gap:12px;}
+.ceo-av{
+width:48px;height:48px;
+background:linear-gradient(135deg,var(–gold) 0%,#8a6020 100%);
+display:flex;align-items:center;justify-content:center;
+font-family:‘Playfair Display’,serif;font-size:20px;font-weight:900;color:var(–bg);
 }
+.ceo-row{display:flex;align-items:center;gap:12px;}
+.ceo-name{font-family:‘Playfair Display’,serif;font-size:15px;font-weight:700;color:var(–white);}
+.ceo-pos{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(–gold);}
+.ceo-bio{font-size:11px;color:var(–muted2);line-height:1.7;}
+.ceo-tg{display:flex;align-items:center;gap:6px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:#229ED9;text-decoration:none;letter-spacing:1px;}
 
-.sent-wrap { padding:8px 0 4px; }
-.sent-label { padding:0 14px; font-size:10px; color:var(–muted); margin-bottom:6px; }
-.sent-bar { margin:0 14px 2px; background:var(–bg3); border:1px solid var(–border); border-radius:2px; overflow:hidden; height:6px; display:flex; }
-.sent-bull { background:var(–green); }
-.sent-bear { background:var(–red); }
-.sent-vals { display:flex; justify-content:space-between; padding:4px 14px 10px; font-size:10px; }
+/* SUPPORT */
+.sup-box{margin:14px;background:var(–bg3);border:1px solid var(–border);padding:14px;}
+.sup-title{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–muted2);margin-bottom:10px;}
+.sup-btn{
+display:flex;align-items:center;gap:8px;background:#229ED9;color:#fff;
+padding:10px 14px;text-decoration:none;font-family:‘IBM Plex Mono’,monospace;
+font-size:10px;letter-spacing:2px;border-radius:2px;margin-bottom:8px;
+}
+.sup-info{font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:var(–muted);line-height:1.6;letter-spacing:1px;}
+
+/* SENT */
+.sent-wrap{padding:8px 0 4px;}
+.sent-label{padding:0 14px;font-family:‘IBM Plex Mono’,monospace;font-size:9px;color:var(–muted);margin-bottom:6px;letter-spacing:2px;text-transform:uppercase;}
+.sent-bar{margin:0 14px 2px;background:var(–bg3);border:1px solid var(–border);border-radius:2px;overflow:hidden;height:6px;display:flex;}
+.sb{background:var(–green);}
+.sr{background:var(–red);}
+.sent-vals{display:flex;justify-content:space-between;padding:4px 14px 10px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;}
 
 /* FOOTER */
-footer {
-border-top:1px solid var(–border); background:var(–bg2);
-padding:16px 20px; display:flex; align-items:center;
-justify-content:space-between; font-size:10px; color:var(–muted);
-letter-spacing:1.5px; flex-wrap:wrap; gap:10px;
+footer{
+border-top:1px solid var(–border);background:var(–bg2);
+padding:20px 24px;display:flex;align-items:center;justify-content:space-between;
+flex-wrap:wrap;gap:10px;font-family:‘IBM Plex Mono’,monospace;
+font-size:10px;color:var(–muted);letter-spacing:1.5px;
 }
-.footer-brand { font-family:‘Barlow Condensed’,sans-serif; font-size:16px; font-weight:900; letter-spacing:4px; color:var(–gold); }
-.footer-links { display:flex; gap:20px; }
-.footer-links a { color:var(–muted); text-decoration:none; }
-.footer-links a:hover { color:var(–gold); }
+.f-brand{font-family:‘Playfair Display’,serif;font-size:16px;font-weight:900;color:var(–gold);}
+.f-links{display:flex;gap:20px;}
+.f-links a{color:var(–muted);text-decoration:none;transition:color 0.2s;}
+.f-links a:hover{color:var(–gold);}
 
-@media(max-width:850px){
-.main-layout { grid-template-columns:1fr; }
-.content-area { border-right:none; }
-nav .nav-tabs { display:none; }
-.cal-row { grid-template-columns:50px 24px 1fr 65px 65px; }
-.cal-fore { display:none; }
+@media(max-width:860px){
+.main-layout{grid-template-columns:1fr;}
+.content-area{border-right:none;}
+nav .nav-links{display:none;}
+.cal-row,.cal-head{grid-template-columns:50px 24px 1fr 70px 70px;}
+.cal-fore{display:none;}
+.calc-grid{grid-template-columns:1fr;}
 }
 </style>
 
@@ -242,11 +284,11 @@ nav .nav-tabs { display:none; }
 <!-- STATUS BAR -->
 
 <div class="status-bar">
-  <div class="status-left">
-    <span><span class="status-dot"></span><span class="status-live">LIVE</span></span>
-    <span>NY: <span id="ny-time">--:--:--</span></span>
-    <span>LDN: <span id="ld-time">--:--:--</span></span>
-    <span>TKY: <span id="tk-time">--:--:--</span></span>
+  <div class="s-left">
+    <span><span class="s-dot"></span><span class="s-live">LIVE</span></span>
+    <span>NY: <span id="ny">--:--:--</span></span>
+    <span>LDN: <span id="ld">--:--:--</span></span>
+    <span>TKY: <span id="tk">--:--:--</span></span>
   </div>
   <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW</span>
 </div>
@@ -254,290 +296,374 @@ nav .nav-tabs { display:none; }
 <!-- NAV -->
 
 <nav>
-  <a href="#" class="nav-logo">PWRCIL</a>
-  <ul class="nav-tabs">
+  <a href="#" class="nav-brand">IFIG</a>
+  <ul class="nav-links">
     <li><a href="#" class="active" onclick="showTab('markets',this);return false;">Markets</a></li>
     <li><a href="#" onclick="showTab('crypto',this);return false;">Crypto</a></li>
     <li><a href="#" onclick="showTab('forex',this);return false;">Forex</a></li>
     <li><a href="#" onclick="showTab('calendar',this);return false;">Calendar</a></li>
+    <li><a href="#" onclick="showTab('calculator',this);return false;">Calculator</a></li>
+    <li><a href="#" onclick="showTab('about',this);return false;">About</a></li>
   </ul>
   <div class="nav-right">
     <a href="https://t.me/pwrcil" target="_blank" class="btn-tg">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
       @pwrcil
     </a>
-    <a href="https://t.me/pwrcil" target="_blank" class="btn-access">Get Access</a>
+    <a href="https://t.me/pwrcil" target="_blank" class="btn-gold">Get Access</a>
   </div>
 </nav>
 
 <div class="main-layout">
 <div class="content-area">
 
-<!-- ═══ MARKETS TAB ═══ -->
+<!-- ═══ MARKETS ═══ -->
 
 <div id="tab-markets" class="tab-content active">
   <div class="sec-head">
     <span class="sec-title">Live Market Ticker</span>
-    <span class="badge badge-live">Real-Time</span>
+    <span class="badge badge-live">Real-Time · TradingView</span>
   </div>
-
-  <!-- TradingView Ticker Tape -->
-
-  <div class="tv-widget-wrap">
+  <div class="tv-wrap">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
-        "symbols": [
-          {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
-          {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},
-          {"proName":"BINANCE:BNBUSDT","title":"BNB"},
-          {"proName":"BINANCE:SOLUSDT","title":"Solana"},
-          {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
-          {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
-          {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
-          {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
-          {"proName":"TVC:GOLD","title":"Gold"},
-          {"proName":"TVC:SILVER","title":"Silver"},
-          {"proName":"NYMEX:CL1!","title":"Oil WTI"},
-          {"proName":"BINANCE:XRPUSDT","title":"XRP"},
-          {"proName":"BINANCE:DOGEUSDT","title":"DOGE"}
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": true,
-        "displayMode": "adaptive",
-        "colorTheme": "dark",
-        "locale": "en"
-      }
+      {"symbols":[
+        {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+        {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},
+        {"proName":"BINANCE:BNBUSDT","title":"BNB"},
+        {"proName":"BINANCE:SOLUSDT","title":"Solana"},
+        {"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},
+        {"proName":"FOREXCOM:NSXUSD","title":"NASDAQ"},
+        {"proName":"TVC:DXY","title":"DXY"},
+        {"proName":"TVC:GOLD","title":"Gold"},
+        {"proName":"TVC:SILVER","title":"Silver"},
+        {"proName":"NYMEX:CL1!","title":"Oil WTI"},
+        {"proName":"FX_IDC:EURUSD","title":"EUR/USD"},
+        {"proName":"FX_IDC:GBPUSD","title":"GBP/USD"},
+        {"proName":"FX_IDC:USDJPY","title":"USD/JPY"}
+      ],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
       </script>
     </div>
   </div>
-
-  <!-- TradingView Market Overview -->
-
-  <div class="sec-head" style="margin-top:0;">
+  <div class="sec-head">
     <span class="sec-title">Market Overview</span>
-    <span style="font-size:10px;color:var(--muted)">Powered by TradingView</span>
+    <span style="font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">Indices · Crypto · Forex · Commodities</span>
   </div>
-  <div class="tv-widget-wrap">
+  <div class="tv-wrap">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-      {
-        "colorTheme": "dark",
-        "dateRange": "1D",
-        "showChart": true,
-        "locale": "en",
-        "isTransparent": true,
-        "showSymbolLogo": true,
-        "showFloatingTooltip": false,
-        "width": "100%",
-        "height": "660",
-        "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-        "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-        "gridLineColor": "rgba(26, 32, 53, 1)",
-        "scaleFontColor": "rgba(120, 123, 134, 1)",
-        "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-        "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-        "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-        "tabs": [
-          {
-            "title": "Indices",
-            "symbols": [
-              {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},
-              {"s":"FOREXCOM:NSXUSD","d":"Nasdaq 100"},
-              {"s":"FOREXCOM:DJI","d":"Dow Jones"},
-              {"s":"INDEX:DEU40","d":"DAX"},
-              {"s":"FOREXCOM:UKXGBP","d":"FTSE 100"},
-              {"s":"INDEX:NI225","d":"Nikkei 225"}
-            ],
-            "originalTitle": "Indices"
-          },
-          {
-            "title": "Crypto",
-            "symbols": [
-              {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},
-              {"s":"BITSTAMP:ETHUSD","d":"Ethereum"},
-              {"s":"BINANCE:BNBUSDT","d":"BNB"},
-              {"s":"BINANCE:SOLUSDT","d":"Solana"},
-              {"s":"BINANCE:XRPUSDT","d":"XRP"},
-              {"s":"BINANCE:DOGEUSDT","d":"Dogecoin"}
-            ],
-            "originalTitle": "Crypto"
-          },
-          {
-            "title": "Forex",
-            "symbols": [
-              {"s":"FX_IDC:EURUSD","d":"EUR/USD"},
-              {"s":"FX_IDC:GBPUSD","d":"GBP/USD"},
-              {"s":"FX_IDC:USDJPY","d":"USD/JPY"},
-              {"s":"FX_IDC:USDCHF","d":"USD/CHF"},
-              {"s":"FX_IDC:AUDUSD","d":"AUD/USD"},
-              {"s":"FX_IDC:USDCAD","d":"USD/CAD"}
-            ],
-            "originalTitle": "Forex"
-          },
-          {
-            "title": "Commodities",
-            "symbols": [
-              {"s":"TVC:GOLD","d":"Gold"},
-              {"s":"TVC:SILVER","d":"Silver"},
-              {"s":"NYMEX:CL1!","d":"Crude Oil WTI"},
-              {"s":"NYMEX:NG1!","d":"Natural Gas"},
-              {"s":"CBOT:ZW1!","d":"Wheat"},
-              {"s":"CBOT:ZC1!","d":"Corn"}
-            ],
-            "originalTitle": "Commodities"
-          }
-        ]
-      }
+      {"colorTheme":"dark","dateRange":"1D","showChart":true,"locale":"en","isTransparent":true,
+       "showSymbolLogo":true,"width":"100%","height":"660",
+       "gridLineColor":"rgba(22,32,53,1)","scaleFontColor":"rgba(106,120,144,1)",
+       "tabs":[
+         {"title":"Indices","symbols":[
+           {"s":"FOREXCOM:SPXUSD","d":"S&P 500"},{"s":"FOREXCOM:NSXUSD","d":"Nasdaq 100"},
+           {"s":"TVC:DXY","d":"DXY"},{"s":"INDEX:DEU40","d":"DAX"},
+           {"s":"FOREXCOM:UKXGBP","d":"FTSE 100"},{"s":"INDEX:NI225","d":"Nikkei 225"}
+         ],"originalTitle":"Indices"},
+         {"title":"Crypto","symbols":[
+           {"s":"BITSTAMP:BTCUSD","d":"Bitcoin"},{"s":"BITSTAMP:ETHUSD","d":"Ethereum"},
+           {"s":"BINANCE:BNBUSDT","d":"BNB"},{"s":"BINANCE:SOLUSDT","d":"Solana"},
+           {"s":"BINANCE:XRPUSDT","d":"XRP"},{"s":"BINANCE:DOGEUSDT","d":"Dogecoin"}
+         ],"originalTitle":"Crypto"},
+         {"title":"Forex","symbols":[
+           {"s":"FX_IDC:EURUSD","d":"EUR/USD"},{"s":"FX_IDC:GBPUSD","d":"GBP/USD"},
+           {"s":"FX_IDC:USDJPY","d":"USD/JPY"},{"s":"FX_IDC:USDCHF","d":"USD/CHF"},
+           {"s":"FX_IDC:AUDUSD","d":"AUD/USD"},{"s":"FX_IDC:USDCAD","d":"USD/CAD"}
+         ],"originalTitle":"Forex"},
+         {"title":"Commodities","symbols":[
+           {"s":"TVC:GOLD","d":"Gold"},{"s":"TVC:SILVER","d":"Silver"},
+           {"s":"NYMEX:CL1!","d":"Crude Oil"},{"s":"NYMEX:NG1!","d":"Natural Gas"},
+           {"s":"CBOT:ZW1!","d":"Wheat"},{"s":"CBOT:ZC1!","d":"Corn"}
+         ],"originalTitle":"Commodities"}
+       ]}
       </script>
     </div>
   </div>
 </div>
 
-<!-- ═══ CRYPTO TAB ═══ -->
+<!-- ═══ CRYPTO ═══ -->
 
 <div id="tab-crypto" class="tab-content">
-  <div class="sec-head">
-    <span class="sec-title">Crypto Markets</span>
-    <span class="badge badge-live">Live</span>
-  </div>
-  <div class="tv-widget-wrap">
+  <div class="sec-head"><span class="sec-title">Crypto Screener</span><span class="badge badge-live">Live</span></div>
+  <div class="tv-wrap">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-      {
-        "width": "100%",
-        "height": "700",
-        "defaultColumn": "overview",
-        "screener_type": "crypto_mkt",
-        "displayCurrency": "USD",
-        "colorTheme": "dark",
-        "locale": "en",
-        "isTransparent": true
-      }
+      {"width":"100%","height":"700","defaultColumn":"overview","screener_type":"crypto_mkt",
+       "displayCurrency":"USD","colorTheme":"dark","locale":"en","isTransparent":true}
       </script>
     </div>
   </div>
 </div>
 
-<!-- ═══ FOREX TAB ═══ -->
+<!-- ═══ FOREX ═══ -->
 
 <div id="tab-forex" class="tab-content">
-  <div class="sec-head">
-    <span class="sec-title">Forex Pairs</span>
-    <span class="badge badge-live">Live</span>
-  </div>
-  <div class="tv-widget-wrap">
+  <div class="sec-head"><span class="sec-title">Forex Cross Rates</span><span class="badge badge-live">Live</span></div>
+  <div class="tv-wrap">
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-      {
-        "width": "100%",
-        "height": "700",
-        "currencies": ["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD"],
-        "isTransparent": true,
-        "colorTheme": "dark",
-        "locale": "en"
-      }
+      {"width":"100%","height":"400","currencies":["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD"],
+       "isTransparent":true,"colorTheme":"dark","locale":"en"}
+      </script>
+    </div>
+  </div>
+  <div class="sec-head" style="margin-top:1px;"><span class="sec-title">Forex Heat Map</span></div>
+  <div class="tv-wrap">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-heat-map.js" async>
+      {"width":"100%","height":"300","currencies":["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"],
+       "isTransparent":true,"colorTheme":"dark","locale":"en"}
       </script>
     </div>
   </div>
 </div>
 
-<!-- ═══ CALENDAR TAB ═══ -->
+<!-- ═══ CALENDAR ═══ -->
 
 <div id="tab-calendar" class="tab-content">
   <div class="sec-head">
     <span class="sec-title">Economic Calendar</span>
-    <span style="font-size:10px;color:var(--muted)">June 2–6, 2026</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Week of June 2–6, 2026</span>
+  </div>
+  <div class="cal-filter">
+    <button class="imp-filter active" onclick="filterCal(this,'all')">All</button>
+    <button class="imp-filter" onclick="filterCal(this,'h')" style="color:var(--red)">High</button>
+    <button class="imp-filter" onclick="filterCal(this,'m')" style="color:var(--gold)">Medium</button>
+    <button class="imp-filter" onclick="filterCal(this,'l')">Low</button>
+  </div>
+  <div class="cal-head">
+    <div>TIME</div><div>IMP</div><div>EVENT</div>
+    <div style="text-align:right">PREV</div>
+    <div style="text-align:right">FORE</div>
+    <div style="text-align:right">ACTUAL</div>
   </div>
   <div id="cal-body"></div>
 </div>
 
-</div><!-- end content-area -->
+<!-- ═══ CALCULATOR ═══ -->
+
+<div id="tab-calculator" class="tab-content">
+  <div class="sec-head"><span class="sec-title">Trading Calculators</span><span class="badge badge-live">Professional</span></div>
+  <div class="calc-wrap">
+    <div class="calc-tabs">
+      <button class="c-tab active" onclick="switchCalc(this,'risk')">Risk Calc</button>
+      <button class="c-tab" onclick="switchCalc(this,'pip')">Pip Value</button>
+      <button class="c-tab" onclick="switchCalc(this,'profit')">Profit/Loss</button>
+      <button class="c-tab" onclick="switchCalc(this,'margin')">Margin</button>
+    </div>
+
+```
+<!-- RISK CALCULATOR -->
+<div id="calc-risk" class="c-tab-content active">
+  <div class="calc-grid">
+    <div>
+      <div class="field"><label>Account Balance ($)</label><input type="number" id="r-bal" value="10000" oninput="calcRisk()"></div>
+      <div class="field"><label>Risk Percentage (%)</label><input type="number" id="r-pct" value="1" step="0.1" oninput="calcRisk()"></div>
+      <div class="field"><label>Stop Loss (pips)</label><input type="number" id="r-sl" value="20" oninput="calcRisk()"></div>
+      <div class="field"><label>Asset Type</label>
+        <select id="r-type" onchange="calcRisk()">
+          <option value="forex">Forex (Standard Lot)</option>
+          <option value="crypto">Crypto</option>
+          <option value="stocks">Stocks</option>
+          <option value="indices">Indices</option>
+        </select>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="res-main-label">Max Risk Amount</div>
+      <div class="res-main-val" id="r-main">$100.00</div>
+      <div class="res-sub" id="r-sub">1% of $10,000 account</div>
+      <div id="r-rows" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PIP VALUE -->
+<div id="calc-pip" class="c-tab-content">
+  <div class="calc-grid">
+    <div>
+      <div class="field"><label>Currency Pair</label>
+        <select id="p-pair" onchange="calcPip()">
+          <option value="eurusd">EUR/USD</option>
+          <option value="gbpusd">GBP/USD</option>
+          <option value="usdjpy">USD/JPY</option>
+          <option value="audusd">AUD/USD</option>
+          <option value="usdcad">USD/CAD</option>
+          <option value="usdchf">USD/CHF</option>
+        </select>
+      </div>
+      <div class="field"><label>Lot Size</label><input type="number" id="p-lot" value="1" step="0.01" oninput="calcPip()"></div>
+      <div class="field"><label>Account Currency</label>
+        <select id="p-acccur" onchange="calcPip()">
+          <option value="usd">USD</option>
+          <option value="eur">EUR</option>
+          <option value="gbp">GBP</option>
+        </select>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="res-main-label">Pip Value</div>
+      <div class="res-main-val" id="p-main">$10.00</div>
+      <div class="res-sub">Per 1 standard lot</div>
+      <div id="p-rows" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFIT/LOSS -->
+<div id="calc-profit" class="c-tab-content">
+  <div class="calc-grid">
+    <div>
+      <div class="field"><label>Entry Price</label><input type="number" id="pl-entry" value="1.0850" step="0.0001" oninput="calcPL()"></div>
+      <div class="field"><label>Exit Price</label><input type="number" id="pl-exit" value="1.0920" step="0.0001" oninput="calcPL()"></div>
+      <div class="field"><label>Lot Size</label><input type="number" id="pl-lot" value="1" step="0.01" oninput="calcPL()"></div>
+      <div class="field"><label>Direction</label>
+        <select id="pl-dir" onchange="calcPL()">
+          <option value="buy">Buy (Long)</option>
+          <option value="sell">Sell (Short)</option>
+        </select>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="res-main-label">Profit / Loss</div>
+      <div class="res-main-val" id="pl-main">$0.00</div>
+      <div class="res-sub" id="pl-sub">Enter values to calculate</div>
+      <div id="pl-rows" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MARGIN -->
+<div id="calc-margin" class="c-tab-content">
+  <div class="calc-grid">
+    <div>
+      <div class="field"><label>Lot Size</label><input type="number" id="m-lot" value="1" step="0.01" oninput="calcMargin()"></div>
+      <div class="field"><label>Leverage (1:X)</label><input type="number" id="m-lev" value="100" oninput="calcMargin()"></div>
+      <div class="field"><label>Asset Price ($)</label><input type="number" id="m-price" value="1.0850" step="0.0001" oninput="calcMargin()"></div>
+      <div class="field"><label>Contract Size</label>
+        <select id="m-contract" onchange="calcMargin()">
+          <option value="100000">100,000 (Standard)</option>
+          <option value="10000">10,000 (Mini)</option>
+          <option value="1000">1,000 (Micro)</option>
+        </select>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="res-main-label">Required Margin</div>
+      <div class="res-main-val" id="m-main">$0.00</div>
+      <div class="res-sub" id="m-sub">Enter values to calculate</div>
+      <div id="m-rows" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+
+<div id="tab-about" class="tab-content">
+  <div class="sec-head"><span class="sec-title">About IFIG</span></div>
+  <div style="padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--gold),#8a6020);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--bg);">HN</div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;margin-bottom:6px;">Nomonov Husniddin</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Chief Executive Officer · Founder</div>
+        <div style="font-size:14px;line-height:1.8;color:var(--muted2);margin-bottom:20px;">Founder and CEO of the International Financial Institution Group. Professional trader and financial analyst with expertise in global markets, providing institutional-grade intelligence to investors worldwide.</div>
+        <a href="https://t.me/pwrcil" target="_blank" class="btn-tg" style="width:fit-content;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
+          @pwrcil — Telegram
+        </a>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">48K+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Assets Tracked</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">180+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Exchanges</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">24/7</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Live Support</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">99.9%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Uptime</div></div>
+    </div>
+  </div>
+  <div style="padding:0 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Telegram Support</div>
+      <div style="font-size:18px;font-weight:500;color:var(--white);margin-bottom:16px;">@pwrcil</div>
+      <a href="https://t.me/pwrcil" target="_blank" class="btn-tg">Open Telegram</a>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Phone / WhatsApp</div>
+      <div style="font-size:18px;font-weight:500;color:var(--white);margin-bottom:16px;">+86 130 3609 6925</div>
+      <a href="tel:+8613036096925" class="btn-gold">Call Now</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- end content -->
 
 <!-- SIDEBAR -->
 
 <div class="sidebar">
-
-  <!-- Fear & Greed -->
-
+  <!-- FEAR GREED -->
   <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Fear & Greed</span></div>
-    <div class="fg-widget">
-      <div class="fg-score" id="fg-score" style="color:var(--gold)">--</div>
-      <div class="fg-text" id="fg-text" style="color:var(--muted)">Loading...</div>
-      <div class="fg-scale">
-        <div style="background:#ff3d5a"></div>
-        <div style="background:#ff7a3d"></div>
-        <div style="background:#ffc13d"></div>
-        <div style="background:#c9f03d"></div>
-        <div style="background:#00c97a"></div>
+    <div class="sec-head"><span class="sec-title">Fear & Greed</span><span class="badge badge-live">Index</span></div>
+    <div class="fg-wrap">
+      <div class="fg-val" id="fg-val" style="color:var(--gold)">--</div>
+      <div class="fg-label" id="fg-lbl" style="color:var(--muted)">Loading...</div>
+      <div class="fg-bar">
+        <div style="background:#e03d5a"></div>
+        <div style="background:#e07a3d"></div>
+        <div style="background:#e0c13d"></div>
+        <div style="background:#c9e03d"></div>
+        <div style="background:#00b87a"></div>
       </div>
-      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px;">
+      <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px;">
         <span>FEAR</span><span>NEUTRAL</span><span>GREED</span>
       </div>
     </div>
   </div>
 
-  <!-- Mini Chart BTC -->
+  <!-- BTC MINI CHART -->
 
   <div class="sidebar-block">
     <div class="sec-head"><span class="sec-title">BTC/USD</span><span class="badge badge-live">Live</span></div>
-    <div class="tv-widget-wrap">
+    <div class="tv-wrap">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {
-          "symbol": "BITSTAMP:BTCUSD",
-          "width": "100%",
-          "height": "200",
-          "locale": "en",
-          "dateRange": "1D",
-          "colorTheme": "dark",
-          "isTransparent": true,
-          "autosize": false,
-          "largeChartUrl": ""
-        }
+        {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":"180","locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
   </div>
 
-  <!-- Mini Chart ETH -->
+  <!-- GOLD MINI CHART -->
 
   <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">ETH/USD</span><span class="badge badge-live">Live</span></div>
-    <div class="tv-widget-wrap">
+    <div class="sec-head"><span class="sec-title">Gold / XAU</span><span class="badge badge-live">Live</span></div>
+    <div class="tv-wrap">
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {
-          "symbol": "BITSTAMP:ETHUSD",
-          "width": "100%",
-          "height": "200",
-          "locale": "en",
-          "dateRange": "1D",
-          "colorTheme": "dark",
-          "isTransparent": true,
-          "autosize": false
-        }
+        {"symbol":"TVC:GOLD","width":"100%","height":"180","locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"autosize":false}
         </script>
       </div>
     </div>
   </div>
 
-  <!-- Sentiment -->
+  <!-- SENTIMENT -->
 
   <div class="sidebar-block">
     <div class="sec-head"><span class="sec-title">Market Sentiment</span></div>
     <div class="sent-wrap">
-      <div class="sent-label">CRYPTO</div>
-      <div class="sent-bar"><div class="sent-bull" id="sb1" style="width:50%"></div><div class="sent-bear" id="sr1" style="width:50%"></div></div>
+      <div class="sent-label">Crypto Market</div>
+      <div class="sent-bar"><div class="sb" id="sb1" style="width:50%"></div><div class="sr" id="sr1" style="width:50%"></div></div>
       <div class="sent-vals"><span style="color:var(--green)" id="sv1">▲ --</span><span style="color:var(--red)" id="sv2">-- ▼</span></div>
     </div>
   </div>
@@ -546,15 +672,15 @@ nav .nav-tabs { display:none; }
 
   <div class="sidebar-block">
     <div class="sec-head"><span class="sec-title">Leadership</span></div>
-    <div class="ceo-card">
+    <div class="ceo-wrap">
       <div class="ceo-row">
-        <div class="ceo-avatar">HN</div>
+        <div class="ceo-av">HN</div>
         <div>
-          <div class="ceo-name">HUSNIDDIN NOMONOV</div>
-          <div class="ceo-title">Chief Executive Officer</div>
+          <div class="ceo-name">Nomonov Husniddin</div>
+          <div class="ceo-pos">Chief Executive Officer</div>
         </div>
       </div>
-      <div class="ceo-bio">Founder & CEO of PWRCIL. Professional trader and financial analyst delivering institutional-grade market intelligence worldwide.</div>
+      <div class="ceo-bio">Founder & CEO of IFIG. Professional trader delivering institutional-grade market intelligence worldwide.</div>
       <a href="https://t.me/pwrcil" target="_blank" class="ceo-tg">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
         @pwrcil
@@ -562,133 +688,231 @@ nav .nav-tabs { display:none; }
     </div>
   </div>
 
-  <!-- Support -->
+  <!-- SUPPORT -->
 
   <div class="sidebar-block">
     <div class="sec-head"><span class="sec-title">Support</span></div>
-    <div class="support-box">
-      <div class="support-title">24/7 Professional Support</div>
-      <a href="https://t.me/pwrcil" target="_blank" class="support-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
+    <div class="sup-box">
+      <div class="sup-title">24/7 Professional Support</div>
+      <a href="https://t.me/pwrcil" target="_blank" class="sup-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
         Telegram: @pwrcil
       </a>
-      <div style="margin-top:10px;font-size:10px;color:var(--muted);line-height:1.7;">Signals · Analysis · Trading ideas</div>
+      <div class="sup-info">+86 130 3609 6925<br>Signals · Analysis · Ideas</div>
     </div>
   </div>
-
-</div><!-- end sidebar -->
-</div><!-- end main-layout -->
+</div>
+</div><!-- end main -->
 
 <footer>
-  <div class="footer-brand">PWRCIL</div>
-  <div>© 2026 PWRCIL · CEO: Husniddin Nomonov · All rights reserved</div>
-  <div class="footer-links">
-    <a href="https://t.me/pwrcil" target="_blank">Telegram</a>
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
+  <div class="f-brand">IFIG</div>
+  <div>© 2026 International Financial Institution Group · CEO: Nomonov Husniddin</div>
+  <div class="f-links">
+    <a href="https://t.me/pwrcil" target="_blank">@pwrcil</a>
+    <a href="tel:+8613036096925">+86 130 3609 6925</a>
   </div>
 </footer>
 
 <script>
-// CLOCKS
+// ── CLOCKS ──
 function updateClocks(){
-  const now = new Date();
-  const fmt = d => d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  document.getElementById('ny-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'})));
-  document.getElementById('ld-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'Europe/London'})));
-  document.getElementById('tk-time').textContent = fmt(new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tokyo'})));
+  const now=new Date();
+  const fmt=d=>d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  document.getElementById('ny').textContent=fmt(new Date(now.toLocaleString('en-US',{timeZone:'America/New_York'})));
+  document.getElementById('ld').textContent=fmt(new Date(now.toLocaleString('en-US',{timeZone:'Europe/London'})));
+  document.getElementById('tk').textContent=fmt(new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tokyo'})));
 }
-setInterval(updateClocks,1000); updateClocks();
+setInterval(updateClocks,1000);updateClocks();
 
-// TABS
-function showTab(name, el){
+// ── TABS ──
+function showTab(name,el){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.nav-tabs a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  if(el) el.classList.add('active');
+  if(el)el.classList.add('active');
 }
 
-// FEAR & GREED
+// ── CALC TABS ──
+function switchCalc(btn,name){
+  document.querySelectorAll('.c-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.c-tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('calc-'+name).classList.add('active');
+}
+
+// ── RISK CALC ──
+function calcRisk(){
+  const bal=parseFloat(document.getElementById('r-bal').value)||0;
+  const pct=parseFloat(document.getElementById('r-pct').value)||0;
+  const sl=parseFloat(document.getElementById('r-sl').value)||0;
+  const type=document.getElementById('r-type').value;
+  const risk=bal*pct/100;
+  const pipVal=type==='forex'?10:type==='indices'?1:type==='crypto'?1:0.1;
+  const lots=sl>0?(risk/(sl*pipVal)):0;
+  document.getElementById('r-main').textContent='$'+risk.toFixed(2);
+  document.getElementById('r-sub').textContent=`${pct}% of $${bal.toLocaleString()} account`;
+  document.getElementById('r-rows').innerHTML=`
+    <div class="res-row"><span class="rk">Risk Amount</span><span class="rv">$${risk.toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Position Size</span><span class="rv">${lots.toFixed(2)} lots</span></div>
+    <div class="res-row"><span class="rk">1:2 RR Target</span><span class="rv g">+$${(risk*2).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">1:3 RR Target</span><span class="rv g">+$${(risk*3).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Balance if SL hit</span><span class="rv r">$${(bal-risk).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Daily risk (3 trades)</span><span class="rv r">$${(risk*3).toFixed(2)}</span></div>
+  `;
+}
+calcRisk();
+
+// ── PIP VALUE ──
+function calcPip(){
+  const pair=document.getElementById('p-pair').value;
+  const lot=parseFloat(document.getElementById('p-lot').value)||0;
+  const pipVals={eurusd:10,gbpusd:10,usdjpy:9.17,audusd:10,usdcad:7.7,usdchf:11.2};
+  const val=(pipVals[pair]||10)*lot;
+  document.getElementById('p-main').textContent='$'+val.toFixed(2);
+  document.getElementById('p-rows').innerHTML=`
+    <div class="res-row"><span class="rk">Pair</span><span class="rv">${pair.toUpperCase()}</span></div>
+    <div class="res-row"><span class="rk">Lot Size</span><span class="rv">${lot}</span></div>
+    <div class="res-row"><span class="rk">Pip Value</span><span class="rv">$${val.toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">10 pip move</span><span class="rv g">$${(val*10).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">50 pip move</span><span class="rv g">$${(val*50).toFixed(2)}</span></div>
+  `;
+}
+calcPip();
+
+// ── PROFIT/LOSS ──
+function calcPL(){
+  const entry=parseFloat(document.getElementById('pl-entry').value)||0;
+  const exit=parseFloat(document.getElementById('pl-exit').value)||0;
+  const lot=parseFloat(document.getElementById('pl-lot').value)||0;
+  const dir=document.getElementById('pl-dir').value;
+  const diff=dir==='buy'?(exit-entry):(entry-exit);
+  const pips=Math.round(diff*10000);
+  const pl=pips*10*lot;
+  const el=document.getElementById('pl-main');
+  el.textContent=(pl>=0?'+':'')+'$'+Math.abs(pl).toFixed(2);
+  el.style.color=pl>=0?'var(--green)':'var(--red)';
+  document.getElementById('pl-sub').textContent=`${pips} pips · ${dir.toUpperCase()}`;
+  document.getElementById('pl-rows').innerHTML=`
+    <div class="res-row"><span class="rk">Entry</span><span class="rv">${entry}</span></div>
+    <div class="res-row"><span class="rk">Exit</span><span class="rv">${exit}</span></div>
+    <div class="res-row"><span class="rk">Pips</span><span class="rv ${pl>=0?'g':'r'}">${pips>=0?'+':''}${pips}</span></div>
+    <div class="res-row"><span class="rk">Profit/Loss</span><span class="rv ${pl>=0?'g':'r'}">${pl>=0?'+':''}$${Math.abs(pl).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Direction</span><span class="rv">${dir.toUpperCase()}</span></div>
+  `;
+}
+calcPL();
+
+// ── MARGIN ──
+function calcMargin(){
+  const lot=parseFloat(document.getElementById('m-lot').value)||0;
+  const lev=parseFloat(document.getElementById('m-lev').value)||1;
+  const price=parseFloat(document.getElementById('m-price').value)||0;
+  const contract=parseFloat(document.getElementById('m-contract').value)||100000;
+  const margin=(lot*contract*price)/lev;
+  document.getElementById('m-main').textContent='$'+margin.toFixed(2);
+  document.getElementById('m-sub').textContent=`1:${lev} leverage`;
+  document.getElementById('m-rows').innerHTML=`
+    <div class="res-row"><span class="rk">Lot Size</span><span class="rv">${lot}</span></div>
+    <div class="res-row"><span class="rk">Leverage</span><span class="rv">1:${lev}</span></div>
+    <div class="res-row"><span class="rk">Position Value</span><span class="rv">$${(lot*contract*price).toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Required Margin</span><span class="rv g">$${margin.toFixed(2)}</span></div>
+    <div class="res-row"><span class="rk">Free Margin (on $10K)</span><span class="rv">${(10000-margin).toFixed(2)}</span></div>
+  `;
+}
+calcMargin();
+
+// ── CALENDAR ──
+const calData=[
+  {date:'MON, JUN 2',events:[
+    {time:'08:30',imp:'h',country:'USD',event:'ISM Manufacturing PMI',prev:'49.2',fore:'50.1',actual:'50.3',dir:'up'},
+    {time:'10:00',imp:'m',country:'EUR',event:'Eurozone CPI Flash YoY',prev:'2.4%',fore:'2.3%',actual:'2.2%',dir:'dn'},
+    {time:'14:00',imp:'l',country:'GBP',event:'UK Construction PMI',prev:'53.6',fore:'53.0',actual:'54.1',dir:'up'},
+    {time:'15:30',imp:'l',country:'USD',event:'Dallas Fed Manufacturing',prev:'-14.5',fore:'-10.0',actual:'—',dir:'neu'},
+  ]},
+  {date:'TUE, JUN 3',events:[
+    {time:'09:00',imp:'h',country:'USD',event:'JOLTS Job Openings',prev:'8.49M',fore:'8.35M',actual:'8.41M',dir:'up'},
+    {time:'10:30',imp:'m',country:'EUR',event:'German Factory Orders MoM',prev:'-0.4%',fore:'0.3%',actual:'—',dir:'neu'},
+    {time:'14:30',imp:'h',country:'USD',event:'Fed Chair Powell Speech',prev:'—',fore:'—',actual:'—',dir:'neu'},
+    {time:'20:00',imp:'l',country:'JPY',event:'BoJ Meeting Minutes',prev:'—',fore:'—',actual:'—',dir:'neu'},
+  ]},
+  {date:'WED, JUN 4',events:[
+    {time:'08:15',imp:'h',country:'USD',event:'ADP Non-Farm Employment',prev:'192K',fore:'180K',actual:'—',dir:'neu'},
+    {time:'10:00',imp:'h',country:'USD',event:'ISM Services PMI',prev:'51.6',fore:'51.0',actual:'—',dir:'neu'},
+    {time:'11:30',imp:'m',country:'GBP',event:'UK Services PMI Final',prev:'55.0',fore:'55.0',actual:'—',dir:'neu'},
+    {time:'15:00',imp:'h',country:'CAD',event:'Bank of Canada Rate Decision',prev:'4.75%',fore:'4.50%',actual:'—',dir:'neu'},
+    {time:'15:30',imp:'m',country:'CAD',event:'BoC Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
+  ]},
+  {date:'THU, JUN 5',events:[
+    {time:'08:30',imp:'h',country:'USD',event:'Initial Jobless Claims',prev:'220K',fore:'218K',actual:'—',dir:'neu'},
+    {time:'08:30',imp:'h',country:'USD',event:'Q1 GDP Final',prev:'1.6%',fore:'1.6%',actual:'—',dir:'neu'},
+    {time:'12:15',imp:'h',country:'EUR',event:'ECB Interest Rate Decision',prev:'4.50%',fore:'4.25%',actual:'—',dir:'neu'},
+    {time:'12:45',imp:'h',country:'EUR',event:'ECB Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
+    {time:'14:00',imp:'m',country:'USD',event:'Factory Orders MoM',prev:'1.6%',fore:'-0.5%',actual:'—',dir:'neu'},
+  ]},
+  {date:'FRI, JUN 6',events:[
+    {time:'08:30',imp:'h',country:'USD',event:'Non-Farm Payrolls',prev:'175K',fore:'182K',actual:'—',dir:'neu'},
+    {time:'08:30',imp:'h',country:'USD',event:'Unemployment Rate',prev:'3.9%',fore:'3.9%',actual:'—',dir:'neu'},
+    {time:'08:30',imp:'m',country:'USD',event:'Avg Hourly Earnings MoM',prev:'0.2%',fore:'0.3%',actual:'—',dir:'neu'},
+    {time:'10:00',imp:'l',country:'USD',event:'Consumer Sentiment Prelim',prev:'67.4',fore:'68.0',actual:'—',dir:'neu'},
+  ]},
+];
+const impL={h:'HIGH',m:'MED',l:'LOW'};
+let currentImpFilter='all';
+
+function renderCalendar(filter='all'){
+  document.getElementById('cal-body').innerHTML=calData.map(day=>{
+    const events=filter==='all'?day.events:day.events.filter(e=>e.imp===filter);
+    if(!events.length)return'';
+    return`<div class="cal-date-row">${day.date}</div>
+    ${events.map(e=>`
+      <div class="cal-row">
+        <div class="cal-time">${e.time}</div>
+        <div class="imp-dots imp-${e.imp}"><div class="imp-dot"></div><div class="imp-dot"></div><div class="imp-dot"></div></div>
+        <div>
+          <div class="cal-event">${e.event}</div>
+          <div class="cal-flag">${e.country} · <span class="badge badge-${e.imp}">${impL[e.imp]}</span></div>
+        </div>
+        <div class="cal-num">${e.prev}</div>
+        <div class="cal-fore">${e.fore}</div>
+        <div class="cal-act ${e.dir}">${e.actual}</div>
+      </div>`).join('')}`;
+  }).join('');
+}
+renderCalendar();
+
+function filterCal(btn,f){
+  document.querySelectorAll('.imp-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentImpFilter=f;
+  renderCalendar(f);
+}
+
+// ── FEAR & GREED ──
 async function fetchFG(){
-  try {
-    const r = await fetch('https://api.alternative.me/fng/?limit=1');
-    const d = await r.json();
-    const val = parseInt(d.data[0].value);
-    const txt = d.data[0].value_classification;
-    const el = document.getElementById('fg-score');
-    const tel = document.getElementById('fg-text');
-    el.textContent = val;
-    el.style.color = val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
-    tel.textContent = txt.toUpperCase();
-    tel.style.color = val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
-    const bull = val, bear = 100-val;
-    document.getElementById('sb1').style.width = bull+'%';
-    document.getElementById('sr1').style.width = bear+'%';
-    document.getElementById('sv1').textContent = `▲ Bullish ${bull}%`;
-    document.getElementById('sv2').textContent = `Bearish ${bear}% ▼`;
-  } catch(e) {
-    document.getElementById('fg-score').textContent = '68';
-    document.getElementById('fg-text').textContent = 'GREED';
-    document.getElementById('sb1').style.width = '68%';
-    document.getElementById('sr1').style.width = '32%';
-    document.getElementById('sv1').textContent = '▲ Bullish 68%';
-    document.getElementById('sv2').textContent = 'Bearish 32% ▼';
+  try{
+    const r=await fetch('https://api.alternative.me/fng/?limit=1');
+    const d=await r.json();
+    const val=parseInt(d.data[0].value);
+    const txt=d.data[0].value_classification;
+    const c=val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
+    document.getElementById('fg-val').textContent=val;
+    document.getElementById('fg-val').style.color=c;
+    document.getElementById('fg-lbl').textContent=txt.toUpperCase();
+    document.getElementById('fg-lbl').style.color=c;
+    document.getElementById('sb1').style.width=val+'%';
+    document.getElementById('sr1').style.width=(100-val)+'%';
+    document.getElementById('sv1').textContent=`▲ Bullish ${val}%`;
+    document.getElementById('sv2').textContent=`Bearish ${100-val}% ▼`;
+  }catch{
+    document.getElementById('fg-val').textContent='68';
+    document.getElementById('fg-lbl').textContent='GREED';
+    document.getElementById('sb1').style.width='68%';
+    document.getElementById('sr1').style.width='32%';
+    document.getElementById('sv1').textContent='▲ Bullish 68%';
+    document.getElementById('sv2').textContent='Bearish 32% ▼';
   }
 }
 fetchFG();
-
-// CALENDAR
-const calData = [
-  {date:'MON, JUN 2', events:[
-    {time:'08:30',impact:'h',country:'USD',event:'ISM Manufacturing PMI',prev:'49.2',fore:'50.1',actual:'50.3',dir:'up'},
-    {time:'10:00',impact:'m',country:'EUR',event:'Eurozone CPI Flash YoY',prev:'2.4%',fore:'2.3%',actual:'2.2%',dir:'dn'},
-    {time:'14:00',impact:'l',country:'GBP',event:'UK Construction PMI',prev:'53.6',fore:'53.0',actual:'—',dir:'neu'},
-  ]},
-  {date:'TUE, JUN 3', events:[
-    {time:'09:00',impact:'h',country:'USD',event:'JOLTS Job Openings',prev:'8.49M',fore:'8.35M',actual:'8.41M',dir:'up'},
-    {time:'14:30',impact:'h',country:'USD',event:'Fed Chair Powell Speech',prev:'—',fore:'—',actual:'—',dir:'neu'},
-    {time:'10:30',impact:'m',country:'EUR',event:'German Factory Orders MoM',prev:'-0.4%',fore:'0.3%',actual:'—',dir:'neu'},
-  ]},
-  {date:'WED, JUN 4', events:[
-    {time:'08:15',impact:'h',country:'USD',event:'ADP Non-Farm Employment',prev:'192K',fore:'180K',actual:'—',dir:'neu'},
-    {time:'10:00',impact:'h',country:'USD',event:'ISM Services PMI',prev:'51.6',fore:'51.0',actual:'—',dir:'neu'},
-    {time:'15:00',impact:'h',country:'CAD',event:'Bank of Canada Rate Decision',prev:'4.75%',fore:'4.50%',actual:'—',dir:'neu'},
-  ]},
-  {date:'THU, JUN 5', events:[
-    {time:'08:30',impact:'h',country:'USD',event:'Initial Jobless Claims',prev:'220K',fore:'218K',actual:'—',dir:'neu'},
-    {time:'12:15',impact:'h',country:'EUR',event:'ECB Interest Rate Decision',prev:'4.50%',fore:'4.25%',actual:'—',dir:'neu'},
-    {time:'12:45',impact:'h',country:'EUR',event:'ECB Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
-  ]},
-  {date:'FRI, JUN 6', events:[
-    {time:'08:30',impact:'h',country:'USD',event:'Non-Farm Payrolls',prev:'175K',fore:'182K',actual:'—',dir:'neu'},
-    {time:'08:30',impact:'h',country:'USD',event:'Unemployment Rate',prev:'3.9%',fore:'3.9%',actual:'—',dir:'neu'},
-    {time:'08:30',impact:'m',country:'USD',event:'Avg Hourly Earnings MoM',prev:'0.2%',fore:'0.3%',actual:'—',dir:'neu'},
-  ]},
-];
-const impL = {h:'HIGH',m:'MED',l:'LOW'};
-document.getElementById('cal-body').innerHTML =
-  `<div style="display:grid;grid-template-columns:56px 28px 1fr 75px 75px 75px;padding:8px 16px;gap:8px;border-bottom:1px solid var(--border);background:var(--bg);">
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">TIME</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">IMP</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px">EVENT</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">PREV</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">FORE</div>
-    <div style="font-size:9px;color:var(--muted);letter-spacing:2px;text-align:right">ACTUAL</div>
-  </div>` +
-  calData.map(day=>`
-    <div class="cal-date-header">${day.date}</div>
-    ${day.events.map(e=>`
-      <div class="cal-row">
-        <div class="cal-time">${e.time}</div>
-        <div class="cal-impact imp-${e.impact}"><div class="imp-dot"></div><div class="imp-dot"></div><div class="imp-dot"></div></div>
-        <div>
-          <div class="cal-event">${e.event}</div>
-          <span class="cal-country">${e.country} · <span class="badge ${e.impact==='h'?'badge-high':e.impact==='m'?'badge-med':'badge-low'}">${impL[e.impact]}</span></span>
-        </div>
-        <div class="cal-prev">${e.prev}</div>
-        <div class="cal-fore">${e.fore}</div>
-        <div class="cal-actual ${e.dir}">${e.actual}</div>
-      </div>`).join('')}`).join('');
 </script>
 
 </body>
