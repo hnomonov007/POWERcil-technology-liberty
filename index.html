@@ -301,6 +301,7 @@ nav .nav-links{display:none;}
     <li><a href="#" class="active" onclick="showTab('markets',this);return false;">Markets</a></li>
     <li><a href="#" onclick="showTab('crypto',this);return false;">Crypto</a></li>
     <li><a href="#" onclick="showTab('forex',this);return false;">Forex</a></li>
+    <li><a href="#" onclick="showTab('chart',this);return false;">Chart</a></li>
     <li><a href="#" onclick="showTab('calendar',this);return false;">Calendar</a></li>
     <li><a href="#" onclick="showTab('calculator',this);return false;">Calculator</a></li>
     <li><a href="#" onclick="showTab('about',this);return false;">About</a></li>
@@ -424,26 +425,43 @@ nav .nav-links{display:none;}
   </div>
 </div>
 
+<!-- ═══ CHART ═══ -->
+
+<div id="tab-chart" class="tab-content">
+  <div class="sec-head">
+    <span class="sec-title">Advanced Chart</span>
+    <span class="badge badge-live">Live · TradingView</span>
+  </div>
+  <div class="tv-wrap">
+    <div class="tradingview-widget-container" style="height:700px;">
+      <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+      {"autosize":true,"symbol":"OANDA:XAUUSD","interval":"15","timezone":"Etc/UTC",
+       "theme":"dark","style":"1","locale":"en","enable_publishing":false,
+       "hide_top_toolbar":false,"hide_legend":false,"withdateranges":true,
+       "allow_symbol_change":true,"save_image":false,"backgroundColor":"rgba(4,8,15,1)",
+       "gridColor":"rgba(22,32,53,1)","support_host":"https://www.tradingview.com"}
+      </script>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ CALENDAR ═══ -->
 
 <div id="tab-calendar" class="tab-content">
   <div class="sec-head">
     <span class="sec-title">Economic Calendar</span>
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);">Week of June 2–6, 2026</span>
+    <span class="badge badge-live">Live · TradingView</span>
   </div>
-  <div class="cal-filter">
-    <button class="imp-filter active" onclick="filterCal(this,'all')">All</button>
-    <button class="imp-filter" onclick="filterCal(this,'h')" style="color:var(--red)">High</button>
-    <button class="imp-filter" onclick="filterCal(this,'m')" style="color:var(--gold)">Medium</button>
-    <button class="imp-filter" onclick="filterCal(this,'l')">Low</button>
+  <div class="tv-wrap">
+    <div class="tradingview-widget-container" style="height:650px;">
+      <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+      {"colorTheme":"dark","isTransparent":true,"width":"100%","height":"650",
+       "locale":"en","importanceFilter":"-1,0,1","countryFilter":"us,eu,gb,jp,cn,ca,au,ch,nz"}
+      </script>
+    </div>
   </div>
-  <div class="cal-head">
-    <div>TIME</div><div>IMP</div><div>EVENT</div>
-    <div style="text-align:right">PREV</div>
-    <div style="text-align:right">FORE</div>
-    <div style="text-align:right">ACTUAL</div>
-  </div>
-  <div id="cal-body"></div>
 </div>
 
 <!-- ═══ CALCULATOR ═══ -->
@@ -599,7 +617,9 @@ nav .nav-links{display:none;}
     </div>
     <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Phone / WhatsApp</div>
-      <div style="font-size:18px;font-weight:500;color:var(--white);margin-bottom:16px;">+86 130 3609 6925</div>
+      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;">+86 130 3609 6925</div>
+      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;">+998 33 712 71 00</div>
+      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:16px;">+998 94 709 77 12</div>
       <a href="tel:+8613036096925" class="btn-gold">Call Now</a>
     </div>
   </div>
@@ -698,7 +718,7 @@ nav .nav-links{display:none;}
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
         Telegram: @pwrcil
       </a>
-      <div class="sup-info">+86 130 3609 6925<br>Signals · Analysis · Ideas</div>
+      <div class="sup-info">+86 130 3609 6925<br>+998 33 712 71 00<br>+998 94 709 77 12<br>Signals · Analysis · Ideas</div>
     </div>
   </div>
 </div>
@@ -710,6 +730,8 @@ nav .nav-links{display:none;}
   <div class="f-links">
     <a href="https://t.me/pwrcil" target="_blank">@pwrcil</a>
     <a href="tel:+8613036096925">+86 130 3609 6925</a>
+    <a href="tel:+998337127100">+998 33 712 71 00</a>
+    <a href="tel:+998947097712">+998 94 709 77 12</a>
   </div>
 </footer>
 
@@ -821,72 +843,6 @@ function calcMargin(){
 }
 calcMargin();
 
-// ── CALENDAR ──
-const calData=[
-  {date:'MON, JUN 2',events:[
-    {time:'08:30',imp:'h',country:'USD',event:'ISM Manufacturing PMI',prev:'49.2',fore:'50.1',actual:'50.3',dir:'up'},
-    {time:'10:00',imp:'m',country:'EUR',event:'Eurozone CPI Flash YoY',prev:'2.4%',fore:'2.3%',actual:'2.2%',dir:'dn'},
-    {time:'14:00',imp:'l',country:'GBP',event:'UK Construction PMI',prev:'53.6',fore:'53.0',actual:'54.1',dir:'up'},
-    {time:'15:30',imp:'l',country:'USD',event:'Dallas Fed Manufacturing',prev:'-14.5',fore:'-10.0',actual:'—',dir:'neu'},
-  ]},
-  {date:'TUE, JUN 3',events:[
-    {time:'09:00',imp:'h',country:'USD',event:'JOLTS Job Openings',prev:'8.49M',fore:'8.35M',actual:'8.41M',dir:'up'},
-    {time:'10:30',imp:'m',country:'EUR',event:'German Factory Orders MoM',prev:'-0.4%',fore:'0.3%',actual:'—',dir:'neu'},
-    {time:'14:30',imp:'h',country:'USD',event:'Fed Chair Powell Speech',prev:'—',fore:'—',actual:'—',dir:'neu'},
-    {time:'20:00',imp:'l',country:'JPY',event:'BoJ Meeting Minutes',prev:'—',fore:'—',actual:'—',dir:'neu'},
-  ]},
-  {date:'WED, JUN 4',events:[
-    {time:'08:15',imp:'h',country:'USD',event:'ADP Non-Farm Employment',prev:'192K',fore:'180K',actual:'—',dir:'neu'},
-    {time:'10:00',imp:'h',country:'USD',event:'ISM Services PMI',prev:'51.6',fore:'51.0',actual:'—',dir:'neu'},
-    {time:'11:30',imp:'m',country:'GBP',event:'UK Services PMI Final',prev:'55.0',fore:'55.0',actual:'—',dir:'neu'},
-    {time:'15:00',imp:'h',country:'CAD',event:'Bank of Canada Rate Decision',prev:'4.75%',fore:'4.50%',actual:'—',dir:'neu'},
-    {time:'15:30',imp:'m',country:'CAD',event:'BoC Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
-  ]},
-  {date:'THU, JUN 5',events:[
-    {time:'08:30',imp:'h',country:'USD',event:'Initial Jobless Claims',prev:'220K',fore:'218K',actual:'—',dir:'neu'},
-    {time:'08:30',imp:'h',country:'USD',event:'Q1 GDP Final',prev:'1.6%',fore:'1.6%',actual:'—',dir:'neu'},
-    {time:'12:15',imp:'h',country:'EUR',event:'ECB Interest Rate Decision',prev:'4.50%',fore:'4.25%',actual:'—',dir:'neu'},
-    {time:'12:45',imp:'h',country:'EUR',event:'ECB Press Conference',prev:'—',fore:'—',actual:'—',dir:'neu'},
-    {time:'14:00',imp:'m',country:'USD',event:'Factory Orders MoM',prev:'1.6%',fore:'-0.5%',actual:'—',dir:'neu'},
-  ]},
-  {date:'FRI, JUN 6',events:[
-    {time:'08:30',imp:'h',country:'USD',event:'Non-Farm Payrolls',prev:'175K',fore:'182K',actual:'—',dir:'neu'},
-    {time:'08:30',imp:'h',country:'USD',event:'Unemployment Rate',prev:'3.9%',fore:'3.9%',actual:'—',dir:'neu'},
-    {time:'08:30',imp:'m',country:'USD',event:'Avg Hourly Earnings MoM',prev:'0.2%',fore:'0.3%',actual:'—',dir:'neu'},
-    {time:'10:00',imp:'l',country:'USD',event:'Consumer Sentiment Prelim',prev:'67.4',fore:'68.0',actual:'—',dir:'neu'},
-  ]},
-];
-const impL={h:'HIGH',m:'MED',l:'LOW'};
-let currentImpFilter='all';
-
-function renderCalendar(filter='all'){
-  document.getElementById('cal-body').innerHTML=calData.map(day=>{
-    const events=filter==='all'?day.events:day.events.filter(e=>e.imp===filter);
-    if(!events.length)return'';
-    return`<div class="cal-date-row">${day.date}</div>
-    ${events.map(e=>`
-      <div class="cal-row">
-        <div class="cal-time">${e.time}</div>
-        <div class="imp-dots imp-${e.imp}"><div class="imp-dot"></div><div class="imp-dot"></div><div class="imp-dot"></div></div>
-        <div>
-          <div class="cal-event">${e.event}</div>
-          <div class="cal-flag">${e.country} · <span class="badge badge-${e.imp}">${impL[e.imp]}</span></div>
-        </div>
-        <div class="cal-num">${e.prev}</div>
-        <div class="cal-fore">${e.fore}</div>
-        <div class="cal-act ${e.dir}">${e.actual}</div>
-      </div>`).join('')}`;
-  }).join('');
-}
-renderCalendar();
-
-function filterCal(btn,f){
-  document.querySelectorAll('.imp-filter').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  currentImpFilter=f;
-  renderCalendar(f);
-}
-
 // ── FEAR & GREED ──
 async function fetchFG(){
   try{
@@ -917,3 +873,4 @@ fetchFG();
 
 </body>
 </html>
+    
