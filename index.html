@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IFIG — International Financial Institution Group</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <style>
 :root {
   --bg:#04080f; --bg2:#070d18; --bg3:#0c1525;
@@ -268,6 +269,28 @@ font-size:10px;color:var(–muted);letter-spacing:1.5px;
 .f-links a{color:var(–muted);text-decoration:none;transition:color 0.2s;}
 .f-links a:hover{color:var(–gold);}
 
+/* POSITIONING (COT + Retail) */
+.pos-track{position:relative;height:8px;background:var(--bg3);border-radius:20px;overflow:hidden;border:1px solid var(--border);}
+.pos-fill{position:absolute;top:0;bottom:0;left:0;transition:width 0.5s ease;}
+.pos-mid{position:absolute;top:-3px;bottom:-3px;left:50%;width:1px;background:var(--muted);}
+.pos-row{margin-bottom:16px;}
+.pos-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;margin-bottom:6px;}
+.pos-label .pname{color:var(--white);display:flex;align-items:center;gap:7px;}
+.pos-label .ptag{width:8px;height:8px;border-radius:2px;display:inline-block;}
+.pos-label .ppct{color:var(--muted2);}
+.pos-insight{margin-top:14px;padding:12px 14px;border:1px dashed var(--border);font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--muted2);}
+.pos-insight b{color:var(--white);}
+.pos-insight.diverge{border:1px solid var(--gold);border-style:solid;background:rgba(201,168,76,0.06);color:var(--white);}
+.pos-tab-content{display:none;}
+.pos-tab-content.active{display:block;}
+.pos-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 20px;}
+.pos-stat{background:var(--bg3);border:1px solid var(--border);padding:10px 12px;}
+.pos-stat .k{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.pos-stat .v{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--white);}
+.pos-net-wrap{height:160px;padding:16px;background:var(--bg3);border:1px solid var(--border);}
+.pos-loading,.pos-err{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);padding:16px;}
+.pos-err{color:var(--red);}
+
 @media(max-width:860px){
 .main-layout{grid-template-columns:1fr;}
 .content-area{border-right:none;}
@@ -303,6 +326,7 @@ nav .nav-links{display:none;}
     <li><a href="#" onclick="showTab('forex',this);return false;">Forex</a></li>
     <li><a href="#" onclick="showTab('chart',this);return false;">Chart</a></li>
     <li><a href="#" onclick="showTab('calendar',this);return false;">Calendar</a></li>
+    <li><a href="#" onclick="showTab('positioning',this);return false;">Positioning</a></li>
     <li><a href="#" onclick="showTab('calculator',this);return false;">Calculator</a></li>
     <li><a href="#" onclick="showTab('about',this);return false;">About</a></li>
   </ul>
@@ -436,7 +460,7 @@ nav .nav-links{display:none;}
     <div class="tradingview-widget-container" style="height:700px;">
       <div class="tradingview-widget-container__widget" style="height:100%;"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-      {"width":"100%","height":700,"symbol":"OANDA:XAUUSD","interval":"15","timezone":"Etc/UTC",
+      {"autosize":true,"symbol":"OANDA:XAUUSD","interval":"15","timezone":"Etc/UTC",
        "theme":"dark","style":"1","locale":"en","enable_publishing":false,
        "hide_top_toolbar":false,"hide_legend":false,"withdateranges":true,
        "allow_symbol_change":true,"save_image":false,"backgroundColor":"rgba(4,8,15,1)",
@@ -460,6 +484,70 @@ nav .nav-links{display:none;}
       {"colorTheme":"dark","isTransparent":true,"width":"100%","height":"650",
        "locale":"en","importanceFilter":"-1,0,1","countryFilter":"us,eu,gb,jp,cn,ca,au,ch,nz"}
       </script>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ POSITIONING ═══ -->
+
+<div id="tab-positioning" class="tab-content">
+  <div class="sec-head">
+    <span class="sec-title">Institutional Positioning</span>
+    <span class="badge badge-live">Live · CFTC</span>
+  </div>
+
+  <div class="cat-filters" id="pos-asset-tabs">
+    <button class="cat-btn active" onclick="showPosAsset(this,'xau')">XAU/USD</button>
+    <button class="cat-btn" onclick="showPosAsset(this,'eur')">EUR/USD</button>
+    <button class="cat-btn" onclick="showPosAsset(this,'gbp')">GBP/USD</button>
+    <button class="cat-btn" onclick="showPosAsset(this,'jpy')">USD/JPY</button>
+  </div>
+
+  <div style="padding:20px;">
+
+    <!-- XAU -->
+    <div id="pos-xau" class="pos-tab-content active">
+      <div class="tv-wrap" style="margin-bottom:16px;border:1px solid var(--border);">
+        <div class="tradingview-widget-container" id="postv-xau-wrap">
+          <div class="tradingview-widget-container__widget"></div>
+        </div>
+      </div>
+      <div id="posbody-xau"><div class="pos-loading">CFTC ma'lumoti yuklanmoqda…</div></div>
+    </div>
+
+    <!-- EUR -->
+    <div id="pos-eur" class="pos-tab-content">
+      <div class="tv-wrap" style="margin-bottom:16px;border:1px solid var(--border);">
+        <div class="tradingview-widget-container" id="postv-eur-wrap">
+          <div class="tradingview-widget-container__widget"></div>
+        </div>
+      </div>
+      <div id="posbody-eur"><div class="pos-loading">CFTC ma'lumoti yuklanmoqda…</div></div>
+    </div>
+
+    <!-- GBP -->
+    <div id="pos-gbp" class="pos-tab-content">
+      <div class="tv-wrap" style="margin-bottom:16px;border:1px solid var(--border);">
+        <div class="tradingview-widget-container" id="postv-gbp-wrap">
+          <div class="tradingview-widget-container__widget"></div>
+        </div>
+      </div>
+      <div id="posbody-gbp"><div class="pos-loading">CFTC ma'lumoti yuklanmoqda…</div></div>
+    </div>
+
+    <!-- JPY -->
+    <div id="pos-jpy" class="pos-tab-content">
+      <div class="tv-wrap" style="margin-bottom:16px;border:1px solid var(--border);">
+        <div class="tradingview-widget-container" id="postv-jpy-wrap">
+          <div class="tradingview-widget-container__widget"></div>
+        </div>
+      </div>
+      <div id="posbody-jpy"><div class="pos-loading">CFTC ma'lumoti yuklanmoqda…</div></div>
+    </div>
+
+    <div style="margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);line-height:1.7;letter-spacing:0.5px;">
+      Manba: CFTC Public Reporting (Legacy — Futures Only) · publicreporting.cftc.gov · Har juma AQSH vaqti bilan 15:30 da yangilanadi, seshanba holatiga ko'ra.<br>
+      Non-Commercial = yirik spekulyantlar / fond menejerlari ("smart money"). Commercial = xedjerlar / institutsional oqim. Non-Reportable = kichik hajmli (retail) treyderlar. Investitsiya tavsiyasi emas.
     </div>
   </div>
 </div>
@@ -869,6 +957,170 @@ async function fetchFG(){
   }
 }
 fetchFG();
+
+// ── POSITIONING (COT + Retail) ──
+const POS_ASSETS = {
+  xau:{ tv:'OANDA:XAUUSD', cftc:'088691', label:'XAU/USD' },
+  eur:{ tv:'FX:EURUSD',    cftc:'099741', label:'EUR/USD' },
+  gbp:{ tv:'FX:GBPUSD',    cftc:'096742', label:'GBP/USD' },
+  jpy:{ tv:'FX:USDJPY',    cftc:'097741', label:'USD/JPY' },
+};
+const posTVLoaded = {};
+const posChartInstances = {};
+
+function showPosAsset(btn,name){
+  document.querySelectorAll('#pos-asset-tabs .cat-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.pos-tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('pos-'+name).classList.add('active');
+  loadPosTV(name);
+}
+
+function loadPosTV(id){
+  if(posTVLoaded[id]) return;
+  posTVLoaded[id] = true;
+  const asset = POS_ASSETS[id];
+  const wrap = document.getElementById('postv-'+id+'-wrap');
+  // Explicit width/height (autosize:false) — required for TradingView widgets
+  // inside tab elements that start out hidden (display:none).
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+  script.async = true;
+  script.text = JSON.stringify({
+    symbol: asset.tv, width:"100%", height:"220", locale:"en",
+    dateRange:"1M", colorTheme:"dark", isTransparent:true, autosize:false
+  });
+  wrap.appendChild(script);
+}
+
+function posGetVal(row, must){
+  const keys = Object.keys(row);
+  const candidates = keys.filter(k=>{
+    const kl = k.toLowerCase();
+    return must.every(m=>kl.includes(m));
+  });
+  if(candidates.length===0) return null;
+  const preferred = candidates.find(k=>k.toLowerCase().includes('all') && !k.toLowerCase().includes('chg'));
+  const clean = candidates.find(k=>!/old|other|chg/i.test(k));
+  const key = preferred || clean || candidates[0];
+  const val = row[key];
+  const num = parseFloat(val);
+  return isNaN(num) ? val : num;
+}
+
+function posNetPct(long, short){
+  const l = Number(long)||0, s = Number(short)||0;
+  if(l+s===0) return 0;
+  return ((l-s)/(l+s))*100;
+}
+
+async function fetchCOT(code){
+  const base = 'https://publicreporting.cftc.gov/resource/6dca-aqww.json';
+  const params = new URLSearchParams({
+    '$where': `cftc_contract_market_code='${code}'`,
+    '$order': 'report_date_as_yyyy_mm_dd DESC',
+    '$limit': '26'
+  });
+  const res = await fetch(base + '?' + params.toString());
+  if(!res.ok) throw new Error('CFTC API xatosi: ' + res.status);
+  const rows = await res.json();
+  if(!rows.length) throw new Error("Ma'lumot topilmadi (code " + code + ')');
+  return rows;
+}
+
+async function loadPosAsset(id){
+  const asset = POS_ASSETS[id];
+  const body = document.getElementById('posbody-'+id);
+  try{
+    const rows = await fetchCOT(asset.cftc);
+    renderPosBody(id, rows);
+  }catch(e){
+    body.innerHTML = `<div class="pos-err">Xatolik: ${e.message}<br><span style="color:var(--muted)">CFTC API vaqtincha ishlamayotgan bo'lishi mumkin — birozdan so'ng qayta yuklang.</span></div>`;
+  }
+}
+
+function renderPosBody(id, rows){
+  const latest = rows[0];
+  const ncL = posGetVal(latest, ['noncomm','pos','long']);
+  const ncS = posGetVal(latest, ['noncomm','pos','short']);
+  const cL  = posGetVal(latest, ['comm','pos','long']);
+  const cS  = posGetVal(latest, ['comm','pos','short']);
+  const nrL = posGetVal(latest, ['nonrept','pos','long']);
+  const nrS = posGetVal(latest, ['nonrept','pos','short']);
+  const oi  = posGetVal(latest, ['open','interest']);
+  const traders = posGetVal(latest, ['traders','tot']);
+  const date = posGetVal(latest, ['report','date']);
+
+  const groups = [
+    { label:'Non-Commercial (Smart Money)', color:'var(--gold)', l:ncL, s:ncS },
+    { label:'Commercial (Xedjerlar)',       color:'var(--blue)', l:cL,  s:cS  },
+    { label:'Non-Reportable (Retail)',      color:'var(--muted2)', l:nrL, s:nrS },
+  ];
+
+  const barsHTML = groups.map(g=>{
+    const total = (Number(g.l)||0)+(Number(g.s)||0);
+    const longPct = total>0 ? (Number(g.l)/total*100) : 50;
+    return `
+      <div class="pos-row">
+        <div class="pos-label">
+          <span class="pname"><span class="ptag" style="background:${g.color}"></span>${g.label}</span>
+          <span class="ppct">LONG ${longPct.toFixed(0)}% · SHORT ${(100-longPct).toFixed(0)}%</span>
+        </div>
+        <div class="pos-track">
+          <div class="pos-fill" style="width:${longPct}%;background:${g.color};"></div>
+          <div class="pos-mid"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  const ncNet = posNetPct(ncL, ncS);
+  const nrNet = posNetPct(nrL, nrS);
+  const diverging = (ncNet>5 && nrNet<-5) || (ncNet<-5 && nrNet>5);
+  const ncSide = ncNet>0 ? 'LONG' : 'SHORT';
+  const nrSide = nrNet>0 ? 'LONG' : 'SHORT';
+  const insightHTML = `<div class="pos-insight${diverging?' diverge':''}">
+    ${diverging
+      ? `<b>Divergensiya aniqlandi:</b> Non-Commercial (smart money) net pozitsiyasi <b>${ncSide}</b> tomonga og'gan (${ncNet.toFixed(1)}%), Retail treyderlar esa <b>${nrSide}</b> tomonda (${nrNet.toFixed(1)}%). Klassik contrarian signal — institutsional oqim va retail qarama-qarshi.`
+      : `Non-Commercial va Retail treyderlar hozircha bir xil yo'nalishda: <b>${ncSide}</b> tomon ustunlik qilmoqda. Kuchli divergensiya kuzatilmayapti.`
+    }
+  </div>`;
+
+  const body = document.getElementById('posbody-'+id);
+  body.innerHTML = `
+    <div class="pos-stats">
+      <div class="pos-stat"><div class="k">Hisobot sanasi</div><div class="v">${date ? String(date).slice(0,10) : '—'}</div></div>
+      <div class="pos-stat"><div class="k">Open Interest</div><div class="v">${oi ? Number(oi).toLocaleString('en-US') : '—'}</div></div>
+      <div class="pos-stat"><div class="k">Jami treyderlar</div><div class="v">${traders ? Number(traders).toLocaleString('en-US') : '—'}</div></div>
+    </div>
+    ${barsHTML}
+    ${insightHTML}
+    <div style="margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Smart Money Net Trend · oxirgi 26 hafta</div>
+    <div class="pos-net-wrap"><canvas id="posnet-${id}"></canvas></div>
+  `;
+
+  const chrono = [...rows].reverse();
+  const labels = chrono.map(r => String(posGetVal(r,['report','date'])||'').slice(0,10));
+  const series = chrono.map(r => (Number(posGetVal(r,['noncomm','pos','long']))||0) - (Number(posGetVal(r,['noncomm','pos','short']))||0));
+
+  const ctx = document.getElementById('posnet-'+id).getContext('2d');
+  if(posChartInstances[id]) posChartInstances[id].destroy();
+  posChartInstances[id] = new Chart(ctx, {
+    type:'line',
+    data:{ labels, datasets:[{ data: series, borderColor:'#c9a84c', backgroundColor:'rgba(201,168,76,0.12)', fill:true, tension:0.35, pointRadius:0, borderWidth:2 }] },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false} },
+      scales:{
+        x:{ ticks:{ color:'#4a5870', font:{family:'IBM Plex Mono', size:9}, maxTicksLimit:6 }, grid:{ color:'#162035' } },
+        y:{ ticks:{ color:'#4a5870', font:{family:'IBM Plex Mono', size:9} }, grid:{ color:'#162035' } }
+      }
+    }
+  });
+}
+
+loadPosTV('xau');
+Object.keys(POS_ASSETS).forEach(loadPosAsset);
 </script>
 
 </body>
