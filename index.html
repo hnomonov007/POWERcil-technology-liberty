@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IFIG — International Financial Institution Group</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
 <style>
 :root {
   --bg:#04080f; --bg2:#070d18; --bg3:#0c1525;
@@ -966,7 +965,6 @@ const POS_ASSETS = {
   jpy:{ tv:'FX:USDJPY',    cftc:'097741', label:'USD/JPY' },
 };
 const posTVLoaded = {};
-const posChartInstances = {};
 
 function showPosAsset(btn,name){
   document.querySelectorAll('#pos-asset-tabs .cat-btn').forEach(b=>b.classList.remove('active'));
@@ -1096,7 +1094,7 @@ function renderPosBody(id, rows){
     ${barsHTML}
     ${insightHTML}
     <div style="margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Smart Money Net Trend · oxirgi 26 hafta</div>
-    <div class="pos-net-wrap"><canvas id="posnet-${id}"></canvas></div>
+    <div class="pos-net-wrap"><div id="posnet-${id}" style="width:100%;height:100%;"></div></div>
   `;
 
   const chrono = [...rows].reverse();
@@ -1104,25 +1102,46 @@ function renderPosBody(id, rows){
   const series = chrono.map(r => (Number(posGetVal(r,['noncomm','pos','long']))||0) - (Number(posGetVal(r,['noncomm','pos','short']))||0));
 
   try{
-    if(typeof Chart === 'undefined') throw new Error('Chart.js yuklanmadi');
-    const ctx = document.getElementById('posnet-'+id).getContext('2d');
-    if(posChartInstances[id]) posChartInstances[id].destroy();
-    posChartInstances[id] = new Chart(ctx, {
-      type:'line',
-      data:{ labels, datasets:[{ data: series, borderColor:'#c9a84c', backgroundColor:'rgba(201,168,76,0.12)', fill:true, tension:0.35, pointRadius:0, borderWidth:2 }] },
-      options:{
-        responsive:true, maintainAspectRatio:false,
-        plugins:{ legend:{display:false} },
-        scales:{
-          x:{ ticks:{ color:'#4a5870', font:{family:'IBM Plex Mono', size:9}, maxTicksLimit:6 }, grid:{ color:'#162035' } },
-          y:{ ticks:{ color:'#4a5870', font:{family:'IBM Plex Mono', size:9} }, grid:{ color:'#162035' } }
-        }
-      }
-    });
+    const target = document.getElementById('posnet-'+id);
+    target.innerHTML = buildNetSparklineSVG(series, labels);
   }catch(chartErr){
     const wrap = document.getElementById('posnet-'+id).closest('.pos-net-wrap');
     if(wrap) wrap.innerHTML = `<div class="pos-err" style="padding:0;">Grafik yuklanmadi: ${chartErr.message}</div>`;
   }
+}
+
+// Pure-SVG sparkline — no external chart library, no CDN dependency,
+// works fully offline / behind restrictive networks.
+function buildNetSparklineSVG(series, labels){
+  const w = 1000, h = 150, padX = 6, padY = 14;
+  const min = Math.min(...series), max = Math.max(...series);
+  const range = (max - min) || 1;
+  const n = series.length;
+  const stepX = n > 1 ? (w - padX*2) / (n-1) : 0;
+  const yOf = v => padY + (1 - (v - min)/range) * (h - padY*2);
+  const pts = series.map((v,i)=> `${(padX + i*stepX).toFixed(1)},${yOf(v).toFixed(1)}`);
+  const lineStr = pts.join(' ');
+  const areaStr = `${padX},${h-padY} ${lineStr} ${(w-padX).toFixed(1)},${h-padY}`;
+  const zeroY = yOf(0).toFixed(1);
+  const last = series[series.length-1];
+  const color = last >= 0 ? '#3fa672' : '#c1493d';
+  const lastX = (padX + (n-1)*stepX).toFixed(1);
+  const lastY = yOf(last).toFixed(1);
+  const firstDate = labels[0] || '', lastDate = labels[labels.length-1] || '';
+
+  return `
+    <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+      <line x1="${padX}" y1="${zeroY}" x2="${w-padX}" y2="${zeroY}" stroke="#2a3650" stroke-width="1" stroke-dasharray="4,4"/>
+      <polygon points="${areaStr}" fill="${color}" fill-opacity="0.12" stroke="none"/>
+      <polyline points="${lineStr}" fill="none" stroke="${color}" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      <circle cx="${lastX}" cy="${lastY}" r="3.5" fill="${color}"/>
+    </svg>
+    <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-top:4px;">
+      <span>${firstDate}</span>
+      <span style="color:${color};font-weight:500;">Net: ${last>=0?'+':''}${last.toLocaleString('en-US')}</span>
+      <span>${lastDate}</span>
+    </div>
+  `;
 }
 
 loadPosTV('xau');
