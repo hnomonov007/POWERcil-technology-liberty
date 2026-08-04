@@ -14,6 +14,17 @@
   --white:#dce4f0; --muted:#4a5870; --muted2:#6a7890;
   --green:#00b87a; --red:#e03d5a; --blue:#1a5fd4;
 }
+body.light-theme{
+  --bg:#f6f7fa; --bg2:#ffffff; --bg3:#eef0f4;
+  --border:#dfe2e8; --border2:#c9cedb;
+  --white:#10131a; --muted:#5b6474; --muted2:#333a48;
+  --green:#0a9e63; --red:#c62d47; --blue:#1550b5;
+}
+body.light-theme .status-bar{background:var(--bg2);}
+body.light-theme nav{background:rgba(255,255,255,0.97) !important;}
+body.light-theme ::-webkit-scrollbar-track{background:var(--bg2);}
+body{transition:background 0.2s ease, color 0.2s ease;}
+body *{transition:background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;}
@@ -312,7 +323,7 @@ nav .nav-links{display:none;}
     <span>LDN: <span id="ld">--:--:--</span></span>
     <span>TKY: <span id="tk">--:--:--</span></span>
   </div>
-  <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW</span>
+  <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW &nbsp;|&nbsp; <button id="themeToggle" onclick="toggleTheme()" style="background:none;border:1px solid var(--border2);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;padding:2px 8px;cursor:pointer;border-radius:2px;">☀ LIGHT</button></span>
 </div>
 
 <!-- NAV -->
@@ -457,14 +468,7 @@ nav .nav-links{display:none;}
   </div>
   <div class="tv-wrap">
     <div class="tradingview-widget-container" style="height:700px;">
-      <div class="tradingview-widget-container__widget" style="height:100%;"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-      {"autosize":true,"symbol":"OANDA:XAUUSD","interval":"15","timezone":"Etc/UTC",
-       "theme":"dark","style":"1","locale":"en","enable_publishing":false,
-       "hide_top_toolbar":false,"hide_legend":false,"withdateranges":true,
-       "allow_symbol_change":true,"save_image":false,"backgroundColor":"rgba(4,8,15,1)",
-       "gridColor":"rgba(22,32,53,1)","support_host":"https://www.tradingview.com"}
-      </script>
+      <div class="tradingview-widget-container__widget" id="main-chart-holder" style="height:100%;"></div>
     </div>
   </div>
 </div>
@@ -839,6 +843,46 @@ function showTab(name,el){
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   if(el)el.classList.add('active');
+  if(name==='chart') loadMainChart();
+}
+
+// ── THEME TOGGLE ──
+function applyTheme(theme){
+  document.body.classList.toggle('light-theme', theme==='light');
+  const btn = document.getElementById('themeToggle');
+  if(btn) btn.textContent = theme==='light' ? '● DARK' : '☀ LIGHT';
+  try{ localStorage.setItem('ifig-theme', theme); }catch(e){}
+}
+function toggleTheme(){
+  const isLight = document.body.classList.contains('light-theme');
+  applyTheme(isLight ? 'dark' : 'light');
+}
+(function initTheme(){
+  let saved = 'dark';
+  try{ saved = localStorage.getItem('ifig-theme') || 'dark'; }catch(e){}
+  applyTheme(saved);
+})();
+
+// ── MAIN CHART (lazy-loaded on first tab open so width is captured correctly,
+//    fixing the classic "narrow chart" bug that happens when a TradingView
+//    autosize widget initializes inside a display:none tab, i.e. 0px width) ──
+let mainChartLoaded = false;
+function loadMainChart(){
+  if(mainChartLoaded) return;
+  mainChartLoaded = true;
+  const holder = document.getElementById('main-chart-holder');
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  script.async = true;
+  script.text = JSON.stringify({
+    autosize:true, symbol:"OANDA:XAUUSD", interval:"15", timezone:"Etc/UTC",
+    theme:"dark", style:"1", locale:"en", enable_publishing:false,
+    hide_top_toolbar:false, hide_legend:false, withdateranges:true,
+    allow_symbol_change:true, save_image:false, backgroundColor:"rgba(4,8,15,1)",
+    gridColor:"rgba(22,32,53,1)", support_host:"https://www.tradingview.com"
+  });
+  holder.appendChild(script);
 }
 
 // ── CALC TABS ──
