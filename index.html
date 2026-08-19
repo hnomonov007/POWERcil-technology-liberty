@@ -56,11 +56,11 @@ display:flex;align-items:center;justify-content:space-between;
 padding:0 24px;height:54px;
 }
 .nav-brand{
-font-family:‘Playfair Display’,serif;font-size:20px;
-font-weight:900;color:var(--gold);text-decoration:none;
+font-family:'Playfair Display',serif;font-size:20px;
+font-weight:900;color:var(--blue);text-decoration:none;
 letter-spacing:2px;display:flex;align-items:center;gap:8px;
 }
-.nav-brand::before{content:’’;width:3px;height:20px;background:var(--gold);display:block;}
+.nav-brand::before{content:'';width:3px;height:20px;background:var(--blue);display:block;}
 .nav-links{display:flex;height:100%;list-style:none;}
 .nav-links a{
 display:flex;align-items:center;height:100%;padding:0 14px;
@@ -77,12 +77,12 @@ letter-spacing:1.5px;text-decoration:none;border-radius:2px;transition:opacity 0
 }
 .btn-tg:hover{opacity:0.85;}
 .btn-gold{
-background:var(--gold);color:var(--bg);padding:7px 16px;
-font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;
+background:var(--blue);color:#fff;padding:7px 16px;
+font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;
 text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;
-transition:background 0.2s;text-decoration:none;font-weight:600;
+transition:filter 0.2s;text-decoration:none;font-weight:600;
 }
-.btn-gold:hover{background:var(--gold2);}
+.btn-gold:hover{filter:brightness(1.2);}
 
 /* AUTH / SIGN-IN */
 .btn-signin{
