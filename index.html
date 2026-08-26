@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2945,81 +2946,199 @@ document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('re
   window.scrollTo({top:0, behavior:'smooth'});
 }</script>
 <!-- IFIG INTELLIGENCE -->
-<button id="ifig-ai-launcher" class="ifig-ai-launcher" type="button"><span class="ifig-ai-orb">◎</span><span><strong>IFIG Intelligence</strong><small>AI Support</small></span></button>
+<button id="ifig-ai-launcher" class="ifig-ai-launcher" type="button"><span class="ifig-ai-orb">◎</span><span><strong>IFIG Intelligence</strong><small>Local Intelligence · Free</small></span></button>
 <section id="ifig-ai-panel" class="ifig-ai-panel" aria-hidden="true">
-<header class="ifig-ai-head"><div><strong>IFIG Intelligence</strong><small id="ifig-ai-context">Global workspace · AI Support</small></div><div><button id="ifig-ai-new">＋</button><button id="ifig-ai-close">×</button></div></header>
+<header class="ifig-ai-head"><div><strong>IFIG Intelligence</strong><small id="ifig-ai-context">Global workspace · Local Intelligence</small></div><div><button id="ifig-ai-new">＋</button><button id="ifig-ai-close">×</button></div></header>
 <div id="ifig-ai-messages" class="ifig-ai-messages"><div class="ai-row assistant"><b>IF</b><div><strong>IFIG Intelligence</strong><p>Welcome. I can help with IFIG, founder and CEO Husniddin Nomonov, Research, CFTC Positioning, Crypto Screener, charts, calendar and risk tools.</p></div></div></div>
-<div class="ifig-ai-quick"><button data-q="What is IFIG?">What is IFIG?</button><button data-q="Who is Husniddin Nomonov?">CEO</button><button data-q="How does Research work?">Research</button><button data-q="Explain CFTC Positioning">CFTC</button></div>
+<div class="ifig-ai-quick">
+      <button data-q="IFIG nima?">IFIG</button>
+      <button data-q="Husniddin Nomonov kim?">CEO</button>
+      <button data-q="Research bo‘limi nima qiladi?">Research</button>
+      <button data-q="CFTC positioning nima?">CFTC</button>
+      <button data-q="Support qayerda?">Support</button>
+    </div>
 <form id="ifig-ai-form"><textarea id="ifig-ai-input" rows="1" placeholder="Ask IFIG Intelligence…"></textarea><button type="submit">↑</button></form>
-<footer class="ifig-ai-note">AI-generated market information should be independently verified.</footer>
+<footer class="ifig-ai-note">Local IFIG knowledge · No API cost · Market information should be independently verified.</footer>
 </section>
 <script>
-window.IFIG_AI_ENDPOINT = window.IFIG_AI_ENDPOINT || '/api/chat';
 (function(){
-const panel=document.getElementById('ifig-ai-panel'),launch=document.getElementById('ifig-ai-launcher'),close=document.getElementById('ifig-ai-close'),form=document.getElementById('ifig-ai-form'),input=document.getElementById('ifig-ai-input'),msgs=document.getElementById('ifig-ai-messages'),ctx=document.getElementById('ifig-ai-context');
-const K={
-ifig:"IFIG stands for International Financial Institution Group. It is an international market-intelligence and financial research project built around cross-asset analysis, structured research, institutional positioning, market monitoring and risk tools.",
-ceo:"Husniddin Nomonov is the founder and CEO of International Financial Institution Group (IFIG). Within the project, he leads the platform vision, research direction and development of its professional market-intelligence environment.",
-origin:"The concept behind IFIG traces back to 2013. IFIG presents 2013 as the origin of the idea and concept, not as a claim that the current platform has continuously operated since then.",
-research:"Research is IFIG's structured fundamental-analysis workspace. It combines macro regime assessment, rates, inflation, growth, liquidity, USD conditions, risk sentiment, thesis building, scenarios, catalysts and analyst notes.",
-cftc:"CFTC Positioning provides Commitments of Traders context for institutional positioning. It should be combined with macro conditions, price action and event risk rather than used as a standalone trading signal.",
-crypto:"Crypto Screener is IFIG's Digital Asset Intelligence workspace for scanning liquid crypto markets, relative strength, performance, momentum and volume before validating an idea through Chart and Research.",
-calc:"The Calculator workspace supports disciplined risk planning, including position sizing and risk/reward calculations. It is a risk-management tool, not a market prediction engine.",
-calendar:"Economic Calendar helps monitor scheduled macro catalysts such as inflation, labor, growth and central-bank events and connect them with a research thesis.",
-chart:"Chart provides TradingView technical context. IFIG's workflow is to combine technical confirmation with fundamental research, positioning and risk analysis.",
-support:"IFIG client support is available inside the About section through Telegram, direct phone support and WhatsApp."
-};
-function context(){let id=document.querySelector('.tab-content.active')?.id?.replace('tab-','')||'markets';return ({markets:'Markets',fundamental:'Research',positioning:'CFTC Positioning',crypto:'Digital Assets',forex:'Forex',chart:'Chart',calendar:'Economic Calendar',calculator:'Risk Tools',about:'About IFIG'})[id]||'Global workspace'}
-setInterval(()=>ctx.textContent=context()+' · AI Support',700);
-function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function add(t,r){let x=document.createElement('div');x.className='ai-row '+r;x.innerHTML=(r==='assistant'?'<b>IF</b>':'')+'<div>'+(r==='assistant'?'<strong>IFIG Intelligence</strong>':'')+'<p>'+esc(t)+'</p></div>';msgs.appendChild(x);msgs.scrollTop=msgs.scrollHeight}
-function answer(q){let s=q.toLowerCase();if(/husniddin|nomonov|founder|ceo/.test(s))return K.ceo;if(/2013|since|origin|history/.test(s))return K.origin;if(/what is ifig|ifig nima|international financial|about ifig/.test(s))return K.ifig;if(/research|fundamental|macro|thesis|inflation|liquidity/.test(s))return K.research;if(/cftc|position|commitment|cot/.test(s))return K.cftc;if(/crypto|bitcoin|btc|ethereum|eth|screener/.test(s))return K.crypto;if(/calculator|risk|position size|lot|reward/.test(s))return K.calc;if(/calendar|economic|cpi|nfp|fomc/.test(s))return K.calendar;if(/chart|technical|tradingview/.test(s))return K.chart;if(/support|telegram|whatsapp|phone|contact/.test(s))return K.support;return "I can answer built-in questions about IFIG, Husniddin Nomonov and the platform. For open-ended AI conversations and live market reasoning, connect the secure IFIG AI backend."}
-const aiHistory=[];
-function readResearchContext(){
-  const get=id=>document.getElementById(id)?.textContent?.trim()||null;
-  const val=id=>document.getElementById(id)?.value||null;
-  return {
-    activeWorkspace:context(),
-    researchAsset:get('research-asset-label')||get('fa-symbol')||val('research-asset')||null,
-    researchScore:get('research-score')||get('fa-score')||null,
-    researchBias:get('research-bias')||null,
-    researchConfidence:get('research-confidence')||null,
-    macro:{
-      rates:val('macro-rates'), inflation:val('macro-inflation'),
-      growth:val('macro-growth'), liquidity:val('macro-liquidity'),
-      usd:val('macro-usd'), sentiment:val('macro-sentiment')
-    },
-    pageTitle:document.title
-  };
-}
-async function ask(q){
-  add(q,'user'); input.value='';
-  aiHistory.push({role:'user',content:q});
-  if(aiHistory.length>12) aiHistory.splice(0,aiHistory.length-12);
+  const panel=document.getElementById('ifig-ai-panel');
+  const launch=document.getElementById('ifig-ai-launcher');
+  const close=document.getElementById('ifig-ai-close');
+  const form=document.getElementById('ifig-ai-form');
+  const input=document.getElementById('ifig-ai-input');
+  const msgs=document.getElementById('ifig-ai-messages');
+  const ctx=document.getElementById('ifig-ai-context');
+  const quick=document.querySelector('.ifig-ai-quick');
 
-  let a;
-  try{
-    const r=await fetch(window.IFIG_AI_ENDPOINT||'/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        message:q,
-        context:readResearchContext(),
-        history:aiHistory.slice(-10)
-      })
-    });
-    const d=await r.json().catch(()=>({}));
-    if(!r.ok) throw new Error(d.error||'AI service unavailable');
-    a=d.answer||d.message;
-    if(!a) throw new Error('Empty AI response');
-  }catch(e){
-    a=answer(q)+" Live IFIG Intelligence is currently unavailable, so I answered from the built-in project knowledge.";
+  const KB=[
+    {id:'ifig',keys:['ifig','international financial institution group','loyiha','project','platform','what is ifig','ifig nima'],
+     uz:"IFIG — International Financial Institution Group. Bu global moliya bozorlari uchun yaratilayotgan market-intelligence va research loyihasi. Platforma Markets, Fundamental Research, CFTC Positioning, Crypto Screener, Forex, Chart, Economic Calendar va Risk Tools kabi bo‘limlarni bitta professional workspace ichida birlashtiradi.",
+     ru:"IFIG — International Financial Institution Group. Это международный проект market-intelligence и финансовых исследований, объединяющий Markets, Fundamental Research, CFTC Positioning, Crypto Screener, Forex, Chart, Economic Calendar и Risk Tools в одном профессиональном workspace.",
+     en:"IFIG stands for International Financial Institution Group. It is an international market-intelligence and financial research project combining Markets, Fundamental Research, CFTC Positioning, Crypto Screener, Forex, Chart, Economic Calendar and Risk Tools in one professional workspace."},
+    {id:'ceo',keys:['husniddin','nomonov','ceo','founder','asoschi','asoschisi','основатель','директор'],
+     uz:"Husniddin Nomonov — International Financial Institution Group (IFIG) loyihasining asoschisi va CEOsi. U platformaning konsepsiyasi, research yo‘nalishi va professional market-intelligence muhitini rivojlantirishga rahbarlik qiladi.",
+     ru:"Husniddin Nomonov — основатель и CEO проекта International Financial Institution Group (IFIG). Он отвечает за концепцию платформы, направление исследований и развитие профессиональной market-intelligence среды.",
+     en:"Husniddin Nomonov is the founder and CEO of International Financial Institution Group (IFIG). He leads the platform vision, research direction and development of its professional market-intelligence environment."},
+    {id:'origin',keys:['2013','since','qachon','tarix','history','origin','когда','история'],
+     uz:"IFIG g‘oyasining konseptual ildizi 2013-yilga borib taqaladi. Saytdagi “Since 2013” amaldagi platforma 2013-yildan uzluksiz ishlagan degani emas; bu g‘oya va konsepsiyaning boshlanish davrini bildiradi.",
+     ru:"Концептуальные истоки идеи IFIG относятся к 2013 году. Формулировка “Since 2013” означает происхождение идеи и концепции, а не утверждение о непрерывной работе нынешней платформы с 2013 года.",
+     en:"The concept behind IFIG traces back to 2013. “Since 2013” refers to the origin of the idea and concept, not a claim that the current platform has continuously operated since 2013."},
+    {id:'research',keys:['research','fundamental','macro','makro','tahlil','analysis','rates','inflation','liquidity','thesis','исследование','фундаментал'],
+     uz:"Research — IFIG’ning fundamental tahlil workspace’i. Unda interest rates, inflation, economic growth, liquidity, USD regime, risk sentiment, scenario, catalyst va thesis birgalikda baholanadi. Maqsad — trade oldidan fundamental sabab, risk va invalidation’ni tartibli ko‘rish.",
+     ru:"Research — рабочее пространство IFIG для фундаментального анализа. Здесь вместе оцениваются ставки, инфляция, экономический рост, ликвидность, режим USD, risk sentiment, сценарии, катализаторы и торговый тезис.",
+     en:"Research is IFIG’s structured fundamental-analysis workspace. It combines rates, inflation, economic growth, liquidity, USD conditions, risk sentiment, scenarios, catalysts and thesis construction."},
+    {id:'cftc',keys:['cftc','cot','positioning','smart money','non-commercial','commercial','retail','позиционирование'],
+     uz:"CFTC Positioning Commitments of Traders ma’lumotlarini kontekst sifatida ko‘rsatadi. Non-Commercial odatda yirik spekulyativ pozitsiyalarni, Commercial hedgerlarni, Non-Reportable esa kichikroq ishtirokchilarni ifodalaydi. Bu mustaqil buy/sell signal emas — macro va chart bilan birga ishlatiladi.",
+     ru:"CFTC Positioning использует данные Commitments of Traders как аналитический контекст. Non-Commercial отражает крупные спекулятивные позиции, Commercial — хеджеров, Non-Reportable — меньших участников. Это не самостоятельный buy/sell сигнал.",
+     en:"CFTC Positioning uses Commitments of Traders data as analytical context. Non-Commercial generally represents large speculative positioning, Commercial hedgers, and Non-Reportable smaller participants. It is not a standalone buy/sell signal."},
+    {id:'crypto',keys:['crypto','bitcoin','btc','ethereum','eth','screener','sol','bnb','xrp','крипто'],
+     uz:"Crypto Screener — IFIG’ning Digital Asset Intelligence workspace’i. U likvid kripto aktivlarni performance, momentum, volume va relative strength bo‘yicha skan qilish uchun ishlatiladi. Keyin g‘oya Chart va Research orqali tekshiriladi.",
+     ru:"Crypto Screener — Digital Asset Intelligence workspace IFIG. Он используется для сканирования ликвидных криптоактивов по performance, momentum, volume и relative strength с последующей проверкой через Chart и Research.",
+     en:"Crypto Screener is IFIG’s Digital Asset Intelligence workspace for scanning liquid crypto markets by performance, momentum, volume and relative strength before validation through Chart and Research."},
+    {id:'calendar',keys:['calendar','economic','cpi','nfp','fomc','news','kalendar','новости','календарь'],
+     uz:"Economic Calendar rejalashtirilgan macro event risk’ni kuzatish uchun ishlatiladi: CPI, NFP, GDP, central-bank qarorlari va boshqa release’lar. Uni Research’dagi thesis bilan birga ko‘rish foydali.",
+     ru:"Economic Calendar используется для отслеживания запланированных макроэкономических событий: CPI, NFP, GDP, решений центральных банков и других релизов.",
+     en:"Economic Calendar is used to monitor scheduled macro-event risk such as CPI, NFP, GDP and central-bank decisions and connect those events to a research thesis."},
+    {id:'chart',keys:['chart','technical','tradingview','grafik','график','технический'],
+     uz:"Chart bo‘limi TradingView orqali technical context beradi. IFIG workflow’ida technical confirmation fundamental research, positioning va risk bilan birga ko‘riladi.",
+     ru:"Раздел Chart предоставляет технический контекст через TradingView. В подходе IFIG техническое подтверждение используется вместе с фундаментальным анализом, позиционированием и риском.",
+     en:"Chart provides TradingView technical context. In the IFIG workflow, technical confirmation is combined with fundamental research, positioning and risk."},
+    {id:'calculator',keys:['calculator','risk','lot','position size','margin','pip','profit','loss','risk reward','калькулятор','риск'],
+     uz:"Calculator bo‘limi risk planning uchun: Risk Calc, Pip Value, Profit/Loss va Margin hisoblari. Bu bo‘lim market yo‘nalishini bashorat qilmaydi; position sizing va riskni nazorat qilishga yordam beradi.",
+     ru:"Calculator предназначен для управления риском: Risk Calc, Pip Value, Profit/Loss и Margin. Он не прогнозирует направление рынка, а помогает с размером позиции и контролем риска.",
+     en:"Calculator supports risk planning through Risk Calc, Pip Value, Profit/Loss and Margin calculations. It is not a prediction engine; it supports position sizing and risk control."},
+    {id:'support',keys:['support','telegram','whatsapp','phone','contact','aloqa','yordam','поддержка','контакт'],
+     uz:"IFIG Support faqat About bo‘limida joylashgan. Telegram: @pwrcil. Direct line: +998 33 712 71 00. WhatsApp: +998 94 709 77 12.",
+     ru:"Поддержка IFIG находится только в разделе About. Telegram: @pwrcil. Direct line: +998 33 712 71 00. WhatsApp: +998 94 709 77 12.",
+     en:"IFIG Support is available only inside the About section. Telegram: @pwrcil. Direct line: +998 33 712 71 00. WhatsApp: +998 94 709 77 12."},
+    {id:'forex',keys:['forex','eurusd','gbpusd','usdjpy','fx','валют'],
+     uz:"Forex bo‘limida cross rates va heat map orqali asosiy valyutalarning nisbiy kuchi kuzatiladi. Research va Calendar bilan birga ishlatilsa macro context yaxshiroq ko‘rinadi.",
+     ru:"В разделе Forex используются cross rates и heat map для оценки относительной силы основных валют. Его полезно сочетать с Research и Economic Calendar.",
+     en:"Forex uses cross rates and a heat map to evaluate relative currency strength. It is most useful when combined with Research and the Economic Calendar."},
+    {id:'markets',keys:['markets','market overview','indices','commodities','gold','nasdaq','sp500','xauusd','bozor','рынок'],
+     uz:"Markets — IFIG’ning global market overview bo‘limi. Unda indices, crypto, forex va commodities bir joyda kuzatiladi. Bu bo‘lim umumiy bozor kontekstini tez ko‘rish uchun mo‘ljallangan.",
+     ru:"Markets — обзор глобальных рынков IFIG. Здесь в одном месте отслеживаются индексы, crypto, forex и commodities.",
+     en:"Markets is IFIG’s global market-overview workspace, bringing indices, crypto, forex and commodities into one place for fast cross-asset context."},
+    {id:'login',keys:['login','google','kirish','sign in','account','вход','аккаунт'],
+     uz:"Login Google orqali Firebase authentication bilan ishlashga mo‘ljallangan. Agar login ishlamasa, Firebase config va authorized domain sozlamalari tekshiriladi.",
+     ru:"Login предназначен для входа через Google с Firebase Authentication. Если вход не работает, нужно проверить Firebase config и authorized domains.",
+     en:"Login is designed for Google sign-in through Firebase Authentication. If it does not work, check the Firebase configuration and authorized domains."}
+  ];
+
+  const NAV={
+    markets:['markets','market','bozor','рынок'],
+    crypto:['crypto','screener','kripto','крипто'],
+    forex:['forex','fx','валют'],
+    chart:['chart','grafik','график'],
+    calendar:['calendar','kalendar','календар'],
+    fundamental:['research','fundamental','tahlil','исследован'],
+    positioning:['positioning','cftc','cot'],
+    calculator:['calculator','risk calc','kalkulyator','калькулятор'],
+    about:['about','support','contact','haqida','поддержк']
+  };
+
+  function context(){
+    const id=document.querySelector('.tab-content.active')?.id?.replace('tab-','')||'markets';
+    return ({markets:'Markets',fundamental:'Research',positioning:'CFTC Positioning',crypto:'Digital Assets',forex:'Forex',chart:'Chart',calendar:'Economic Calendar',calculator:'Risk Tools',about:'About IFIG'})[id]||'Global workspace';
   }
-  aiHistory.push({role:'assistant',content:a});
-  if(aiHistory.length>12) aiHistory.splice(0,aiHistory.length-12);
-  setTimeout(()=>add(a,'assistant'),180);
-}
-launch.onclick=()=>panel.classList.toggle('open');close.onclick=()=>panel.classList.remove('open');form.onsubmit=e=>{e.preventDefault();let q=input.value.trim();if(q)ask(q)};document.querySelector('.ifig-ai-quick').onclick=e=>{let b=e.target.closest('[data-q]');if(b){panel.classList.add('open');ask(b.dataset.q)}};document.getElementById('ifig-ai-new').onclick=()=>{aiHistory.length=0;msgs.innerHTML='<div class="ai-row assistant"><b>IF</b><div><strong>IFIG Intelligence</strong><p>New conversation started. Ask me about IFIG, Husniddin Nomonov or the platform.</p></div></div>';};
+
+  function detectLang(text){
+    const s=text.toLowerCase();
+    if(/[а-яё]/i.test(s)) return 'ru';
+    if(/(salom|assalom|rahmat|nima|qanday|kim|qayer|kerak|bolim|bo‘lim|ozbek|o‘zbek|gaplash)/i.test(s)) return 'uz';
+    return 'en';
+  }
+
+  function normalize(text){
+    return String(text).toLowerCase().replace(/[’‘`ʻ']/g,"'").replace(/[^a-z0-9а-яё'\s-]/gi,' ').replace(/\s+/g,' ').trim();
+  }
+
+  function tokens(text){
+    const stop=new Set(['the','a','an','is','are','of','to','and','or','in','on','for','bu','va','nima','qanday','bilan','haqida','что','это','как','и','в','на','про']);
+    return normalize(text).split(' ').filter(x=>x.length>1&&!stop.has(x));
+  }
+
+  function scoreEntry(q,e){
+    const s=normalize(q), qt=tokens(q);
+    let score=0;
+    e.keys.forEach(k=>{
+      const nk=normalize(k);
+      if(s.includes(nk)) score+=nk.includes(' ')?7:4;
+      const kt=tokens(k);
+      qt.forEach(t=>{if(kt.includes(t))score+=1.4});
+    });
+    return score;
+  }
+
+  function searchWebsite(q){
+    const qt=tokens(q); if(!qt.length)return null;
+    const tabs=[...document.querySelectorAll('.tab-content')];
+    let best=null;
+    tabs.forEach(tab=>{
+      const text=(tab.innerText||'').replace(/\s+/g,' ').trim();
+      let score=0;
+      qt.forEach(t=>{if(normalize(text).includes(t))score++});
+      if(!best||score>best.score)best={text,score};
+    });
+    if(!best||best.score<2)return null;
+    const sentences=best.text.split(/(?<=[.!?])\s+/).filter(x=>x.length>25);
+    let top=null;
+    sentences.forEach(s=>{
+      let score=0;qt.forEach(t=>{if(normalize(s).includes(t))score++});
+      if(!top||score>top.score)top={s,score};
+    });
+    return top&&top.score?top.s.slice(0,420):null;
+  }
+
+  function tryNavigation(q,lang){
+    const s=normalize(q);
+    if(!/(open|och|ochib|ot|kir|go|show|открой|перейди|покажи)/i.test(s)) return null;
+    for(const [tab,words] of Object.entries(NAV)){
+      if(words.some(w=>s.includes(normalize(w)))){
+        const link=[...document.querySelectorAll('.nav-links a')].find(a=>(a.getAttribute('onclick')||'').includes("'"+tab+"'"));
+        if(link)link.click();
+        const label=context();
+        return lang==='uz'?`${label} bo‘limini ochdim.`:lang==='ru'?`Открыл раздел ${label}.`:`Opened the ${label} workspace.`;
+      }
+    }
+    return null;
+  }
+
+  function answer(q){
+    const lang=detectLang(q), s=normalize(q);
+    if(/^(salom|assalom|assalomu|hi|hello|hey|привет|здравствуй|здравствуйте)\b/.test(s))
+      return lang==='uz'?"Salom. Men IFIG Intelligence’man. IFIG loyihasi, Husniddin Nomonov va sayt bo‘limlari bo‘yicha yordam bera olaman.":lang==='ru'?"Здравствуйте. Я IFIG Intelligence. Я могу помочь с проектом IFIG, Husniddin Nomonov и разделами сайта.":"Hello. I’m IFIG Intelligence. I can help with IFIG, Husniddin Nomonov and the platform.";
+    if(/(ozbek|o'zbek|uzbek|русск|russian|english|ingliz|gaplasha|speak)/.test(s))
+      return lang==='uz'?"Ha, o‘zbek tilida gaplasha olaman. Savolingizni o‘zbekcha yozavering.":lang==='ru'?"Да, я могу говорить по-русски. Пишите вопрос на русском.":"Yes. I can speak English, Uzbek and Russian.";
+
+    const nav=tryNavigation(q,lang); if(nav)return nav;
+
+    const ranked=KB.map(e=>({e,score:scoreEntry(q,e)})).sort((a,b)=>b.score-a.score);
+    if(ranked[0]&&ranked[0].score>=3)return ranked[0].e[lang]||ranked[0].e.en;
+
+    const hit=searchWebsite(q);
+    if(hit)return lang==='uz'?`Sayt ichidan eng yaqin ma’lumot: ${hit}`:lang==='ru'?`Самая близкая информация на сайте: ${hit}`:`Closest information found on the website: ${hit}`;
+
+    return lang==='uz'?"Bu savol bo‘yicha IFIG’ning lokal bilim bazasida aniq ma’lumot topilmadi. Men IFIG, Husniddin Nomonov, Research, CFTC, Crypto, Forex, Chart, Calendar, Calculator, Login va Support haqida javob bera olaman.":lang==='ru'?"В локальной базе знаний IFIG нет точного ответа на этот вопрос. Я могу отвечать о IFIG, Husniddin Nomonov, Research, CFTC, Crypto, Forex, Chart, Calendar, Calculator, Login и Support.":"I don’t have a verified local IFIG answer for that question yet. I can answer about IFIG, Husniddin Nomonov, Research, CFTC, Crypto, Forex, Chart, Calendar, Calculator, Login and Support.";
+  }
+
+  setInterval(()=>ctx.textContent=context()+' · Local Intelligence',700);
+
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function add(t,r){
+    const x=document.createElement('div');x.className='ai-row '+r;
+    x.innerHTML=(r==='assistant'?'<b>IF</b>':'')+'<div>'+(r==='assistant'?'<strong>IFIG Intelligence</strong>':'')+'<p>'+esc(t)+'</p></div>';
+    msgs.appendChild(x);msgs.scrollTop=msgs.scrollHeight;
+  }
+  function ask(q){add(q,'user');input.value='';setTimeout(()=>add(answer(q),'assistant'),180)}
+
+  launch.onclick=()=>panel.classList.toggle('open');
+  close.onclick=()=>panel.classList.remove('open');
+  form.onsubmit=e=>{e.preventDefault();const q=input.value.trim();if(q)ask(q)};
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.requestSubmit()}});
+  quick.onclick=e=>{const b=e.target.closest('[data-q]');if(b){panel.classList.add('open');ask(b.dataset.q)}};
+  document.getElementById('ifig-ai-new').onclick=()=>msgs.innerHTML='<div class="ai-row assistant"><b>IF</b><div><strong>IFIG Intelligence</strong><p>New conversation started. Ask me about IFIG, Husniddin Nomonov or any platform workspace.</p></div></div>';
 })();
 </script>
 </body>
