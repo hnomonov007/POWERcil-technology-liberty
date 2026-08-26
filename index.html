@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IFIG — International Financial Institution Group</title>
+<title>IFIG — Market Intelligence & Research</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-auth-compat.js"></script>
@@ -14,7 +14,7 @@
   --border:#1a2130; --border2:#28324a;
   --signal:#2bc4bb; --signal2:#5fe3d9;
   --white:#e7ecf5; --muted:#54607a; --muted2:#8492ab;
-  --green:#18c98b; --red:#f0475f; --blue:#3e7bfa;
+  --green:#18c98b; --red:#f0475f; --blue:#d6c7ff;
 }
 body.light-theme{
   --bg:#f5f7fa; --bg2:#ffffff; --bg3:#eef1f5;
@@ -91,7 +91,7 @@ border-bottom:2px solid transparent;transition:all 0.2s;
 .nav-links a:hover,.nav-links a.active{color:var(--white);border-bottom-color:var(--signal);}
 .nav-right{display:flex;align-items:center;gap:10px;}
 .btn-tg{
-display:flex;align-items:center;gap:7px;background:#229ED9;color:#fff;
+display:flex;align-items:center;gap:7px;background:#8e8e93;color:#fff;
 padding:7px 14px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
 letter-spacing:1.5px;text-decoration:none;border-radius:2px;transition:opacity 0.2s;
 }
@@ -111,7 +111,7 @@ transition:filter 0.2s;text-decoration:none;font-weight:600;
   font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;
   transition:border-color 0.2s, background 0.2s;
 }
-.btn-signin:hover{border-color:var(--signal);background:rgba(201,168,76,0.08);}
+.btn-signin:hover{border-color:var(--signal);background:rgba(77,163,255,0.08);}
 .btn-signin svg{flex-shrink:0;}
 #auth-widget{position:relative;}
 .auth-logged{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px 4px 4px;border:1px solid var(--border2);border-radius:20px;transition:border-color 0.2s;}
@@ -155,7 +155,7 @@ letter-spacing:1.5px;padding:2px 6px;border-radius:1px;font-weight:600;text-tran
 }
 .badge-live{background:rgba(0,184,122,0.15);color:var(--green);border:1px solid rgba(0,184,122,0.3);}
 .badge-h{background:rgba(224,61,90,0.15);color:var(--red);border:1px solid rgba(224,61,90,0.3);}
-.badge-m{background:rgba(201,168,76,0.15);color:var(--signal);border:1px solid rgba(201,168,76,0.3);}
+.badge-m{background:rgba(77,163,255,0.15);color:var(--signal);border:1px solid rgba(77,163,255,0.3);}
 .badge-l{background:rgba(74,88,112,0.15);color:var(--muted2);border:1px solid rgba(74,88,112,0.2);}
 
 /* MAIN LAYOUT */
@@ -186,7 +186,7 @@ letter-spacing:2px;text-transform:uppercase;color:var(--muted);
 .cal-date-row{
 padding:8px 16px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
 letter-spacing:3px;text-transform:uppercase;color:var(--signal);
-background:rgba(201,168,76,0.05);border-top:1px solid var(--border);
+background:rgba(77,163,255,0.05);border-top:1px solid var(--border);
 border-bottom:1px solid var(--border);
 }
 .cal-row{
@@ -194,7 +194,7 @@ display:grid;grid-template-columns:58px 28px 1fr 80px 80px 80px;
 gap:10px;padding:11px 16px;border-bottom:1px solid rgba(22,32,53,0.6);
 transition:background 0.15s;cursor:pointer;align-items:center;
 }
-.cal-row:hover{background:rgba(201,168,76,0.03);}
+.cal-row:hover{background:rgba(77,163,255,0.03);}
 .cal-time{font-family:‘IBM Plex Mono’,monospace;font-size:11px;color:var(--muted2);}
 .imp-dots{display:flex;gap:2px;}
 .imp-dot{width:4px;height:4px;border-radius:50%;}
@@ -216,7 +216,7 @@ letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);
 border-right:none;color:var(--muted);background:none;cursor:pointer;transition:all 0.2s;
 }
 .imp-filter:last-child{border-right:1px solid var(--border);}
-.imp-filter.active{color:var(--signal);border-color:var(--signal);background:rgba(201,168,76,0.08);}
+.imp-filter.active{color:var(--signal);border-color:var(--signal);background:rgba(77,163,255,0.08);}
 
 /* RISK CALCULATOR */
 .calc-wrap{padding:24px;}
@@ -227,7 +227,7 @@ letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);
 border-right:none;color:var(--muted);background:none;cursor:pointer;transition:all 0.2s;
 }
 .c-tab:last-child{border-right:1px solid var(--border);}
-.c-tab.active{color:var(--signal);border-color:var(--signal);background:rgba(201,168,76,0.08);}
+.c-tab.active{color:var(--signal);border-color:var(--signal);background:rgba(77,163,255,0.08);}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .c-tab-content{display:none;}
 .c-tab-content.active{display:block;}
@@ -281,7 +281,7 @@ display:flex;align-items:center;justify-content:space-between;
 padding:11px 16px;border-bottom:1px solid rgba(22,32,53,0.5);
 transition:background 0.15s;cursor:pointer;
 }
-.watch-item:hover{background:rgba(201,168,76,0.04);}
+.watch-item:hover{background:rgba(77,163,255,0.04);}
 .w-sym{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:600;color:var(--white);}
 .w-name{font-size:10px;color:var(--muted);}
 .w-price{font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:500;color:var(--white);}
@@ -299,13 +299,13 @@ font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:900;color:var(
 .ceo-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--white);}
 .ceo-pos{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--signal);}
 .ceo-bio{font-size:11px;color:var(--muted2);line-height:1.7;}
-.ceo-tg{display:flex;align-items:center;gap:6px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:#229ED9;text-decoration:none;letter-spacing:1px;}
+.ceo-tg{display:flex;align-items:center;gap:6px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:#8e8e93;text-decoration:none;letter-spacing:1px;}
 
 /* SUPPORT */
 .sup-box{margin:14px;background:var(--bg3);border:1px solid var(--border);padding:14px;}
 .sup-title{font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;}
 .sup-btn{
-display:flex;align-items:center;gap:8px;background:#229ED9;color:#fff;
+display:flex;align-items:center;gap:8px;background:#8e8e93;color:#fff;
 padding:10px 14px;text-decoration:none;font-family:‘IBM Plex Mono’,monospace;
 font-size:10px;letter-spacing:2px;border-radius:2px;margin-bottom:8px;
 }
@@ -342,7 +342,7 @@ font-size:10px;color:var(--muted);letter-spacing:1.5px;
 .pos-label .ppct{color:var(--muted2);}
 .pos-insight{margin-top:14px;padding:12px 14px;border:1px dashed var(--border);font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--muted2);}
 .pos-insight b{color:var(--white);}
-.pos-insight.diverge{border:1px solid var(--signal);border-style:solid;background:rgba(201,168,76,0.06);color:var(--white);}
+.pos-insight.diverge{border:1px solid var(--signal);border-style:solid;background:rgba(77,163,255,0.06);color:var(--white);}
 .pos-tab-content{display:none;}
 .pos-tab-content.active{display:block;}
 .pos-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 20px;}
@@ -361,6 +361,928 @@ nav .nav-links{display:none;}
 .cal-fore{display:none;}
 .calc-grid{grid-template-columns:1fr;}
 }
+
+/* =========================================================
+   IFIG INSTITUTIONAL REDESIGN — v2
+   Visual direction: institutional terminal / prime brokerage
+   No gold/yellow accents. Focus: graphite, navy, cobalt, cyan.
+   ========================================================= */
+
+:root{
+  --bg:#070b12;
+  --bg2:#0b111a;
+  --bg3:#101823;
+  --bg4:#141e2b;
+  --panel:#0d141e;
+  --panel-hover:#111b28;
+  --border:#1c2837;
+  --border2:#2a3a4f;
+  --signal:#d6c7ff;
+  --signal2:#f0eaff;
+  --cyan:#c7c7cc;
+  --white:#edf3fa;
+  --muted:#65758a;
+  --muted2:#96a6ba;
+  --green:#2bd995;
+  --red:#ff5c6c;
+  --blue:#4d8dff;
+  --shadow:0 16px 40px rgba(0,0,0,.24);
+  --radius:10px;
+}
+
+body{
+  background:
+    radial-gradient(circle at 12% -8%,rgba(45,116,190,.13),transparent 28%),
+    radial-gradient(circle at 90% 0%,rgba(35,211,205,.06),transparent 24%),
+    var(--bg);
+  color:var(--white);
+  font-family:'IBM Plex Sans',sans-serif;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(94,132,170,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(94,132,170,.045) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+
+*{scrollbar-width:thin;scrollbar-color:#29415c transparent;}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#29415c;border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:#3e6388}
+
+.pulse-bar{
+  position:fixed;
+  top:0;left:0;
+  height:2px;
+  z-index:9999;
+  background:linear-gradient(90deg,transparent,#3d8dff,#35d8d1,#3d8dff,transparent);
+  box-shadow:0 0 14px rgba(77,163,255,.55);
+}
+
+.status-bar{
+  min-height:30px;
+  padding:0 22px;
+  background:rgba(6,10,16,.94);
+  border-bottom:1px solid var(--border);
+  color:#718198;
+  font-size:9px;
+  letter-spacing:1.2px;
+  backdrop-filter:blur(18px);
+}
+.status-bar .s-left{gap:18px}
+.status-bar>span{display:flex;align-items:center;gap:7px}
+.s-dot{width:5px;height:5px;background:var(--green);box-shadow:0 0 8px rgba(43,217,149,.7)}
+.s-live{color:var(--green);font-weight:700}
+
+nav{
+  position:sticky;
+  top:0;
+  height:68px;
+  padding:0 22px;
+  background:rgba(8,13,20,.88);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+  backdrop-filter:blur(22px) saturate(130%);
+}
+.nav-brand{
+  color:var(--white)!important;
+  font-size:22px;
+  letter-spacing:3px;
+  font-weight:800;
+  gap:10px;
+}
+.nav-brand:before{
+  width:4px;
+  height:27px;
+  border-radius:2px;
+  background:linear-gradient(180deg,var(--signal),var(--cyan));
+  box-shadow:0 0 14px rgba(77,163,255,.45);
+}
+.nav-brand:after{
+  content:"GLOBAL MARKETS";
+  color:#607188;
+  font:600 8px 'IBM Plex Mono',monospace;
+  letter-spacing:1.8px;
+  margin-left:2px;
+}
+.nav-links{gap:3px}
+.nav-links a{
+  height:38px;
+  margin-top:15px;
+  padding:0 13px;
+  border:1px solid transparent;
+  border-bottom:0;
+  border-radius:7px 7px 0 0;
+  font-size:9px;
+  letter-spacing:1.5px;
+  color:#728198;
+}
+.nav-links a:hover{
+  color:var(--white);
+  background:rgba(77,163,255,.06);
+}
+.nav-links a.active{
+  color:var(--white);
+  background:rgba(77,163,255,.08);
+  border-color:var(--border);
+  border-bottom:2px solid var(--signal);
+}
+.nav-right{gap:7px}
+.btn-tg,.btn-gold,.btn-signin{
+  min-height:34px;
+  border-radius:7px;
+  font-size:9px;
+  letter-spacing:1.3px;
+}
+.btn-tg{
+  background:#17283a;
+  border:1px solid #27415b;
+  color:#9ccfff;
+}
+.btn-gold{
+  background:linear-gradient(135deg,#d6c7ff,#f0eaff);
+  box-shadow:0 5px 18px rgba(56,130,235,.2);
+}
+.btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-signin{border-color:var(--border2)}
+.btn-signin:hover{border-color:#477cae;background:rgba(77,163,255,.07)}
+
+.main-layout{
+  grid-template-columns:minmax(0,1fr) 330px;
+  min-height:calc(100vh - 98px);
+  gap:0;
+}
+.content-area{border-right:1px solid var(--border)}
+.sidebar{
+  background:rgba(8,13,20,.68);
+  overflow-y:auto;
+  scrollbar-gutter:stable;
+}
+.sidebar-block{
+  border-bottom:1px solid var(--border);
+  background:rgba(9,15,23,.5);
+}
+.sidebar-block:hover{background:rgba(12,20,30,.7)}
+
+.sec-head{
+  min-height:48px;
+  padding:0 18px;
+  background:rgba(12,19,29,.92);
+  border-bottom:1px solid var(--border);
+}
+.sec-title{
+  font:600 10px 'IBM Plex Mono',monospace;
+  letter-spacing:2px;
+}
+.sec-title:before{
+  width:3px;height:14px;
+  border-radius:2px;
+  background:linear-gradient(180deg,var(--signal),var(--cyan));
+}
+.badge{
+  border-radius:5px;
+  padding:4px 7px;
+  font-size:7px;
+  letter-spacing:1.2px;
+}
+.badge-live{
+  background:rgba(43,217,149,.08);
+  color:var(--green);
+  border-color:rgba(43,217,149,.22);
+}
+.badge-m{
+  background:rgba(77,163,255,.08);
+  color:var(--signal);
+  border-color:rgba(77,163,255,.22);
+}
+
+.tv-wrap{
+  background:#080d14;
+  border-bottom:1px solid var(--border);
+}
+.tradingview-widget-container{background:#080d14}
+
+.cat-filters{
+  background:#0a1119;
+  border-bottom:1px solid var(--border);
+  padding:4px 8px 0;
+}
+.cat-btn{
+  border-radius:6px 6px 0 0;
+  padding:11px 15px;
+  font-size:9px;
+  letter-spacing:1.5px;
+}
+.cat-btn.active{
+  color:var(--signal);
+  background:rgba(77,163,255,.06);
+  border-bottom-color:var(--signal);
+}
+
+.cal-head,.cal-row{
+  grid-template-columns:68px 30px minmax(180px,1fr) 88px 88px 88px;
+}
+.cal-head{
+  background:#0f1722;
+  padding:9px 18px;
+  font-size:8px;
+}
+.cal-row{
+  padding:12px 18px;
+  border-bottom:1px solid rgba(29,42,57,.7);
+}
+.cal-row:hover{background:rgba(77,163,255,.045)}
+.cal-date-row{
+  color:#71b8ff;
+  background:rgba(77,163,255,.035);
+  padding:9px 18px;
+  font-size:9px;
+}
+
+.calc-wrap{padding:28px}
+.calc-tabs{margin-bottom:22px}
+.c-tab{
+  padding:10px 17px;
+  border-color:var(--border);
+  border-radius:0;
+  background:#0c141e;
+}
+.c-tab:first-child{border-radius:7px 0 0 7px}
+.c-tab:last-child{border-radius:0 7px 7px 0}
+.c-tab.active{
+  color:#bfe2ff;
+  background:rgba(77,163,255,.10);
+  border-color:#356995;
+}
+.field{margin-bottom:18px}
+.field label{font-size:8px;letter-spacing:1.6px}
+.field input,.field select{
+  min-height:42px;
+  border-radius:7px;
+  border-color:var(--border);
+  background:#0c141e;
+}
+.field input:hover,.field select:hover{border-color:#30445c}
+.field input:focus,.field select:focus{
+  border-color:#4387c3;
+  box-shadow:0 0 0 3px rgba(77,163,255,.07);
+}
+.result-box{
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:
+    linear-gradient(145deg,rgba(77,163,255,.06),transparent 45%),
+    #0c141e;
+  box-shadow:var(--shadow);
+}
+.res-main-val{color:#7cc4ff}
+.res-row{border-bottom-color:#1b2736}
+
+.fg-wrap{padding:22px 18px}
+.fg-val{font-size:58px}
+.fg-bar{height:7px;border-radius:8px}
+.fg-label{font-size:9px}
+
+.watch-item{
+  padding:12px 16px;
+  border-bottom-color:rgba(29,42,57,.65);
+}
+.watch-item:hover{background:rgba(77,163,255,.045)}
+
+.ceo-wrap{padding:18px}
+.ceo-av{
+  width:50px;height:50px;
+  border-radius:9px;
+  background:linear-gradient(145deg,#d6c7ff,#1e344f);
+  color:#e9f5ff;
+  box-shadow:0 8px 24px rgba(29,91,165,.2);
+}
+.ceo-pos{color:#d6c7ff}
+.ceo-tg{color:#d6c7ff}
+
+.sup-box{
+  margin:14px;
+  border-radius:9px;
+  background:linear-gradient(145deg,#101d2b,#0d151f);
+  border-color:#22364c;
+}
+.sup-btn{border-radius:7px;background:#162d44;border:1px solid #274964}
+
+.pos-stat{
+  border-radius:8px;
+  background:#0c141e;
+}
+.pos-net-wrap{
+  border-radius:8px;
+  background:#0b131d;
+}
+.pos-insight{
+  border-radius:8px;
+  background:rgba(77,163,255,.025);
+}
+.pos-insight.diverge{
+  border-color:#356995;
+  background:rgba(77,163,255,.06);
+}
+
+footer{
+  background:#080d14;
+  border-top:1px solid var(--border);
+  padding:18px 22px;
+}
+.f-brand{color:#d6c7ff}
+
+#tab-about > div:first-of-type{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(77,163,255,.08),transparent 35%),
+    transparent;
+}
+#tab-about .btn-gold{background:#18324b}
+
+.auth-panel{
+  border-radius:10px;
+  background:#0c141e;
+  border-color:#26384d;
+  box-shadow:0 18px 50px rgba(0,0,0,.42);
+}
+
+@media(max-width:1180px){
+  .main-layout{grid-template-columns:minmax(0,1fr) 290px}
+  .nav-links a{padding:0 9px}
+  .nav-brand:after{display:none}
+}
+@media(max-width:960px){
+  nav{padding:0 14px}
+  .nav-right .btn-tg{display:none}
+  .main-layout{grid-template-columns:1fr}
+  .sidebar{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    overflow:visible;
+  }
+  .sidebar-block{min-width:0}
+  .sidebar-block:last-child{grid-column:1/-1}
+}
+@media(max-width:680px){
+  .status-bar{padding:5px 12px}
+  .status-bar>span{display:none}
+  nav{height:58px}
+  .nav-brand{font-size:19px}
+  .nav-links{display:none}
+  .nav-right{margin-left:auto}
+  .main-layout{display:block}
+  .sidebar{display:block}
+  .sec-head{padding:0 13px}
+  .calc-wrap{padding:18px 14px}
+  .cal-head,.cal-row{grid-template-columns:50px 22px minmax(120px,1fr) 66px}
+  .cal-head>*:nth-child(5),.cal-head>*:nth-child(6),
+  .cal-row>*:nth-child(5),.cal-row>*:nth-child(6){display:none}
+}
+
+
+
+
+
+/* ==================== RESEARCH TERMINAL ==================== */
+.research-shell{padding:28px;background:linear-gradient(180deg,#080d14 0%,#0a1018 100%);min-height:calc(100vh - 100px)}
+.research-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:18px;padding:8px 2px 4px}
+.research-eyebrow{font:600 8px 'IBM Plex Mono',monospace;letter-spacing:2.2px;color:#55789b;margin-bottom:8px}
+.research-hero h1{font:650 25px 'Space Grotesk',sans-serif;letter-spacing:-.6px;margin:0;color:#f1f5fa}.research-hero p{font-size:11px;color:#708197;margin:7px 0 0;max-width:760px;line-height:1.6}
+.research-hero-actions{display:flex;gap:7px}.research-hero-actions select,.research-primary{height:36px;border-radius:7px;border:1px solid #26384c;font:600 9px 'IBM Plex Mono',monospace;letter-spacing:.7px}
+.research-hero-actions select{background:#0d1620;color:#c2cfdd;padding:0 34px 0 12px}.research-primary{background:#2e76ca;color:#fff;padding:0 15px;cursor:pointer}.research-primary:hover{background:#3988df}
+.research-scorebar{display:grid;grid-template-columns:1.05fr .75fr 1.25fr 1fr;background:#0b131d;border:1px solid #1d2b3b;border-radius:10px;overflow:hidden;margin-bottom:14px;box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.research-scorebar>div{min-height:82px;padding:15px 18px;border-right:1px solid #1c2938;display:flex;flex-direction:column;justify-content:center}.research-scorebar>div:last-child{border-right:0}.research-scorebar span{font:600 8px 'IBM Plex Mono',monospace;letter-spacing:1px;color:#61748a}.score-overview div{margin-top:5px}.score-overview strong{font:500 30px 'IBM Plex Mono',monospace;color:#7fc7ff}.score-overview div span{font-size:9px;margin-left:3px}.score-bias b{margin-top:8px;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:1.3px}.bias-bull{color:#2bd995}.bias-bear{color:#ff6575}.bias-neutral{color:#97a8b9}
+.score-confidence{display:grid!important;grid-template-columns:auto 1fr auto;align-items:center!important;gap:10px}.score-confidence>span{grid-column:1/-1}.confidence-track{height:5px;background:#182535;border-radius:6px;overflow:hidden}.confidence-track i{display:block;height:100%;background:linear-gradient(90deg,#3c83de,#43c8c2);border-radius:6px}.score-confidence b{font:500 9px 'IBM Plex Mono',monospace;color:#a8b7c6}.score-last b{margin-top:7px;font:500 9px 'IBM Plex Mono',monospace;color:#9db0c3}.score-last small{margin-top:4px;font-size:8px;color:#52677d}
+.research-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:14px}.research-main,.research-side{min-width:0}.research-panel{background:#0b131d;border:1px solid #1d2b3b;border-radius:10px;overflow:hidden;margin-bottom:14px}.research-panel-head{height:45px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1b2938;font:600 8px 'IBM Plex Mono',monospace;letter-spacing:1.3px;color:#9aacbd}.panel-mark{display:inline-block;width:3px;height:13px;border-radius:2px;background:#d6c7ff;margin-right:8px;vertical-align:-2px}.panel-hint{font-weight:400;color:#4f6479;letter-spacing:.5px}.panel-action{border:1px solid #26394e;background:#0e1823;color:#68829d;border-radius:5px;padding:5px 8px;font:600 7px 'IBM Plex Mono',monospace;cursor:pointer}.panel-action:hover{color:#b6d9f8;border-color:#3c668c}
+.macro-input-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1b2837}.macro-input{display:block;background:#0c151f;padding:15px}.macro-input>span{display:block;font:600 8px 'IBM Plex Mono',monospace;letter-spacing:1px;color:#8598ac;margin-bottom:8px}.macro-input select{width:100%;height:36px;background:#101c28;color:#c3d0dd;border:1px solid #23364a;border-radius:6px;padding:0 9px;font-size:10px;outline:none}.macro-input select:focus{border-color:#4077a8}.macro-input small{display:block;color:#51667c;font-size:8px;line-height:1.5;margin-top:8px}
+.factor-table{padding:0}.factor-row{display:grid;grid-template-columns:1.2fr 1fr 100px 80px;gap:12px;align-items:center;padding:11px 15px;border-bottom:1px solid rgba(28,43,58,.65)}.factor-row:last-child{border-bottom:0}.factor-row.header{background:#0e1722;color:#52667c;font:600 7px 'IBM Plex Mono',monospace;letter-spacing:1px}.factor-name{font-size:9px;color:#8fa1b3}.factor-read{font:500 9px 'IBM Plex Mono',monospace;color:#b5c3d1}.factor-bar{height:4px;background:#182636;border-radius:5px;overflow:hidden}.factor-bar i{display:block;height:100%;border-radius:5px}.factor-score{text-align:right;font:600 9px 'IBM Plex Mono',monospace}.factor-pos{color:#2bd995}.factor-neg{color:#ff6575}.factor-neu{color:#8598ac}
+.thesis-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1b2837}.thesis-box{background:#0c151f;padding:14px}.thesis-title{display:flex;align-items:center;gap:7px;font:700 8px 'IBM Plex Mono',monospace;letter-spacing:1px;color:#8397ab;margin-bottom:10px}.thesis-title span{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;background:#102435;color:#55a8f0}.thesis-bull .thesis-title span{background:rgba(43,217,149,.09);color:#2bd995}.thesis-bear .thesis-title span{background:rgba(255,101,117,.09);color:#ff6575}.thesis-invalid .thesis-title span{background:rgba(116,147,178,.1);color:#8fa4b8}.thesis-box textarea,.analyst-notes{width:100%;resize:vertical;background:#0a121b;border:1px solid #1d2c3c;border-radius:7px;color:#b8c6d4;font:10px 'IBM Plex Sans',sans-serif;line-height:1.6;padding:10px;outline:none}.thesis-box textarea{min-height:115px}.thesis-box textarea:focus,.analyst-notes:focus{border-color:#37688f;box-shadow:0 0 0 3px rgba(77,163,255,.05)}
+.scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#1b2837}.scenario-card{background:#0c151f;padding:15px}.scenario-card span{font:700 7px 'IBM Plex Mono',monospace;letter-spacing:1.2px;color:#5589b8}.scenario-card b{display:block;margin-top:6px;color:#b8c6d4;font-size:10px}.scenario-card p{margin:7px 0 0;color:#62768b;font-size:8.5px;line-height:1.55}
+.compact-panel{margin-bottom:12px}.quick-score{text-align:center;padding:21px 15px 4px}.quick-score strong{font:500 40px 'IBM Plex Mono',monospace;color:#75c0ff}.quick-score span{font:8px 'IBM Plex Mono',monospace;color:#50667d;margin-left:3px}.quick-label{text-align:center;color:#8da1b5;font:600 8px 'IBM Plex Mono',monospace;letter-spacing:1px;padding-bottom:16px}.quick-breakdown>div{display:flex;justify-content:space-between;padding:9px 14px;border-top:1px solid rgba(28,43,58,.7);font-size:9px;color:#687d92}.quick-breakdown b{font:500 9px 'IBM Plex Mono',monospace;color:#aab9c7}
+.catalyst-list label{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-bottom:1px solid rgba(28,43,58,.65);cursor:pointer}.catalyst-list label:last-child{border-bottom:0}.catalyst-list input{margin-top:2px;accent-color:#d6c7ff}.catalyst-list b{display:block;font-size:9px;color:#a4b4c4;font-weight:500}.catalyst-list span{display:block;font-size:8px;color:#586d82;margin-top:4px}.analyst-notes{min-height:190px;border:0;border-radius:0;background:#0b131d;padding:14px}.notes-foot{padding:8px 14px;border-top:1px solid #1b2938;color:#4d6176;font-size:8px}.methodology-panel p{padding:13px 14px;color:#62768a;font-size:8.5px;line-height:1.65;margin:0}
+@media(max-width:1150px){.research-grid{grid-template-columns:1fr}.research-side{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.research-side .research-panel{margin-bottom:0}.methodology-panel{grid-column:1/-1}.macro-input-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.research-shell{padding:18px 12px}.research-hero{display:block}.research-hero-actions{margin-top:14px}.research-hero-actions select{flex:1;min-width:0}.research-scorebar{grid-template-columns:1fr 1fr}.research-scorebar>div:nth-child(2){border-right:0}.research-scorebar>div:nth-child(-n+2){border-bottom:1px solid #1c2938}.macro-input-grid{grid-template-columns:1fr}.thesis-columns{grid-template-columns:1fr}.scenario-grid{grid-template-columns:1fr}.research-side{display:block}.research-side .research-panel{margin-bottom:12px}.factor-row{grid-template-columns:1fr 1fr 70px}.factor-row .factor-bar{display:none}.panel-hint{display:none}}
+
+
+/* =========================================================
+   IFIG LIQUID GLASS / SYSTEM UI — COMPLETE REDESIGN
+   ========================================================= */
+:root{
+  --bg:#09090b;
+  --bg-elev:#111114;
+  --bg-soft:#151519;
+  --glass:rgba(255,255,255,.055);
+  --glass-strong:rgba(255,255,255,.085);
+  --glass-hover:rgba(255,255,255,.11);
+  --stroke:rgba(255,255,255,.10);
+  --stroke-strong:rgba(255,255,255,.16);
+  --text:#f5f5f7;
+  --text-2:#c7c7cc;
+  --text-3:#8e8e93;
+  --accent:#d6c7ff;
+  --accent-2:#f0eaff;
+  --positive:#7fd9a7;
+  --negative:#ff8a98;
+  --warning:#e9c77d;
+  --shadow-lg:0 28px 80px rgba(0,0,0,.42);
+  --shadow-sm:0 10px 30px rgba(0,0,0,.20);
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:12px;
+}
+
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 20% -10%,rgba(214,199,255,.11),transparent 30%),
+    radial-gradient(circle at 85% 0%,rgba(255,255,255,.045),transparent 25%),
+    linear-gradient(180deg,#09090b,#0a0a0d 60%,#08080a);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif!important;
+  font-feature-settings:"ss01" 1,"cv02" 1,"cv03" 1,"cv04" 1;
+  letter-spacing:-.01em;
+}
+body *{
+  transition:
+    background-color .24s cubic-bezier(.2,.8,.2,1),
+    border-color .24s cubic-bezier(.2,.8,.2,1),
+    color .20s ease,
+    transform .24s cubic-bezier(.2,.8,.2,1),
+    box-shadow .24s cubic-bezier(.2,.8,.2,1),
+    opacity .20s ease;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    linear-gradient(120deg,transparent 0 35%,rgba(255,255,255,.018) 42%,transparent 48%),
+    radial-gradient(circle at 50% 120%,rgba(214,199,255,.06),transparent 40%);
+}
+
+.pulse-bar{display:none!important}
+
+.status-bar{
+  background:rgba(18,18,21,.68)!important;
+  backdrop-filter:blur(28px) saturate(140%);
+  -webkit-backdrop-filter:blur(28px) saturate(140%);
+  border-bottom:1px solid var(--stroke)!important;
+  color:var(--text-3)!important;
+  font-family:inherit!important;
+  letter-spacing:.02em!important;
+  font-size:11px!important;
+  padding:7px 22px!important;
+}
+.s-live{color:var(--text-2)!important}
+.s-dot{background:var(--positive)!important;box-shadow:0 0 0 5px rgba(127,217,167,.08)!important}
+
+nav{
+  top:0!important;
+  height:72px!important;
+  padding:0 22px!important;
+  background:rgba(16,16,19,.70)!important;
+  border-bottom:1px solid var(--stroke)!important;
+  backdrop-filter:blur(36px) saturate(155%)!important;
+  -webkit-backdrop-filter:blur(36px) saturate(155%)!important;
+  box-shadow:0 14px 40px rgba(0,0,0,.18)!important;
+}
+.nav-brand{
+  color:var(--text)!important;
+  font-family:inherit!important;
+  font-size:21px!important;
+  letter-spacing:-.03em!important;
+  font-weight:750!important;
+}
+.nav-brand:before{
+  width:34px!important;height:34px!important;border-radius:11px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055))!important;
+  border:1px solid var(--stroke-strong)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px rgba(0,0,0,.20)!important;
+}
+.nav-brand:after{
+  content:"Market Intelligence";
+  color:var(--text-3);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0;
+  margin-left:4px;
+}
+.nav-links{gap:4px!important}
+.nav-links a{
+  height:40px!important;
+  margin:0!important;
+  padding:0 13px!important;
+  border:1px solid transparent!important;
+  border-radius:14px!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  color:var(--text-3)!important;
+}
+.nav-links a:hover{
+  color:var(--text)!important;
+  background:var(--glass)!important;
+  border-color:var(--stroke)!important;
+}
+.nav-links a.active{
+  color:var(--text)!important;
+  background:var(--glass-strong)!important;
+  border:1px solid var(--stroke-strong)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.14)!important;
+}
+.nav-right{gap:8px!important}
+.btn-tg{
+  background:transparent!important;
+  border:1px solid var(--stroke)!important;
+  color:var(--text-2)!important;
+  border-radius:14px!important;
+  font-family:inherit!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  font-size:12px!important;
+  padding:9px 13px!important;
+}
+.btn-tg:hover{background:var(--glass)!important;color:var(--text)!important}
+.btn-gold{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08))!important;
+  color:var(--text)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:15px!important;
+  padding:10px 16px!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  font-weight:650!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 10px 30px rgba(0,0,0,.20)!important;
+}
+.btn-gold:before{
+  content:"";
+  position:absolute;inset:-2px;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.18) 42%,transparent 64%);
+  transform:translateX(-130%);
+}
+.btn-gold:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.10))!important}
+.btn-gold:hover:before{animation:glassSweep .8s ease}
+@keyframes glassSweep{to{transform:translateX(130%)}}
+
+.btn-signin,.auth-logged,.auth-panel,.auth-signout{
+  font-family:inherit!important;
+}
+.btn-signin{
+  background:var(--glass)!important;
+  border:1px solid var(--stroke)!important;
+  border-radius:14px!important;
+  color:var(--text-2)!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+.auth-panel{
+  background:rgba(24,24,28,.78)!important;
+  border:1px solid var(--stroke-strong)!important;
+  backdrop-filter:blur(32px) saturate(150%);
+  -webkit-backdrop-filter:blur(32px) saturate(150%);
+  border-radius:20px!important;
+}
+
+.glass-dock{
+  position:fixed;
+  left:50%;bottom:20px;transform:translateX(-50%);
+  z-index:500;
+  display:flex;gap:6px;
+  padding:7px;
+  border-radius:22px;
+  background:rgba(30,30,34,.62);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 18px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(34px) saturate(160%);
+  -webkit-backdrop-filter:blur(34px) saturate(160%);
+}
+.glass-dock button{
+  border:0;background:transparent;color:var(--text-3);
+  border-radius:16px;padding:8px 12px;
+  display:flex;align-items:center;gap:7px;
+  font:500 12px inherit;cursor:pointer;
+}
+.glass-dock button:hover{background:rgba(255,255,255,.08);color:var(--text);transform:translateY(-1px)}
+.dock-icon{font-size:15px}
+
+.app-shell{max-width:1600px;margin:0 auto;padding:18px 18px 100px}
+.content-area{border:0!important;overflow:visible!important}
+
+.command-center{
+  margin:10px 0 18px;
+  padding:34px;
+  display:grid;grid-template-columns:1.3fr .9fr;gap:24px;
+  border-radius:var(--radius-xl);
+  background:
+    radial-gradient(circle at 75% 20%,rgba(214,199,255,.09),transparent 28%),
+    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  border:1px solid var(--stroke-strong);
+  box-shadow:var(--shadow-lg),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(26px) saturate(130%);
+  -webkit-backdrop-filter:blur(26px) saturate(130%);
+}
+.eyebrow{font-size:11px;color:var(--text-3);font-weight:650;letter-spacing:.08em}
+.command-copy h1{
+  font-size:clamp(32px,4vw,58px);
+  line-height:.98;margin:14px 0 16px;
+  letter-spacing:-.055em;font-weight:720;max-width:850px;
+}
+.command-copy p{color:var(--text-2);font-size:15px;line-height:1.6;max-width:760px;margin:0}
+.command-actions{display:flex;gap:10px;margin-top:24px}
+.primary-glass,.secondary-glass{
+  border-radius:16px;padding:12px 16px;
+  font:650 13px inherit;cursor:pointer;
+}
+.primary-glass{
+  color:#17171a;background:rgba(245,245,247,.94);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 10px 30px rgba(0,0,0,.20);
+}
+.secondary-glass{
+  color:var(--text);background:var(--glass);
+  border:1px solid var(--stroke-strong);
+}
+.primary-glass:hover,.secondary-glass:hover{transform:translateY(-2px)}
+.command-stats{display:grid;grid-template-columns:1fr;gap:10px}
+.glass-stat{
+  padding:18px;border-radius:18px;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--stroke);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.glass-stat:hover{background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.glass-stat span{display:block;color:var(--text-3);font-size:10px;font-weight:650;letter-spacing:.08em}
+.glass-stat strong{display:block;color:var(--text);font-size:18px;margin-top:8px;letter-spacing:-.02em}
+.glass-stat small{display:block;color:var(--text-3);font-size:12px;margin-top:4px}
+
+.sec-head{
+  min-height:52px!important;
+  margin-top:12px;
+  padding:0 18px!important;
+  border:1px solid var(--stroke)!important;
+  border-bottom:0!important;
+  border-radius:18px 18px 0 0!important;
+  background:rgba(255,255,255,.035)!important;
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+}
+.sec-title{
+  font-family:inherit!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  text-transform:none!important;
+  letter-spacing:-.01em!important;
+}
+.sec-title:before{display:none!important}
+.badge{
+  font-family:inherit!important;
+  font-size:10px!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  border-radius:999px!important;
+  padding:5px 9px!important;
+  background:rgba(255,255,255,.05)!important;
+  border:1px solid var(--stroke)!important;
+  color:var(--text-3)!important;
+}
+.badge-live{color:var(--text-2)!important}
+.tv-wrap{
+  border:1px solid var(--stroke)!important;
+  border-top:0!important;
+  border-radius:0 0 18px 18px!important;
+  overflow:hidden!important;
+  background:#0d0d10!important;
+}
+.tradingview-widget-container{background:#0d0d10!important}
+
+.cat-filters{
+  margin-top:12px;
+  padding:6px!important;
+  border:1px solid var(--stroke)!important;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.035)!important;
+}
+.cat-btn{
+  border:0!important;border-radius:12px!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  color:var(--text-3)!important;
+}
+.cat-btn.active{
+  color:var(--text)!important;
+  background:rgba(255,255,255,.08)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+.calc-wrap{padding:22px 0!important}
+.calc-tabs{gap:6px!important}
+.c-tab{
+  border:1px solid var(--stroke)!important;
+  border-radius:14px!important;
+  background:var(--glass)!important;
+  color:var(--text-3)!important;
+  font-family:inherit!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+}
+.c-tab.active{color:var(--text)!important;background:var(--glass-strong)!important}
+.field label{
+  font-family:inherit!important;text-transform:none!important;
+  letter-spacing:0!important;font-size:12px!important;color:var(--text-3)!important
+}
+.field input,.field select{
+  background:rgba(255,255,255,.045)!important;
+  border:1px solid var(--stroke)!important;
+  color:var(--text)!important;
+  border-radius:14px!important;
+  font-family:inherit!important;
+}
+.field input:focus,.field select:focus{border-color:rgba(214,199,255,.35)!important;box-shadow:0 0 0 4px rgba(214,199,255,.06)!important}
+.result-box{
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025))!important;
+  border:1px solid var(--stroke-strong)!important;
+  border-radius:22px!important;
+  box-shadow:var(--shadow-sm)!important;
+}
+.res-main-val{color:var(--accent-2)!important;font-family:inherit!important;font-weight:700!important}
+.res-main-label,.res-row{font-family:inherit!important}
+
+.research-workspace{
+  border:0!important;
+  padding:10px 0 0!important;
+  background:transparent!important;
+}
+.fa-head{max-width:none!important}
+.fa-kicker{font-family:inherit!important;color:var(--text-3)!important;letter-spacing:.08em!important}
+.fa-head h2{font-size:34px!important;letter-spacing:-.04em!important}
+.fa-head p{color:var(--text-2)!important;font-size:14px!important}
+.fa-action{
+  background:var(--glass)!important;border:1px solid var(--stroke)!important;
+  color:var(--text-3)!important;border-radius:14px!important;
+  font-family:inherit!important;letter-spacing:0!important;
+}
+.fa-action.active,.fa-action:hover{background:var(--glass-strong)!important;color:var(--text)!important;border-color:var(--stroke-strong)!important}
+.fa-grid{max-width:none!important;grid-template-columns:minmax(0,1fr) 330px!important}
+.fa-asset-bar,.fa-card,.fa-panel{
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.022))!important;
+  border:1px solid var(--stroke)!important;
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+}
+.fa-asset-bar{border-radius:22px!important}
+.fa-cards{
+  margin-top:12px!important;
+  gap:10px!important;
+  background:transparent!important;
+  border:0!important;
+}
+.fa-card{border-radius:18px!important}
+.fa-card:hover{transform:translateY(-2px);background:rgba(255,255,255,.07)!important}
+.fa-panel{border-radius:20px!important;overflow:hidden}
+.fa-panel-head{border-color:var(--stroke)!important;color:var(--text-2)!important;font-family:inherit!important}
+.fa-section-dot{background:var(--accent)!important}
+.fa-big,.conviction-ring span{font-family:inherit!important;color:var(--text)!important}
+.fa-meter{background:rgba(255,255,255,.06)!important}
+.fa-meter i{background:linear-gradient(90deg,rgba(214,199,255,.6),rgba(255,255,255,.88))!important}
+.conviction-ring{
+  border-color:var(--stroke-strong)!important;
+  background:radial-gradient(circle,rgba(255,255,255,.06) 0 57%,transparent 58%)!important;
+}
+.conviction-label{color:var(--text-2)!important}
+.macro-header{background:rgba(255,255,255,.035)!important}
+.macro-row{border-color:var(--stroke)!important}
+.thesis{background:rgba(255,255,255,.035)!important;border-color:var(--stroke)!important}
+.fa-mini{background:var(--glass)!important;border-color:var(--stroke)!important;color:var(--text-2)!important;border-radius:12px!important}
+
+footer{
+  max-width:1600px;margin:0 auto 100px;
+  border:1px solid var(--stroke)!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.035)!important;
+  padding:20px 24px!important;
+  color:var(--text-3)!important;
+  font-family:inherit!important;
+}
+.f-brand{color:var(--text)!important;font-family:inherit!important}
+
+body.light-theme{
+  --bg:#f2f2f7;--bg-elev:#fff;--bg-soft:#f9f9fb;
+  --glass:rgba(255,255,255,.55);--glass-strong:rgba(255,255,255,.72);--glass-hover:rgba(255,255,255,.84);
+  --stroke:rgba(0,0,0,.08);--stroke-strong:rgba(0,0,0,.12);
+  --text:#1c1c1e;--text-2:#3a3a3c;--text-3:#8e8e93;
+}
+body.light-theme{background:linear-gradient(180deg,#f5f5f7,#ececf1)!important}
+body.light-theme nav,body.light-theme .status-bar{background:rgba(248,248,250,.72)!important}
+body.light-theme .tv-wrap,body.light-theme .tradingview-widget-container{background:#fff!important}
+
+@media(max-width:1100px){
+  .nav-brand:after{display:none}
+  .nav-links a{padding:0 9px!important}
+  .fa-grid{grid-template-columns:1fr!important}
+  .command-center{grid-template-columns:1fr}
+}
+@media(max-width:860px){
+  .app-shell{padding:12px 12px 90px}
+  .nav-links{display:none!important}
+  .command-center{padding:24px;border-radius:22px}
+  .fa-cards{grid-template-columns:repeat(2,1fr)!important}
+  .glass-dock span:not(.dock-icon){display:none}
+  .glass-dock button{padding:10px 13px}
+}
+@media(max-width:620px){
+  .status-bar>span:last-child{display:none}
+  .nav-right .btn-tg{display:none!important}
+  .command-copy h1{font-size:36px}
+  .command-actions{flex-direction:column}
+  .fa-cards{grid-template-columns:1fr!important}
+  .fa-grid{display:block!important}
+  .fa-right{display:block!important}
+  .glass-dock{bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
+
+
+.theme-glass{
+  border:1px solid var(--stroke);background:var(--glass);color:var(--text-3);
+  border-radius:999px;padding:5px 9px;font:500 11px inherit;cursor:pointer
+}
+.theme-glass:hover{background:var(--glass-strong);color:var(--text)}
+
+
+/* Existing Research Terminal — liquid glass refinement */
+.research-shell{padding:10px 0 0}
+.research-hero{
+  padding:30px;border:1px solid var(--stroke-strong);border-radius:26px;
+  background:radial-gradient(circle at 82% 15%,rgba(214,199,255,.07),transparent 26%),rgba(255,255,255,.045);
+  box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+}
+.research-eyebrow{color:var(--text-3)!important;font-family:inherit!important;letter-spacing:.08em!important}
+.research-hero h1{font-family:inherit!important;letter-spacing:-.045em!important;font-weight:720!important}
+.research-hero p{color:var(--text-2)!important}
+.research-hero-actions select,.research-primary{
+  min-height:42px;border-radius:14px!important;font-family:inherit!important;
+}
+.research-hero-actions select{
+  background:var(--glass)!important;border:1px solid var(--stroke)!important;color:var(--text)!important;
+}
+.research-primary{
+  background:rgba(245,245,247,.94)!important;color:#17171a!important;border:1px solid rgba(255,255,255,.35)!important;
+  font-weight:650!important;
+}
+.research-primary:hover{transform:translateY(-1px)}
+.research-scorebar{
+  margin-top:12px!important;gap:1px!important;border:1px solid var(--stroke)!important;border-radius:20px!important;
+  background:var(--stroke)!important;overflow:hidden;
+}
+.research-scorebar>div{background:rgba(20,20,24,.92)!important;padding:18px!important}
+.research-scorebar span,.research-scorebar small{color:var(--text-3)!important}
+.research-scorebar strong,.research-scorebar b{font-family:inherit!important}
+.research-grid{gap:12px!important;margin-top:12px!important}
+.research-panel{
+  background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.022))!important;
+  border:1px solid var(--stroke)!important;border-radius:20px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  overflow:hidden;
+}
+.research-panel-head{
+  border-bottom:1px solid var(--stroke)!important;color:var(--text-2)!important;
+  font-family:inherit!important;letter-spacing:0!important;
+}
+.panel-mark{background:var(--accent)!important}
+.macro-input,.scenario-card,.catalyst-item,.thesis-box,.research-note-wrap{
+  background:rgba(255,255,255,.035)!important;border:1px solid var(--stroke)!important;border-radius:16px!important;
+}
+.macro-input select,.research-note-wrap textarea{
+  background:rgba(255,255,255,.045)!important;border:1px solid var(--stroke)!important;
+  color:var(--text)!important;border-radius:12px!important;font-family:inherit!important;
+}
+.macro-input span,.scenario-card span,.panel-hint{color:var(--text-3)!important;font-family:inherit!important}
+.confidence-track{background:rgba(255,255,255,.07)!important}
+.confidence-track i{background:linear-gradient(90deg,var(--accent),rgba(255,255,255,.9))!important}
+.bias-bullish{color:var(--positive)!important}.bias-bearish{color:var(--negative)!important}.bias-neutral{color:var(--text-2)!important}
+@media(max-width:900px){.research-hero{padding:22px}.research-scorebar{grid-template-columns:1fr 1fr!important}.research-grid{grid-template-columns:1fr!important}}
+
 </style>
 
 </head>
@@ -376,7 +1298,7 @@ nav .nav-links{display:none;}
     <span>LDN: <span id="ld">--:--:--</span></span>
     <span>TKY: <span id="tk">--:--:--</span></span>
   </div>
-  <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW &nbsp;|&nbsp; <button id="themeToggle" onclick="toggleTheme()" style="background:none;border:1px solid var(--border2);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;padding:2px 8px;cursor:pointer;border-radius:2px;">☀ LIGHT</button></span>
+  <span>NYSE OPEN &nbsp;|&nbsp; NASDAQ OPEN &nbsp;|&nbsp; POWERED BY TRADINGVIEW &nbsp;|&nbsp; <button id="themeToggle" onclick="toggleTheme()" class="theme-glass">Appearance</button></span>
 </div>
 
 <!-- NAV -->
@@ -385,6 +1307,7 @@ nav .nav-links{display:none;}
   <a href="#" class="nav-brand">IFIG</a>
   <ul class="nav-links">
     <li><a href="#" class="active" onclick="showTab('markets',this);return false;">Markets</a></li>
+    <li><a href="#" data-research-nav onclick="showTab('fundamental',this);return false;">Research</a></li>
     <li><a href="#" onclick="showTab('crypto',this);return false;">Crypto</a></li>
     <li><a href="#" onclick="showTab('forex',this);return false;">Forex</a></li>
     <li><a href="#" onclick="showTab('chart',this);return false;">Chart</a></li>
@@ -398,17 +1321,51 @@ nav .nav-links{display:none;}
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
       @pwrcil
     </a>
-    <a href="https://t.me/pwrcil" target="_blank" class="btn-gold">Get Access</a>
+    <a href="https://t.me/pwrcil" target="_blank" class="btn-gold">Open Workspace</a>
     <div id="auth-widget"></div>
   </div>
 </nav>
 
-<div class="main-layout">
+<div class="glass-dock" aria-label="Workspace shortcuts">
+  <button onclick="showTab('markets', document.querySelector('.nav-links a'))" title="Markets">
+    <span class="dock-icon">◫</span><span>Markets</span>
+  </button>
+  <button onclick="document.querySelector('[data-research-nav]')?.click()" title="Research">
+    <span class="dock-icon">⌁</span><span>Research</span>
+  </button>
+  <button onclick="showTab('chart', document.querySelectorAll('.nav-links a')[4])" title="Chart">
+    <span class="dock-icon">⌁</span><span>Chart</span>
+  </button>
+  <button onclick="showTab('calendar', document.querySelectorAll('.nav-links a')[4])" title="Calendar">
+    <span class="dock-icon">◷</span><span>Calendar</span>
+  </button>
+</div>
+
+
+<main class="app-shell">
 <div class="content-area">
 
 <!-- ═══ MARKETS ═══ -->
 
 <div id="tab-markets" class="tab-content active">
+
+<section class="command-center">
+  <div class="command-copy">
+    <span class="eyebrow">IFIG MARKET INTELLIGENCE</span>
+    <h1>One workspace for markets, research and execution thinking.</h1>
+    <p>Track global markets, build fundamental theses, review positioning, monitor catalysts and calculate risk without switching between fragmented tools.</p>
+    <div class="command-actions">
+      <button class="primary-glass" onclick="document.querySelector('[data-research-nav]')?.click()">Open Research Desk</button>
+      <button class="secondary-glass" onclick="showTab('chart',document.querySelectorAll('.nav-links a')[4])">Open Chart</button>
+    </div>
+  </div>
+  <div class="command-stats">
+    <div class="glass-stat"><span>WORKSPACE</span><strong>Global Markets</strong><small>Cross-asset intelligence</small></div>
+    <div class="glass-stat"><span>RESEARCH</span><strong>Macro + Thesis</strong><small>Structured decision support</small></div>
+    <div class="glass-stat"><span>POSITIONING</span><strong>CFTC</strong><small>Institutional flow context</small></div>
+  </div>
+</section>
+
   <div class="sec-head">
     <span class="sec-title">Live Market Ticker</span>
     <span class="badge badge-live">Real-Time · TradingView</span>
@@ -471,6 +1428,184 @@ nav .nav-links{display:none;}
       </script>
     </div>
   </div>
+</div>
+
+
+<!-- ═══ FUNDAMENTAL RESEARCH TERMINAL ═══ -->
+<div id="tab-fundamental" class="tab-content">
+  <section class="research-shell">
+    <header class="research-hero">
+      <div>
+        <div class="research-eyebrow">IFIG RESEARCH DESK · DECISION SUPPORT</div>
+        <h1>Fundamental Research Terminal</h1>
+        <p>Macro regime, rates, inflation, growth, dollar, positioning, catalysts and analyst notes — one structured workflow.</p>
+      </div>
+      <div class="research-hero-actions">
+        <select id="researchAsset" onchange="researchLoadPreset()" aria-label="Research asset">
+          <option value="xau">XAU/USD · Gold</option>
+          <option value="nasdaq">NASDAQ 100</option>
+          <option value="spx">S&amp;P 500</option>
+          <option value="eurusd">EUR/USD</option>
+          <option value="dxy">DXY</option>
+          <option value="btc">BTC/USD</option>
+        </select>
+        <button class="research-primary" onclick="researchRecalculate()">Recalculate</button>
+      </div>
+    </header>
+
+    <div class="research-scorebar">
+      <div class="score-overview">
+        <span class="score-caption">Composite Fundamental Score</span>
+        <div><strong id="researchScore">50</strong><span>/100</span></div>
+      </div>
+      <div class="score-bias">
+        <span>Current Bias</span>
+        <b id="researchBias" class="bias-neutral">NEUTRAL</b>
+      </div>
+      <div class="score-confidence">
+        <span>Confidence</span>
+        <div class="confidence-track"><i id="confidenceFill" style="width:50%"></i></div>
+        <b id="confidenceText">50%</b>
+      </div>
+      <div class="score-last">
+        <span>Workspace</span>
+        <b>LOCAL · PRIVATE</b>
+        <small>Inputs &amp; notes saved in browser</small>
+      </div>
+    </div>
+
+    <div class="research-grid">
+      <main class="research-main">
+        <section class="research-panel">
+          <div class="research-panel-head">
+            <div><span class="panel-mark"></span>Macro Regime Inputs</div>
+            <span class="panel-hint">-2 bearish · 0 neutral · +2 bullish</span>
+          </div>
+          <div class="macro-input-grid">
+            <label class="macro-input">
+              <span>Policy / Rates</span>
+              <select id="factorRates" onchange="researchRecalculate()">
+                <option value="-2">Strong headwind</option><option value="-1">Headwind</option><option value="0" selected>Neutral</option><option value="1">Supportive</option><option value="2">Strongly supportive</option>
+              </select>
+              <small>Fed/ECB stance, real yields, rate expectations</small>
+            </label>
+            <label class="macro-input">
+              <span>Inflation Trend</span>
+              <select id="factorInflation" onchange="researchRecalculate()">
+                <option value="-2">Strong headwind</option><option value="-1">Headwind</option><option value="0" selected>Neutral</option><option value="1">Supportive</option><option value="2">Strongly supportive</option>
+              </select>
+              <small>CPI/PCE direction relative to market pricing</small>
+            </label>
+            <label class="macro-input">
+              <span>Growth / Activity</span>
+              <select id="factorGrowth" onchange="researchRecalculate()">
+                <option value="-2">Contracting</option><option value="-1">Weakening</option><option value="0" selected>Balanced</option><option value="1">Improving</option><option value="2">Strong expansion</option>
+              </select>
+              <small>GDP, PMI, labour market, consumption</small>
+            </label>
+            <label class="macro-input">
+              <span>USD / FX Regime</span>
+              <select id="factorDollar" onchange="researchRecalculate()">
+                <option value="-2">Strongly adverse</option><option value="-1">Adverse</option><option value="0" selected>Neutral</option><option value="1">Supportive</option><option value="2">Strongly supportive</option>
+              </select>
+              <small>DXY trend and relative policy differential</small>
+            </label>
+            <label class="macro-input">
+              <span>Liquidity</span>
+              <select id="factorLiquidity" onchange="researchRecalculate()">
+                <option value="-2">Tightening fast</option><option value="-1">Tightening</option><option value="0" selected>Neutral</option><option value="1">Improving</option><option value="2">Strongly improving</option>
+              </select>
+              <small>Financial conditions, balance sheets, credit impulse</small>
+            </label>
+            <label class="macro-input">
+              <span>Risk Sentiment</span>
+              <select id="factorRisk" onchange="researchRecalculate()">
+                <option value="-2">Risk-off</option><option value="-1">Defensive</option><option value="0" selected>Mixed</option><option value="1">Risk-on</option><option value="2">Strong risk-on</option>
+              </select>
+              <small>Volatility, breadth, cross-asset confirmation</small>
+            </label>
+          </div>
+        </section>
+
+        <section class="research-panel">
+          <div class="research-panel-head">
+            <div><span class="panel-mark"></span>Factor Dashboard</div>
+            <button class="panel-action" onclick="researchReset()">Reset</button>
+          </div>
+          <div class="factor-table" id="factorTable"></div>
+        </section>
+
+        <section class="research-panel thesis-panel">
+          <div class="research-panel-head">
+            <div><span class="panel-mark"></span>Investment Thesis</div>
+            <span class="panel-hint">Write what would make your view right or wrong</span>
+          </div>
+          <div class="thesis-columns">
+            <div class="thesis-box thesis-bull">
+              <div class="thesis-title"><span>+</span>BULL CASE</div>
+              <textarea id="bullCase" placeholder="What fundamental conditions support upside?" oninput="researchSave()"></textarea>
+            </div>
+            <div class="thesis-box thesis-bear">
+              <div class="thesis-title"><span>−</span>BEAR CASE</div>
+              <textarea id="bearCase" placeholder="What fundamental conditions support downside?" oninput="researchSave()"></textarea>
+            </div>
+            <div class="thesis-box thesis-invalid">
+              <div class="thesis-title"><span>×</span>INVALIDATION</div>
+              <textarea id="invalidCase" placeholder="What data/event invalidates the thesis?" oninput="researchSave()"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-panel">
+          <div class="research-panel-head">
+            <div><span class="panel-mark"></span>Scenario Matrix</div>
+            <span class="panel-hint">Map macro outcome to trade bias</span>
+          </div>
+          <div class="scenario-grid">
+            <div class="scenario-card"><span>GOLDILOCKS</span><b>Growth ↑ · Inflation ↓</b><p>Typically supportive for risk assets; assess rates and valuation.</p></div>
+            <div class="scenario-card"><span>REFLATION</span><b>Growth ↑ · Inflation ↑</b><p>Watch yields, commodities, cyclicals and central-bank reaction.</p></div>
+            <div class="scenario-card"><span>DISINFLATION</span><b>Growth ↓ · Inflation ↓</b><p>Rate-cut expectations may dominate; quality/duration can benefit.</p></div>
+            <div class="scenario-card"><span>STAGFLATION</span><b>Growth ↓ · Inflation ↑</b><p>Higher macro stress; defensive assets and real assets matter more.</p></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="research-side">
+        <section class="research-panel compact-panel">
+          <div class="research-panel-head"><div><span class="panel-mark"></span>Quick Read</div></div>
+          <div class="quick-score"><strong id="quickScore">50</strong><span>/100</span></div>
+          <div class="quick-label" id="quickLabel">Balanced / Neutral</div>
+          <div class="quick-breakdown">
+            <div><span>Macro</span><b id="qMacro">50</b></div>
+            <div><span>Liquidity</span><b id="qLiquidity">50</b></div>
+            <div><span>Sentiment</span><b id="qSentiment">50</b></div>
+          </div>
+        </section>
+
+        <section class="research-panel compact-panel">
+          <div class="research-panel-head"><div><span class="panel-mark"></span>Catalyst Monitor</div></div>
+          <div class="catalyst-list">
+            <label><input type="checkbox" onchange="researchSave()"><div><b>Inflation data</b><span>CPI / PCE / expectations</span></div></label>
+            <label><input type="checkbox" onchange="researchSave()"><div><b>Central bank</b><span>Decision / minutes / speech</span></div></label>
+            <label><input type="checkbox" onchange="researchSave()"><div><b>Labour market</b><span>NFP / unemployment / wages</span></div></label>
+            <label><input type="checkbox" onchange="researchSave()"><div><b>Growth data</b><span>GDP / PMI / retail sales</span></div></label>
+            <label><input type="checkbox" onchange="researchSave()"><div><b>Positioning</b><span>CFTC / crowded trade risk</span></div></label>
+          </div>
+        </section>
+
+        <section class="research-panel compact-panel">
+          <div class="research-panel-head"><div><span class="panel-mark"></span>Analyst Notes</div><button class="panel-action" onclick="researchClearNotes()">Clear</button></div>
+          <textarea class="analyst-notes" id="analystNotes" placeholder="Write observations, data surprises, key levels, event risk…" oninput="researchSave()"></textarea>
+          <div class="notes-foot">Saved locally on this device.</div>
+        </section>
+
+        <section class="research-panel compact-panel methodology-panel">
+          <div class="research-panel-head"><div><span class="panel-mark"></span>Methodology</div></div>
+          <p>This workspace does not invent live macro data. You set the observed regime, and IFIG converts it into a structured score. Use the existing Economic Calendar and CFTC tabs for live external inputs.</p>
+        </section>
+      </aside>
+    </div>
+  </section>
 </div>
 
 <!-- ═══ CRYPTO ═══ -->
@@ -621,7 +1756,7 @@ nav .nav-links{display:none;}
       <button class="c-tab" onclick="switchCalc(this,'margin')">Margin</button>
     </div>
 
-```
+
 <!-- RISK CALCULATOR -->
 <div id="calc-risk" class="c-tab-content active">
   <div class="calc-grid">
@@ -725,7 +1860,7 @@ nav .nav-links{display:none;}
     </div>
   </div>
 </div>
-```
+
 
   </div>
 </div>
@@ -762,10 +1897,10 @@ nav .nav-links{display:none;}
     </div>
     <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Phone / WhatsApp</div>
-      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;">+86 130 3609 6925</div>
+      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;"></div>
       <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;">+998 33 712 71 00</div>
       <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:16px;">+998 94 709 77 12</div>
-      <a href="tel:+8613036096925" class="btn-gold">Call Now</a>
+      <a href="" class="btn-gold">Call Now</a>
     </div>
   </div>
 </div>
@@ -774,107 +1909,14 @@ nav .nav-links{display:none;}
 
 <!-- SIDEBAR -->
 
-<div class="sidebar">
-  <!-- FEAR GREED -->
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Fear & Greed</span><span class="badge badge-live">Index</span></div>
-    <div class="fg-wrap">
-      <div class="fg-val" id="fg-val" style="color:var(--signal)">--</div>
-      <div class="fg-label" id="fg-lbl" style="color:var(--muted)">Loading...</div>
-      <div class="fg-bar">
-        <div style="background:#e03d5a"></div>
-        <div style="background:#e07a3d"></div>
-        <div style="background:#e0c13d"></div>
-        <div style="background:#c9e03d"></div>
-        <div style="background:#00b87a"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px;">
-        <span>FEAR</span><span>NEUTRAL</span><span>GREED</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- BTC MINI CHART -->
-
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">BTC/USD</span><span class="badge badge-live">Live</span></div>
-    <div class="tv-wrap">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"BITSTAMP:BTCUSD","width":"100%","height":"180","locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-  </div>
-
-  <!-- GOLD MINI CHART -->
-
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Gold / XAU</span><span class="badge badge-live">Live</span></div>
-    <div class="tv-wrap">
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-        {"symbol":"TVC:GOLD","width":"100%","height":"180","locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"autosize":false}
-        </script>
-      </div>
-    </div>
-  </div>
-
-  <!-- SENTIMENT -->
-
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Market Sentiment</span></div>
-    <div class="sent-wrap">
-      <div class="sent-label">Crypto Market</div>
-      <div class="sent-bar"><div class="sb" id="sb1" style="width:50%"></div><div class="sr" id="sr1" style="width:50%"></div></div>
-      <div class="sent-vals"><span style="color:var(--green)" id="sv1">▲ --</span><span style="color:var(--red)" id="sv2">-- ▼</span></div>
-    </div>
-  </div>
-
-  <!-- CEO -->
-
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Leadership</span></div>
-    <div class="ceo-wrap">
-      <div class="ceo-row">
-        <div class="ceo-av">HN</div>
-        <div>
-          <div class="ceo-name">Nomonov Husniddin</div>
-          <div class="ceo-pos">Chief Executive Officer</div>
-        </div>
-      </div>
-      <div class="ceo-bio">Founder & CEO of IFIG. Professional trader delivering institutional-grade market intelligence worldwide.</div>
-      <a href="https://t.me/pwrcil" target="_blank" class="ceo-tg">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
-        @pwrcil
-      </a>
-    </div>
-  </div>
-
-  <!-- SUPPORT -->
-
-  <div class="sidebar-block">
-    <div class="sec-head"><span class="sec-title">Support</span></div>
-    <div class="sup-box">
-      <div class="sup-title">24/7 Professional Support</div>
-      <a href="https://t.me/pwrcil" target="_blank" class="sup-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
-        Telegram: @pwrcil
-      </a>
-      <div class="sup-info">+86 130 3609 6925<br>+998 33 712 71 00<br>+998 94 709 77 12<br>Signals · Analysis · Ideas</div>
-    </div>
-  </div>
-</div>
-</div><!-- end main -->
+</main><!-- end app-shell -->
 
 <footer>
   <div class="f-brand">IFIG</div>
   <div>© 2026 International Financial Institution Group · CEO: Nomonov Husniddin</div>
   <div class="f-links">
     <a href="https://t.me/pwrcil" target="_blank">@pwrcil</a>
-    <a href="tel:+8613036096925">+86 130 3609 6925</a>
+    <a href=""></a>
     <a href="tel:+998337127100">+998 33 712 71 00</a>
     <a href="tel:+998947097712">+998 94 709 77 12</a>
   </div>
@@ -904,7 +1946,7 @@ function showTab(name,el){
 function applyTheme(theme){
   document.body.classList.toggle('light-theme', theme==='light');
   const btn = document.getElementById('themeToggle');
-  if(btn) btn.textContent = theme==='light' ? '● DARK' : '☀ LIGHT';
+  if(btn) btn.textContent = theme==='light' ? 'Dark' : 'Light';
   try{ localStorage.setItem('ifig-theme', theme); }catch(e){}
 }
 function toggleTheme(){
@@ -1027,33 +2069,6 @@ function calcMargin(){
   `;
 }
 calcMargin();
-
-// ── FEAR & GREED ──
-async function fetchFG(){
-  try{
-    const r=await fetch('https://api.alternative.me/fng/?limit=1');
-    const d=await r.json();
-    const val=parseInt(d.data[0].value);
-    const txt=d.data[0].value_classification;
-    const c=val>60?'var(--green)':val<40?'var(--red)':'var(--signal)';
-    document.getElementById('fg-val').textContent=val;
-    document.getElementById('fg-val').style.color=c;
-    document.getElementById('fg-lbl').textContent=txt.toUpperCase();
-    document.getElementById('fg-lbl').style.color=c;
-    document.getElementById('sb1').style.width=val+'%';
-    document.getElementById('sr1').style.width=(100-val)+'%';
-    document.getElementById('sv1').textContent=`▲ Bullish ${val}%`;
-    document.getElementById('sv2').textContent=`Bearish ${100-val}% ▼`;
-  }catch{
-    document.getElementById('fg-val').textContent='68';
-    document.getElementById('fg-lbl').textContent='GREED';
-    document.getElementById('sb1').style.width='68%';
-    document.getElementById('sr1').style.width='32%';
-    document.getElementById('sv1').textContent='▲ Bullish 68%';
-    document.getElementById('sv2').textContent='Bearish 32% ▼';
-  }
-}
-fetchFG();
 
 // ── POSITIONING (COT + Retail) ──
 const POS_ASSETS = {
@@ -1319,5 +2334,66 @@ if(authReady){
 }
 </script>
 
+<script>
+
+// ── FUNDAMENTAL RESEARCH WORKSPACE ──
+const RESEARCH_PRESETS = {
+  xau:{rates:1,inflation:1,growth:0,dollar:1,liquidity:1,risk:0,bull:'Falling real yields, softer USD, central-bank demand and geopolitical hedging support gold.',bear:'Higher real yields and a stronger dollar would pressure gold.',invalid:'Thesis weakens if real yields and DXY rise together while gold fails to hold demand.'},
+  nasdaq:{rates:1,inflation:1,growth:1,dollar:0,liquidity:1,risk:1,bull:'Earnings growth, easing financial conditions and strong risk appetite support duration equities.',bear:'Higher yields, expensive valuation and weaker guidance can compress multiples.',invalid:'Reassess if growth revisions turn negative while yields rise.'},
+  spx:{rates:1,inflation:1,growth:1,dollar:0,liquidity:1,risk:1,bull:'Broad earnings resilience and supportive liquidity can sustain index strength.',bear:'Margin pressure, valuation compression or policy repricing are major downside risks.',invalid:'Reassess if breadth deteriorates with worsening earnings revisions.'},
+  eurusd:{rates:0,inflation:0,growth:0,dollar:0,liquidity:0,risk:0,bull:'EUR upside needs improving euro-area growth and/or softer US rate expectations.',bear:'US growth/yield outperformance and risk-off demand favour USD.',invalid:'Reassess when relative rate expectations materially change.'},
+  dxy:{rates:1,inflation:0,growth:1,dollar:1,liquidity:0,risk:-1,bull:'Relative US yield and growth advantage can support the dollar.',bear:'Fed easing and stronger global growth can reduce dollar demand.',invalid:'Reassess if rate differentials decisively reverse.'},
+  btc:{rates:1,inflation:0,growth:0,dollar:1,liquidity:2,risk:2,bull:'Improving liquidity and strong risk appetite are constructive for crypto.',bear:'Tighter liquidity, stronger USD and broad deleveraging can create sharp downside.',invalid:'Reassess if liquidity and risk appetite deteriorate together.'}
+};
+const researchFactors=[['Rates / Policy','factorRates'],['Inflation','factorInflation'],['Growth / Activity','factorGrowth'],['USD / FX','factorDollar'],['Liquidity','factorLiquidity'],['Risk Sentiment','factorRisk']];
+function researchValue(id){return Number(document.getElementById(id)?.value||0)}
+function researchToScore(v){return Math.max(0,Math.min(100,50+v*25))}
+function researchRead(v){return v>=2?'Strongly supportive':v===1?'Supportive':v===0?'Neutral':v===-1?'Headwind':'Strong headwind'}
+function researchRecalculate(){
+  const vals=researchFactors.map(x=>researchValue(x[1]));
+  const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+  const score=Math.round(50+avg*22);
+  const dispersion=vals.reduce((a,v)=>a+Math.abs(v-avg),0)/vals.length;
+  const confidence=Math.round(Math.max(35,Math.min(92,82-dispersion*14+Math.abs(avg)*5)));
+  const bias=score>=62?'BULLISH':score<=38?'BEARISH':'NEUTRAL';
+  const scoreEl=document.getElementById('researchScore'); if(scoreEl) scoreEl.textContent=score;
+  const quick=document.getElementById('quickScore'); if(quick) quick.textContent=score;
+  const b=document.getElementById('researchBias'); if(b){b.textContent=bias;b.className=bias==='BULLISH'?'bias-bull':bias==='BEARISH'?'bias-bear':'bias-neutral'}
+  const cf=document.getElementById('confidenceFill'); if(cf) cf.style.width=confidence+'%';
+  const ct=document.getElementById('confidenceText'); if(ct) ct.textContent=confidence+'%';
+  const ql=document.getElementById('quickLabel'); if(ql) ql.textContent=score>=70?'Constructive / Bullish':score<=30?'Defensive / Bearish':score>=58?'Moderately Bullish':score<=42?'Moderately Bearish':'Balanced / Neutral';
+  const macro=Math.round((researchToScore(vals[0])+researchToScore(vals[1])+researchToScore(vals[2]))/3);
+  const liq=researchToScore(vals[4]), sent=researchToScore(vals[5]);
+  if(document.getElementById('qMacro'))document.getElementById('qMacro').textContent=macro;
+  if(document.getElementById('qLiquidity'))document.getElementById('qLiquidity').textContent=liq;
+  if(document.getElementById('qSentiment'))document.getElementById('qSentiment').textContent=sent;
+  const table=document.getElementById('factorTable');
+  if(table){table.innerHTML='<div class="factor-row header"><span>FACTOR</span><span>ASSESSMENT</span><span>STRENGTH</span><span>SCORE</span></div>'+researchFactors.map((f,i)=>{const v=vals[i],s=researchToScore(v),cls=v>0?'factor-pos':v<0?'factor-neg':'factor-neu',color=v>0?'#2bd995':v<0?'#ff6575':'#63788e';return `<div class="factor-row"><span class="factor-name">${f[0]}</span><span class="factor-read">${researchRead(v)}</span><span class="factor-bar"><i style="width:${s}%;background:${color}"></i></span><span class="factor-score ${cls}">${s}</span></div>`}).join('')}
+  researchSave();
+}
+function researchStorageKey(){return 'ifig-research-'+(document.getElementById('researchAsset')?.value||'xau')}
+function researchSave(){
+  try{
+    const data={factors:{},bull:document.getElementById('bullCase')?.value||'',bear:document.getElementById('bearCase')?.value||'',invalid:document.getElementById('invalidCase')?.value||'',notes:document.getElementById('analystNotes')?.value||'',checks:[...document.querySelectorAll('.catalyst-list input')].map(x=>x.checked)};
+    researchFactors.forEach(f=>data.factors[f[1]]=document.getElementById(f[1])?.value||'0');
+    localStorage.setItem(researchStorageKey(),JSON.stringify(data));
+  }catch(e){}
+}
+function researchLoadPreset(){
+  const id=document.getElementById('researchAsset')?.value||'xau'; const p=RESEARCH_PRESETS[id];
+  let saved=null; try{saved=JSON.parse(localStorage.getItem('ifig-research-'+id)||'null')}catch(e){}
+  researchFactors.forEach(f=>{const el=document.getElementById(f[1]); if(el)el.value=saved?.factors?.[f[1]] ?? String(p?.[f[1].replace('factor','').toLowerCase()] ?? 0)});
+  if(document.getElementById('bullCase'))document.getElementById('bullCase').value=saved?.bull ?? p.bull;
+  if(document.getElementById('bearCase'))document.getElementById('bearCase').value=saved?.bear ?? p.bear;
+  if(document.getElementById('invalidCase'))document.getElementById('invalidCase').value=saved?.invalid ?? p.invalid;
+  if(document.getElementById('analystNotes'))document.getElementById('analystNotes').value=saved?.notes ?? '';
+  [...document.querySelectorAll('.catalyst-list input')].forEach((x,i)=>x.checked=!!saved?.checks?.[i]);
+  researchRecalculate();
+}
+function researchReset(){try{localStorage.removeItem(researchStorageKey())}catch(e){} researchLoadPreset()}
+function researchClearNotes(){const n=document.getElementById('analystNotes');if(n){n.value='';researchSave()}}
+document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('researchAsset'))researchLoadPreset()});
+
+</script>
 </body>
 </html>
