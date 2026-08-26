@@ -1418,6 +1418,269 @@ body.light-theme .app-shell::before,body.light-theme .app-shell::after{
   .ifig-profile-grid{grid-template-columns:1fr}
 }
 
+
+/* =========================================================
+   ABOUT — 24/7 SUPPORT / LIQUID GLASS
+   ========================================================= */
+.about-support{
+  margin:0 40px 40px;
+  padding:26px;
+  border:1px solid var(--stroke-strong);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 85% 0%,rgba(255,255,255,.06),transparent 28%),
+    linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.022));
+  box-shadow:0 24px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(30px) saturate(125%);
+  -webkit-backdrop-filter:blur(30px) saturate(125%);
+  position:relative;
+  overflow:hidden;
+}
+.about-support::before{
+  content:"";
+  position:absolute;
+  width:420px;height:180px;
+  top:-110px;right:-90px;
+  border-radius:50%;
+  background:rgba(255,255,255,.055);
+  filter:blur(24px);
+  pointer-events:none;
+}
+.about-support-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+  position:relative;z-index:1;margin-bottom:20px;
+}
+.support-eyebrow{
+  display:block;color:var(--text-3);font-size:10px;font-weight:700;
+  letter-spacing:.10em;margin-bottom:9px;
+}
+.about-support h3{
+  margin:0;color:var(--text);font-size:28px;font-weight:720;
+  letter-spacing:-.04em;
+}
+.about-support-head p{
+  max-width:680px;margin:9px 0 0;color:var(--text-2);
+  font-size:13px;line-height:1.6;
+}
+.support-live{
+  white-space:nowrap;display:flex;align-items:center;gap:8px;
+  padding:9px 12px;border-radius:999px;
+  background:rgba(255,255,255,.045);border:1px solid var(--stroke);
+  color:var(--text-2);font-size:11px;
+}
+.support-live i{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--positive);box-shadow:0 0 0 5px rgba(127,217,167,.08);
+  animation:supportPulse 2.4s ease-in-out infinite;
+}
+@keyframes supportPulse{
+  0%,100%{box-shadow:0 0 0 4px rgba(127,217,167,.07)}
+  50%{box-shadow:0 0 0 9px rgba(127,217,167,0)}
+}
+.support-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
+  position:relative;z-index:1;
+}
+.support-card{
+  min-height:122px;
+  display:grid;grid-template-columns:44px minmax(0,1fr) 24px;
+  align-items:center;gap:13px;padding:18px;
+  text-decoration:none;color:inherit;
+  border-radius:20px;border:1px solid var(--stroke);
+  background:rgba(255,255,255,.035);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+  overflow:hidden;position:relative;
+}
+.support-card::before{
+  content:"";position:absolute;inset:-1px;
+  background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.08) 48%,transparent 70%);
+  transform:translateX(-130%);pointer-events:none;
+}
+.support-card:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.06);
+  border-color:var(--stroke-strong);
+  box-shadow:0 16px 34px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.support-card:hover::before{animation:supportSheen .85s ease}
+@keyframes supportSheen{to{transform:translateX(130%)}}
+.support-icon{
+  width:44px;height:44px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.055);border:1px solid var(--stroke);
+  color:var(--text-2);
+}
+.support-icon svg{width:20px;height:20px}
+.support-copy span{
+  display:block;color:var(--text-3);font-size:10px;
+  font-weight:650;letter-spacing:.06em;margin-bottom:6px;
+}
+.support-copy strong{
+  display:block;color:var(--text);font-size:15px;
+  font-weight:650;letter-spacing:-.02em;
+}
+.support-copy small{
+  display:block;color:var(--text-3);font-size:11px;margin-top:5px;
+}
+.support-arrow{
+  color:var(--text-3);font-size:17px;transform:translateX(0);
+}
+.support-card:hover .support-arrow{color:var(--text);transform:translate(2px,-2px)}
+.support-foot{
+  position:relative;z-index:1;
+  display:flex;justify-content:space-between;gap:16px;
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--stroke);
+  color:var(--text-3);font-size:10px;
+}
+.support-foot span:first-child{color:var(--text-2);font-weight:650}
+
+/* =========================================================
+   CRYPTO — DIGITAL ASSET INTELLIGENCE WORKSPACE
+   ========================================================= */
+.crypto-workspace{padding:10px 0 4px}
+.crypto-hero{
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
+  gap:22px;padding:30px;border-radius:26px;
+  border:1px solid var(--stroke-strong);
+  background:
+    radial-gradient(circle at 88% 10%,rgba(255,255,255,.055),transparent 30%),
+    linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.021));
+  box-shadow:0 24px 70px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter:blur(28px) saturate(125%);
+  -webkit-backdrop-filter:blur(28px) saturate(125%);
+}
+.crypto-eyebrow{
+  display:block;color:var(--text-3);font-size:10px;font-weight:700;
+  letter-spacing:.11em;margin-bottom:10px;
+}
+.crypto-hero h2{
+  margin:0;color:var(--text);font-size:36px;line-height:1;
+  font-weight:730;letter-spacing:-.045em;
+}
+.crypto-hero-copy>p{
+  max-width:760px;margin:14px 0 0;color:var(--text-2);
+  font-size:14px;line-height:1.65;
+}
+.crypto-status-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.crypto-status{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 10px;border-radius:999px;
+  border:1px solid var(--stroke);background:rgba(255,255,255,.035);
+  color:var(--text-3);font-size:10px;
+}
+.crypto-status i{
+  width:6px;height:6px;border-radius:50%;background:var(--positive);
+  box-shadow:0 0 0 4px rgba(127,217,167,.07);
+}
+.crypto-hero-side{display:grid;gap:10px}
+.crypto-focus-card{
+  padding:18px;border-radius:18px;
+  background:rgba(255,255,255,.035);border:1px solid var(--stroke);
+}
+.crypto-focus-card:hover{background:rgba(255,255,255,.055);transform:translateY(-2px)}
+.crypto-focus-card span{
+  display:block;color:var(--text-3);font-size:9px;font-weight:700;
+  letter-spacing:.08em;margin-bottom:8px;
+}
+.crypto-focus-card strong{display:block;color:var(--text);font-size:16px;font-weight:650}
+.crypto-focus-card small{display:block;color:var(--text-3);font-size:11px;margin-top:6px}
+
+.crypto-ticker-shell{
+  margin-top:12px;border:1px solid var(--stroke);border-radius:19px;overflow:hidden;
+  background:rgba(255,255,255,.027);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+}
+.crypto-strip-label{
+  padding:11px 16px 8px;color:var(--text-3);font-size:9px;
+  font-weight:700;letter-spacing:.08em;border-bottom:1px solid var(--stroke);
+}
+.crypto-ticker-shell .tradingview-widget-container{background:transparent!important}
+
+.crypto-insight-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;
+}
+.crypto-insight{
+  min-height:118px;display:flex;gap:14px;padding:17px;
+  border:1px solid var(--stroke);border-radius:18px;
+  background:rgba(255,255,255,.03);
+}
+.crypto-insight:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.crypto-insight>span{
+  flex:0 0 auto;color:var(--text-3);font-size:10px;font-weight:700;
+  width:27px;height:27px;border-radius:9px;display:grid;place-items:center;
+  background:rgba(255,255,255,.045);border:1px solid var(--stroke);
+}
+.crypto-insight strong{display:block;color:var(--text);font-size:14px;font-weight:650}
+.crypto-insight p{margin:7px 0 0;color:var(--text-3);font-size:11px;line-height:1.55}
+
+.crypto-screener-panel{
+  margin-top:12px;border:1px solid var(--stroke-strong);
+  border-radius:22px;overflow:hidden;
+  background:rgba(255,255,255,.025);
+  box-shadow:0 18px 52px rgba(0,0,0,.18);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+}
+.crypto-panel-head{
+  min-height:68px;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:14px 18px;border-bottom:1px solid var(--stroke);
+}
+.crypto-panel-kicker{
+  display:block;color:var(--text-3);font-size:8px;font-weight:700;
+  letter-spacing:.09em;margin-bottom:5px;
+}
+.crypto-panel-head h3{
+  margin:0;color:var(--text);font-size:18px;font-weight:680;letter-spacing:-.025em;
+}
+.crypto-panel-note{color:var(--text-3);font-size:10px}
+.crypto-widget-frame{
+  min-height:760px;background:#0d0d10;
+}
+.crypto-widget-frame .tradingview-widget-container{
+  background:#0d0d10!important;min-height:760px;
+}
+
+@media(max-width:980px){
+  .support-grid{grid-template-columns:1fr}
+  .crypto-hero{grid-template-columns:1fr}
+  .crypto-hero-side{grid-template-columns:1fr 1fr}
+  .crypto-insight-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .about-support{margin:0 14px 24px;padding:18px;border-radius:22px}
+  .about-support-head{display:block}
+  .support-live{width:max-content;margin-top:14px}
+  .support-foot{display:block}
+  .support-foot span{display:block;margin-top:4px}
+  .crypto-hero{padding:22px;border-radius:22px}
+  .crypto-hero h2{font-size:30px}
+  .crypto-hero-side{grid-template-columns:1fr}
+  .crypto-panel-head{display:block}
+  .crypto-panel-note{margin-top:8px}
+}
+
+
+/* FINAL TAB VISIBILITY FIX — Support must exist ONLY inside active About tab */
+body .tab-content {
+  display: none !important;
+}
+body .tab-content.active {
+  display: block !important;
+}
+body #tab-about:not(.active),
+body #tab-about:not(.active) .about-support {
+  display: none !important;
+}
+body #tab-about.active .about-support {
+  display: block !important;
+}
+
+
+/* ABOUT SUPPORT — structural + visibility guarantee */
+#tab-about .about-support { display:block; }
+#tab-about:not(.active) .about-support { display:none !important; }
+.tab-content:not(.active) { display:none !important; }
+.tab-content.active { display:block !important; }
+
 </style>
 
 </head>
@@ -1745,17 +2008,85 @@ body.light-theme .app-shell::before,body.light-theme .app-shell::after{
 
 <!-- ═══ CRYPTO ═══ -->
 
+
 <div id="tab-crypto" class="tab-content">
-  <div class="sec-head"><span class="sec-title">Crypto Screener</span><span class="badge badge-live">Live</span></div>
-  <div class="tv-wrap">
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-      {"width":"100%","height":"700","defaultColumn":"overview","screener_type":"crypto_mkt",
-       "displayCurrency":"USD","colorTheme":"dark","locale":"en","isTransparent":false,"backgroundColor":"rgba(4,8,15,1)"}
-      </script>
+  <section class="crypto-workspace">
+    <header class="crypto-hero">
+      <div class="crypto-hero-copy">
+        <span class="crypto-eyebrow">DIGITAL ASSET INTELLIGENCE</span>
+        <h2>Crypto Market Screener</h2>
+        <p>Scan the digital-asset universe through price action, performance, volume, volatility and market structure — inside one institutional-style workspace.</p>
+        <div class="crypto-status-row">
+          <span class="crypto-status"><i></i> Market data live</span>
+          <span class="crypto-status">USD universe</span>
+          <span class="crypto-status">TradingView data layer</span>
+        </div>
+      </div>
+      <div class="crypto-hero-side">
+        <div class="crypto-focus-card">
+          <span>PRIMARY FOCUS</span>
+          <strong>Majors & Liquid Markets</strong>
+          <small>BTC · ETH · SOL · BNB · XRP</small>
+        </div>
+        <div class="crypto-focus-card">
+          <span>WORKFLOW</span>
+          <strong>Screen → Compare → Validate</strong>
+          <small>Use Chart & Research for confirmation</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="crypto-ticker-shell">
+      <div class="crypto-strip-label">Market Pulse</div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {"symbols":[
+          {"proName":"BITSTAMP:BTCUSD","title":"BTC"},
+          {"proName":"BITSTAMP:ETHUSD","title":"ETH"},
+          {"proName":"BINANCE:SOLUSDT","title":"SOL"},
+          {"proName":"BINANCE:BNBUSDT","title":"BNB"},
+          {"proName":"BINANCE:XRPUSDT","title":"XRP"},
+          {"proName":"BINANCE:ADAUSDT","title":"ADA"}
+        ],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"dark","locale":"en"}
+        </script>
+      </div>
     </div>
-  </div>
+
+    <div class="crypto-insight-grid">
+      <article class="crypto-insight">
+        <span>01</span>
+        <div><strong>Liquidity First</strong><p>Prioritize instruments with deep volume and consistent execution quality before reading smaller-cap signals.</p></div>
+      </article>
+      <article class="crypto-insight">
+        <span>02</span>
+        <div><strong>Relative Strength</strong><p>Compare leaders and laggards instead of evaluating a token in isolation from the broader crypto regime.</p></div>
+      </article>
+      <article class="crypto-insight">
+        <span>03</span>
+        <div><strong>Confirm the Thesis</strong><p>Move from screener to Chart, Research and event-risk context before making a directional decision.</p></div>
+      </article>
+    </div>
+
+    <section class="crypto-screener-panel">
+      <div class="crypto-panel-head">
+        <div>
+          <span class="crypto-panel-kicker">LIVE UNIVERSE</span>
+          <h3>Cross-Market Screener</h3>
+        </div>
+        <div class="crypto-panel-note">Overview · Performance · Momentum · Volume</div>
+      </div>
+      <div class="crypto-widget-frame">
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+          {"width":"100%","height":"760","defaultColumn":"overview","screener_type":"crypto_mkt",
+           "displayCurrency":"USD","colorTheme":"dark","locale":"en","isTransparent":true}
+          </script>
+        </div>
+      </div>
+    </section>
+  </section>
 </div>
 
 <!-- ═══ FOREX ═══ -->
@@ -2042,21 +2373,60 @@ body.light-theme .app-shell::before,body.light-theme .app-shell::after{
 </div>
 
     </div>
-  </div>
-  <div style="padding:0 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Telegram Support</div>
-      <div style="font-size:18px;font-weight:500;color:var(--white);margin-bottom:16px;">@pwrcil</div>
-      <a href="https://t.me/pwrcil" target="_blank" class="btn-tg">Open Telegram</a>
+
+  <section class="about-support" aria-label="IFIG Support">
+    <div class="about-support-head">
+      <div>
+        <span class="support-eyebrow">CLIENT SUPPORT</span>
+        <h3>24/7 Global Support</h3>
+        <p>Direct access to IFIG support for platform assistance, account questions and professional communication.</p>
+      </div>
+      <div class="support-live"><i></i> Available 24/7</div>
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);padding:24px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Phone / WhatsApp</div>
-      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;"></div>
-      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:8px;">+998 33 712 71 00</div>
-      <div style="font-size:16px;font-weight:500;color:var(--white);margin-bottom:16px;">+998 94 709 77 12</div>
-      <a href="" class="btn-gold">Call Now</a>
+
+    <div class="support-grid">
+      <a class="support-card support-telegram" href="https://t.me/pwrcil" target="_blank" rel="noopener">
+        <div class="support-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 4.2 18.4 19c-.24 1.05-.87 1.31-1.76.82l-4.88-3.6-2.35 2.26c-.26.26-.48.48-.98.48l.35-4.96 9.02-8.15c.39-.35-.09-.54-.6-.19L6.05 12.68 1.25 11.18c-1.04-.33-1.06-1.04.22-1.54L20.22 2.4c.87-.31 1.63.21 1.38 1.8Z"/></svg>
+        </div>
+        <div class="support-copy">
+          <span>Telegram</span>
+          <strong>@pwrcil</strong>
+          <small>Fastest response channel</small>
+        </div>
+        <div class="support-arrow">↗</div>
+      </a>
+
+      <a class="support-card" href="tel:+998337127100">
+        <div class="support-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2.5 9.7 7c.3.5.2 1.1-.2 1.5l-1.6 1.6c1.1 2.2 2.8 3.9 5 5l1.6-1.6c.4-.4 1-.5 1.5-.2l4.5 2.5c.5.3.8.9.6 1.5l-.8 3.2c-.2.7-.8 1.2-1.5 1.2C9.7 21.7 2.3 14.3 2.3 5.2c0-.7.5-1.3 1.2-1.5l3.2-.8c.2 0 .4-.1.5-.4Z" fill="currentColor"/></svg>
+        </div>
+        <div class="support-copy">
+          <span>Direct Line</span>
+          <strong>+998 33 712 71 00</strong>
+          <small>Professional support line</small>
+        </div>
+        <div class="support-arrow">↗</div>
+      </a>
+
+      <a class="support-card" href="https://wa.me/998947097712" target="_blank" rel="noopener">
+        <div class="support-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9.7 9.7 0 0 0-8.2 14.9L2.5 21.5l4.7-1.2A9.7 9.7 0 1 0 12 2Zm0 17.6a7.8 7.8 0 0 1-4-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A7.8 7.8 0 1 1 12 19.6Zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-3-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.7-1.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.4.8 3.3.7 1-.2 2.9-1.2 3.3-2.3.4-1.1.4-2 .3-2.2-.2-.2-.4-.3-.7-.4Z"/></svg>
+        </div>
+        <div class="support-copy">
+          <span>WhatsApp</span>
+          <strong>+998 94 709 77 12</strong>
+          <small>Messages & client assistance</small>
+        </div>
+        <div class="support-arrow">↗</div>
+      </a>
     </div>
-  </div>
+
+    <div class="support-foot">
+      <span>IFIG Support Desk</span>
+      <span>Global market intelligence · Research platform · Client assistance</span>
+    </div>
+  </section>
 </div>
 
 </div><!-- end content -->
@@ -2068,12 +2438,7 @@ body.light-theme .app-shell::before,body.light-theme .app-shell::after{
 <footer>
   <div class="f-brand">IFIG</div>
   <div>© 2026 International Financial Institution Group · CEO: Nomonov Husniddin</div>
-  <div class="f-links">
-    <a href="https://t.me/pwrcil" target="_blank">@pwrcil</a>
-    <a href=""></a>
-    <a href="tel:+998337127100">+998 33 712 71 00</a>
-    <a href="tel:+998947097712">+998 94 709 77 12</a>
-  </div>
+  <div class="f-links"><a href="#" onclick="showTab(\'about\',document.querySelector(\'.nav-links a[onclick*=about]\'));return false;">Support & Contact</a></div>
 </footer>
 
 <script>
@@ -2549,5 +2914,24 @@ function researchClearNotes(){const n=document.getElementById('analystNotes');if
 document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('researchAsset'))researchLoadPreset()});
 
 </script>
+<script>function showTab(tab, el){
+  document.querySelectorAll('.tab-content').forEach(function(panel){
+    panel.classList.remove('active');
+    panel.style.display = 'none';
+  });
+
+  var target = document.getElementById('tab-' + tab);
+  if(target){
+    target.classList.add('active');
+    target.style.display = 'block';
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.classList.remove('active');
+  });
+  if(el) el.classList.add('active');
+
+  window.scrollTo({top:0, behavior:'smooth'});
+}</script>
 </body>
 </html>
