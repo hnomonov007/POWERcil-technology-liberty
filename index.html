@@ -5,34 +5,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IFIG — International Financial Institution Group</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.9.0/firebase-auth-compat.js"></script>
 <style>
 :root {
-  --bg:#04080f; --bg2:#070d18; --bg3:#0c1525;
-  --border:#162035; --border2:#1e2d48;
-  --gold:#c9a84c; --gold2:#e8c96a;
-  --white:#dce4f0; --muted:#4a5870; --muted2:#6a7890;
-  --green:#00b87a; --red:#e03d5a; --blue:#1a5fd4;
+  --bg:#060911; --bg2:#0a0f19; --bg3:#0e1420;
+  --border:#1a2130; --border2:#28324a;
+  --signal:#2bc4bb; --signal2:#5fe3d9;
+  --white:#e7ecf5; --muted:#54607a; --muted2:#8492ab;
+  --green:#18c98b; --red:#f0475f; --blue:#3e7bfa;
 }
 body.light-theme{
-  --bg:#f6f7fa; --bg2:#ffffff; --bg3:#eef0f4;
-  --border:#dfe2e8; --border2:#c9cedb;
-  --white:#10131a; --muted:#5b6474; --muted2:#333a48;
-  --green:#0a9e63; --red:#c62d47; --blue:#1550b5;
+  --bg:#f5f7fa; --bg2:#ffffff; --bg3:#eef1f5;
+  --border:#dde2ea; --border2:#c7cedb;
+  --white:#0d121c; --muted:#5a6579; --muted2:#333d52;
+  --green:#0a9e6e; --red:#d3384f; --blue:#2f65e0;
 }
 body.light-theme .status-bar{background:var(--bg2);}
 body.light-theme nav{background:rgba(255,255,255,0.97) !important;}
 body.light-theme ::-webkit-scrollbar-track{background:var(--bg2);}
 body{transition:background 0.2s ease, color 0.2s ease;}
 body *{transition:background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;}
+
+/* SIGNATURE: live data pulse — a thin signal-colored line sweeping the
+   top edge of the terminal, standing in for the constant institutional
+   data feed running underneath the platform. */
+.pulse-bar{
+  position:sticky;top:0;left:0;width:100%;height:2px;z-index:500;
+  background:linear-gradient(90deg,
+    transparent 0%, var(--signal) 20%, var(--signal2) 50%, var(--signal) 80%, transparent 100%
+  );
+  background-size:200% 100%;
+  animation:pulseSweep 5s linear infinite;
+  opacity:0.85;
+}
+@keyframes pulseSweep{
+  0%{background-position:200% 0;}
+  100%{background-position:-200% 0;}
+}
+@media (prefers-reduced-motion: reduce){
+  .pulse-bar{animation:none;background-position:0 0;}
+}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'IBM Plex Sans',sans-serif;overflow-x:hidden;}
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--gold);}
+::-webkit-scrollbar-thumb{background:var(--signal);}
 
 /* STATUS BAR */
 .status-bar{
@@ -56,7 +76,7 @@ display:flex;align-items:center;justify-content:space-between;
 padding:0 24px;height:54px;
 }
 .nav-brand{
-font-family:'Playfair Display',serif;font-size:20px;
+font-family:'Space Grotesk',sans-serif;font-size:20px;
 font-weight:900;color:var(--blue);text-decoration:none;
 letter-spacing:2px;display:flex;align-items:center;gap:8px;
 }
@@ -68,7 +88,7 @@ font-family:‘IBM Plex Mono’,monospace;font-size:10px;letter-spacing:2px;
 text-transform:uppercase;color:var(--muted);text-decoration:none;
 border-bottom:2px solid transparent;transition:all 0.2s;
 }
-.nav-links a:hover,.nav-links a.active{color:var(--white);border-bottom-color:var(--gold);}
+.nav-links a:hover,.nav-links a.active{color:var(--white);border-bottom-color:var(--signal);}
 .nav-right{display:flex;align-items:center;gap:10px;}
 .btn-tg{
 display:flex;align-items:center;gap:7px;background:#229ED9;color:#fff;
@@ -91,11 +111,11 @@ transition:filter 0.2s;text-decoration:none;font-weight:600;
   font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;
   transition:border-color 0.2s, background 0.2s;
 }
-.btn-signin:hover{border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.btn-signin:hover{border-color:var(--signal);background:rgba(201,168,76,0.08);}
 .btn-signin svg{flex-shrink:0;}
 #auth-widget{position:relative;}
 .auth-logged{display:flex;align-items:center;gap:8px;cursor:pointer;padding:4px 8px 4px 4px;border:1px solid var(--border2);border-radius:20px;transition:border-color 0.2s;}
-.auth-logged:hover{border-color:var(--gold);}
+.auth-logged:hover{border-color:var(--signal);}
 .auth-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;background:var(--bg3);}
 .auth-name{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--white);max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .auth-panel{
@@ -105,7 +125,7 @@ transition:filter 0.2s;text-decoration:none;font-weight:600;
 }
 .auth-panel.open{display:block;}
 .auth-panel-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--bg3);margin-bottom:10px;}
-.auth-panel-name{font-family:'Playfair Display',serif;font-size:15px;color:var(--white);margin-bottom:2px;}
+.auth-panel-name{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--white);margin-bottom:2px;}
 .auth-panel-email{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--muted);margin-bottom:14px;word-break:break-all;}
 .auth-signout{
   width:100%;background:transparent;border:1px solid var(--border2);color:var(--muted2);
@@ -128,14 +148,14 @@ font-family:‘IBM Plex Mono’,monospace;font-size:12px;font-weight:500;
 letter-spacing:3px;text-transform:uppercase;color:var(--white);
 display:flex;align-items:center;gap:8px;
 }
-.sec-title::before{content:’’;width:3px;height:12px;background:var(--gold);display:block;}
+.sec-title::before{content:’’;width:3px;height:12px;background:var(--signal);display:block;}
 .badge{
 display:inline-block;font-family:‘IBM Plex Mono’,monospace;font-size:8px;
 letter-spacing:1.5px;padding:2px 6px;border-radius:1px;font-weight:600;text-transform:uppercase;
 }
 .badge-live{background:rgba(0,184,122,0.15);color:var(--green);border:1px solid rgba(0,184,122,0.3);}
 .badge-h{background:rgba(224,61,90,0.15);color:var(--red);border:1px solid rgba(224,61,90,0.3);}
-.badge-m{background:rgba(201,168,76,0.15);color:var(--gold);border:1px solid rgba(201,168,76,0.3);}
+.badge-m{background:rgba(201,168,76,0.15);color:var(--signal);border:1px solid rgba(201,168,76,0.3);}
 .badge-l{background:rgba(74,88,112,0.15);color:var(--muted2);border:1px solid rgba(74,88,112,0.2);}
 
 /* MAIN LAYOUT */
@@ -153,7 +173,7 @@ color:var(--muted);background:none;border:none;border-bottom:2px solid transpare
 cursor:pointer;white-space:nowrap;font-family:‘IBM Plex Mono’,monospace;transition:all 0.2s;
 }
 .cat-btn:hover{color:var(--white);}
-.cat-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.cat-btn.active{color:var(--signal);border-bottom-color:var(--signal);}
 
 /* CALENDAR */
 .cal-head{
@@ -165,7 +185,7 @@ letter-spacing:2px;text-transform:uppercase;color:var(--muted);
 }
 .cal-date-row{
 padding:8px 16px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;
-letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+letter-spacing:3px;text-transform:uppercase;color:var(--signal);
 background:rgba(201,168,76,0.05);border-top:1px solid var(--border);
 border-bottom:1px solid var(--border);
 }
@@ -179,7 +199,7 @@ transition:background 0.15s;cursor:pointer;align-items:center;
 .imp-dots{display:flex;gap:2px;}
 .imp-dot{width:4px;height:4px;border-radius:50%;}
 .imp-h .imp-dot{background:var(--red);}
-.imp-m .imp-dot{background:var(--gold);}
+.imp-m .imp-dot{background:var(--signal);}
 .imp-l .imp-dot{background:var(--muted);}
 .cal-event{font-size:12px;color:var(--white);line-height:1.3;}
 .cal-flag{font-family:‘IBM Plex Mono’,monospace;font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:2px;}
@@ -196,7 +216,7 @@ letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);
 border-right:none;color:var(--muted);background:none;cursor:pointer;transition:all 0.2s;
 }
 .imp-filter:last-child{border-right:1px solid var(--border);}
-.imp-filter.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.imp-filter.active{color:var(--signal);border-color:var(--signal);background:rgba(201,168,76,0.08);}
 
 /* RISK CALCULATOR */
 .calc-wrap{padding:24px;}
@@ -207,7 +227,7 @@ letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);
 border-right:none;color:var(--muted);background:none;cursor:pointer;transition:all 0.2s;
 }
 .c-tab:last-child{border-right:1px solid var(--border);}
-.c-tab.active{color:var(--gold);border-color:var(--gold);background:rgba(201,168,76,0.08);}
+.c-tab.active{color:var(--signal);border-color:var(--signal);background:rgba(201,168,76,0.08);}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .c-tab-content{display:none;}
 .c-tab-content.active{display:block;}
@@ -221,17 +241,17 @@ width:100%;background:var(--bg3);border:1px solid var(--border);
 color:var(--white);padding:11px 14px;font-family:‘IBM Plex Mono’,monospace;
 font-size:13px;outline:none;transition:border-color 0.2s;
 }
-.field input:focus,.field select:focus{border-color:var(--gold);}
+.field input:focus,.field select:focus{border-color:var(--signal);}
 .calc-btn-wrap{margin-top:20px;}
 .calc-btn{
-width:100%;background:var(--gold);color:var(--bg);padding:14px;
+width:100%;background:var(--signal);color:var(--bg);padding:14px;
 font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:3px;
 text-transform:uppercase;border:none;cursor:pointer;font-weight:600;transition:background 0.2s;
 }
-.calc-btn:hover{background:var(--gold2);}
+.calc-btn:hover{background:var(--signal2);}
 .result-box{background:var(--bg3);border:1px solid var(--border);padding:24px;}
 .res-main-label{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.res-main-val{font-family:‘Playfair Display’,serif;font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px;}
+.res-main-val{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:900;color:var(--signal);line-height:1;margin-bottom:6px;}
 .res-sub{font-size:12px;color:var(--muted2);margin-bottom:20px;}
 .res-row{
 display:flex;justify-content:space-between;align-items:center;
@@ -250,7 +270,7 @@ font-family:‘IBM Plex Mono’,monospace;font-size:11px;
 
 /* FEAR GREED */
 .fg-wrap{padding:16px;}
-.fg-val{font-family:‘Playfair Display’,serif;font-size:56px;font-weight:900;text-align:center;line-height:1;margin-bottom:4px;}
+.fg-val{font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:900;text-align:center;line-height:1;margin-bottom:4px;}
 .fg-label{text-align:center;font-family:‘IBM Plex Mono’,monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
 .fg-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:4px;}
 .fg-bar div{flex:1;}
@@ -271,13 +291,13 @@ transition:background 0.15s;cursor:pointer;
 .ceo-wrap{padding:16px;display:flex;flex-direction:column;gap:12px;}
 .ceo-av{
 width:48px;height:48px;
-background:linear-gradient(135deg,var(--gold) 0%,#8a6020 100%);
+background:linear-gradient(135deg,var(--signal) 0%,#0c6b63 100%);
 display:flex;align-items:center;justify-content:center;
-font-family:‘Playfair Display’,serif;font-size:20px;font-weight:900;color:var(--bg);
+font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:900;color:var(--bg);
 }
 .ceo-row{display:flex;align-items:center;gap:12px;}
-.ceo-name{font-family:‘Playfair Display’,serif;font-size:15px;font-weight:700;color:var(--white);}
-.ceo-pos{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.ceo-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--white);}
+.ceo-pos{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--signal);}
 .ceo-bio{font-size:11px;color:var(--muted2);line-height:1.7;}
 .ceo-tg{display:flex;align-items:center;gap:6px;font-family:‘IBM Plex Mono’,monospace;font-size:10px;color:#229ED9;text-decoration:none;letter-spacing:1px;}
 
@@ -306,10 +326,10 @@ padding:20px 24px;display:flex;align-items:center;justify-content:space-between;
 flex-wrap:wrap;gap:10px;font-family:‘IBM Plex Mono’,monospace;
 font-size:10px;color:var(--muted);letter-spacing:1.5px;
 }
-.f-brand{font-family:‘Playfair Display’,serif;font-size:16px;font-weight:900;color:var(--gold);}
+.f-brand{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:900;color:var(--signal);}
 .f-links{display:flex;gap:20px;}
 .f-links a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.f-links a:hover{color:var(--gold);}
+.f-links a:hover{color:var(--signal);}
 
 /* POSITIONING (COT + Retail) */
 .pos-track{position:relative;height:8px;background:var(--bg3);border-radius:20px;overflow:hidden;border:1px solid var(--border);}
@@ -322,7 +342,7 @@ font-size:10px;color:var(--muted);letter-spacing:1.5px;
 .pos-label .ppct{color:var(--muted2);}
 .pos-insight{margin-top:14px;padding:12px 14px;border:1px dashed var(--border);font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:var(--muted2);}
 .pos-insight b{color:var(--white);}
-.pos-insight.diverge{border:1px solid var(--gold);border-style:solid;background:rgba(201,168,76,0.06);color:var(--white);}
+.pos-insight.diverge{border:1px solid var(--signal);border-style:solid;background:rgba(201,168,76,0.06);color:var(--white);}
 .pos-tab-content{display:none;}
 .pos-tab-content.active{display:block;}
 .pos-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 20px;}
@@ -345,6 +365,7 @@ nav .nav-links{display:none;}
 
 </head>
 <body>
+<div class="pulse-bar" aria-hidden="true"></div>
 
 <!-- STATUS BAR -->
 
@@ -715,10 +736,10 @@ nav .nav-links{display:none;}
   <div class="sec-head"><span class="sec-title">About IFIG</span></div>
   <div style="padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
     <div style="display:flex;flex-direction:column;gap:20px;">
-      <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--gold),#8a6020);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--bg);">HN</div>
+      <div style="width:72px;height:72px;background:linear-gradient(135deg,var(--signal),#0c6b63);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:900;color:var(--bg);">HN</div>
       <div>
-        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:900;margin-bottom:6px;">Nomonov Husniddin</div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Chief Executive Officer · Founder</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:900;margin-bottom:6px;">Nomonov Husniddin</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--signal);margin-bottom:16px;">Chief Executive Officer · Founder</div>
         <div style="font-size:14px;line-height:1.8;color:var(--muted2);margin-bottom:20px;">Founder and CEO of the International Financial Institution Group. Professional trader and financial analyst with expertise in global markets, providing institutional-grade intelligence to investors worldwide.</div>
         <a href="https://t.me/pwrcil" target="_blank" class="btn-tg" style="width:fit-content;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.75l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.809z"/></svg>
@@ -727,10 +748,10 @@ nav .nav-links{display:none;}
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
-      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">48K+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Assets Tracked</div></div>
-      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">180+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Exchanges</div></div>
-      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">24/7</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Live Support</div></div>
-      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">99.9%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Uptime</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:900;color:var(--signal);line-height:1;margin-bottom:8px;">48K+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Assets Tracked</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:900;color:var(--signal);line-height:1;margin-bottom:8px;">180+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Exchanges</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:900;color:var(--signal);line-height:1;margin-bottom:8px;">24/7</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Live Support</div></div>
+      <div style="background:var(--bg2);padding:28px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:900;color:var(--signal);line-height:1;margin-bottom:8px;">99.9%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Uptime</div></div>
     </div>
   </div>
   <div style="padding:0 40px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
@@ -758,7 +779,7 @@ nav .nav-links{display:none;}
   <div class="sidebar-block">
     <div class="sec-head"><span class="sec-title">Fear & Greed</span><span class="badge badge-live">Index</span></div>
     <div class="fg-wrap">
-      <div class="fg-val" id="fg-val" style="color:var(--gold)">--</div>
+      <div class="fg-val" id="fg-val" style="color:var(--signal)">--</div>
       <div class="fg-label" id="fg-lbl" style="color:var(--muted)">Loading...</div>
       <div class="fg-bar">
         <div style="background:#e03d5a"></div>
@@ -1014,7 +1035,7 @@ async function fetchFG(){
     const d=await r.json();
     const val=parseInt(d.data[0].value);
     const txt=d.data[0].value_classification;
-    const c=val>60?'var(--green)':val<40?'var(--red)':'var(--gold)';
+    const c=val>60?'var(--green)':val<40?'var(--red)':'var(--signal)';
     document.getElementById('fg-val').textContent=val;
     document.getElementById('fg-val').style.color=c;
     document.getElementById('fg-lbl').textContent=txt.toUpperCase();
@@ -1128,7 +1149,7 @@ function renderPosBody(id, rows){
   const date = posGetVal(latest, ['report','date']);
 
   const groups = [
-    { label:'Non-Commercial (Smart Money)', color:'var(--gold)', l:ncL, s:ncS },
+    { label:'Non-Commercial (Smart Money)', color:'var(--signal)', l:ncL, s:ncS },
     { label:'Commercial (Xedjerlar)',       color:'var(--blue)', l:cL,  s:cS  },
     { label:'Non-Reportable (Retail)',      color:'var(--muted2)', l:nrL, s:nrS },
   ];
