@@ -1681,6 +1681,17 @@ body #tab-about.active .about-support {
 .tab-content:not(.active) { display:none !important; }
 .tab-content.active { display:block !important; }
 
+
+.ifig-ai-launcher{position:fixed;right:22px;bottom:22px;z-index:950;display:flex;align-items:center;gap:10px;padding:7px 14px 7px 7px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(27,27,31,.68);color:var(--text);box-shadow:0 20px 55px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(32px) saturate(155%);-webkit-backdrop-filter:blur(32px) saturate(155%);cursor:pointer}
+.ifig-ai-launcher:hover{transform:translateY(-3px);background:rgba(38,38,43,.8)}.ifig-ai-launcher>span:last-child{text-align:left}.ifig-ai-launcher strong{display:block;font:650 12px inherit}.ifig-ai-launcher small{display:block;color:var(--text-3);font:500 10px inherit;margin-top:4px}
+.ifig-ai-orb{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;font-size:25px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(214,199,255,.055));border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.ifig-ai-panel{position:fixed;right:22px;bottom:88px;z-index:951;width:min(430px,calc(100vw - 28px));height:min(680px,calc(100vh - 125px));display:grid;grid-template-rows:auto minmax(0,1fr) auto auto auto;opacity:0;visibility:hidden;transform:translateY(16px) scale(.975);transform-origin:bottom right;border:1px solid rgba(255,255,255,.16);border-radius:28px;overflow:hidden;background:radial-gradient(circle at 80% 0%,rgba(214,199,255,.08),transparent 28%),rgba(18,18,21,.84);box-shadow:0 35px 100px rgba(0,0,0,.52),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(42px) saturate(150%);-webkit-backdrop-filter:blur(42px) saturate(150%)}
+.ifig-ai-panel.open{opacity:1;visibility:visible;transform:none}.ifig-ai-head{padding:14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--stroke)}.ifig-ai-head strong{display:block;font-size:13px}.ifig-ai-head small{display:block;color:var(--text-3);font-size:10px;margin-top:4px}.ifig-ai-head button{width:34px;height:34px;border-radius:11px;border:1px solid var(--stroke);background:rgba(255,255,255,.035);color:var(--text-2);font-size:18px;cursor:pointer}
+.ifig-ai-messages{overflow:auto;padding:18px 14px}.ai-row{display:flex;gap:9px;margin-bottom:14px;align-items:flex-end}.ai-row>b{width:27px;height:27px;flex:0 0 27px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--stroke);background:rgba(255,255,255,.045);color:var(--text-3);font-size:8px}.ai-row>div{max-width:82%;padding:11px 13px;border-radius:17px 17px 17px 6px;border:1px solid var(--stroke);background:rgba(255,255,255,.04);color:var(--text-2);font-size:12px;line-height:1.55}.ai-row p{margin:0}.ai-row strong{display:block;color:var(--text);font-size:10px;margin-bottom:5px}.ai-row.user{justify-content:flex-end}.ai-row.user>b{display:none}.ai-row.user>div{border-radius:17px 17px 6px 17px;background:rgba(245,245,247,.92);color:#1c1c1e}
+.ifig-ai-quick{display:flex;gap:6px;padding:8px 12px 5px;overflow:auto}.ifig-ai-quick button{white-space:nowrap;padding:7px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.035);color:var(--text-3);font:550 10px inherit;cursor:pointer}
+#ifig-ai-form{margin:7px 11px 0;padding:7px 7px 7px 12px;display:flex;align-items:flex-end;gap:7px;border:1px solid var(--stroke-strong);border-radius:19px;background:rgba(255,255,255,.045)}#ifig-ai-input{flex:1;resize:none;max-height:110px;min-height:32px;padding:7px 2px;border:0!important;outline:0!important;background:transparent!important;color:var(--text)!important;font:500 12px/1.45 inherit!important;box-shadow:none!important}#ifig-ai-form>button{width:34px;height:34px;border-radius:12px;border:0;background:rgba(245,245,247,.94);color:#17171a;font-size:18px;font-weight:700;cursor:pointer}.ifig-ai-note{padding:8px 14px 11px!important;margin:0!important;border:0!important;background:none!important;text-align:center;color:var(--text-3)!important;font-size:8px!important}
+@media(max-width:620px){.ifig-ai-launcher{right:12px;bottom:76px}.ifig-ai-launcher>span:last-child{display:none}.ifig-ai-launcher{padding:7px}.ifig-ai-panel{right:7px;bottom:138px;width:calc(100vw - 14px);height:min(650px,calc(100vh - 155px));border-radius:24px}}
+
 </style>
 
 </head>
@@ -2933,5 +2944,83 @@ document.addEventListener('DOMContentLoaded',()=>{if(document.getElementById('re
 
   window.scrollTo({top:0, behavior:'smooth'});
 }</script>
+<!-- IFIG INTELLIGENCE -->
+<button id="ifig-ai-launcher" class="ifig-ai-launcher" type="button"><span class="ifig-ai-orb">◎</span><span><strong>IFIG Intelligence</strong><small>AI Support</small></span></button>
+<section id="ifig-ai-panel" class="ifig-ai-panel" aria-hidden="true">
+<header class="ifig-ai-head"><div><strong>IFIG Intelligence</strong><small id="ifig-ai-context">Global workspace · AI Support</small></div><div><button id="ifig-ai-new">＋</button><button id="ifig-ai-close">×</button></div></header>
+<div id="ifig-ai-messages" class="ifig-ai-messages"><div class="ai-row assistant"><b>IF</b><div><strong>IFIG Intelligence</strong><p>Welcome. I can help with IFIG, founder and CEO Husniddin Nomonov, Research, CFTC Positioning, Crypto Screener, charts, calendar and risk tools.</p></div></div></div>
+<div class="ifig-ai-quick"><button data-q="What is IFIG?">What is IFIG?</button><button data-q="Who is Husniddin Nomonov?">CEO</button><button data-q="How does Research work?">Research</button><button data-q="Explain CFTC Positioning">CFTC</button></div>
+<form id="ifig-ai-form"><textarea id="ifig-ai-input" rows="1" placeholder="Ask IFIG Intelligence…"></textarea><button type="submit">↑</button></form>
+<footer class="ifig-ai-note">AI-generated market information should be independently verified.</footer>
+</section>
+<script>
+window.IFIG_AI_ENDPOINT = window.IFIG_AI_ENDPOINT || '/api/chat';
+(function(){
+const panel=document.getElementById('ifig-ai-panel'),launch=document.getElementById('ifig-ai-launcher'),close=document.getElementById('ifig-ai-close'),form=document.getElementById('ifig-ai-form'),input=document.getElementById('ifig-ai-input'),msgs=document.getElementById('ifig-ai-messages'),ctx=document.getElementById('ifig-ai-context');
+const K={
+ifig:"IFIG stands for International Financial Institution Group. It is an international market-intelligence and financial research project built around cross-asset analysis, structured research, institutional positioning, market monitoring and risk tools.",
+ceo:"Husniddin Nomonov is the founder and CEO of International Financial Institution Group (IFIG). Within the project, he leads the platform vision, research direction and development of its professional market-intelligence environment.",
+origin:"The concept behind IFIG traces back to 2013. IFIG presents 2013 as the origin of the idea and concept, not as a claim that the current platform has continuously operated since then.",
+research:"Research is IFIG's structured fundamental-analysis workspace. It combines macro regime assessment, rates, inflation, growth, liquidity, USD conditions, risk sentiment, thesis building, scenarios, catalysts and analyst notes.",
+cftc:"CFTC Positioning provides Commitments of Traders context for institutional positioning. It should be combined with macro conditions, price action and event risk rather than used as a standalone trading signal.",
+crypto:"Crypto Screener is IFIG's Digital Asset Intelligence workspace for scanning liquid crypto markets, relative strength, performance, momentum and volume before validating an idea through Chart and Research.",
+calc:"The Calculator workspace supports disciplined risk planning, including position sizing and risk/reward calculations. It is a risk-management tool, not a market prediction engine.",
+calendar:"Economic Calendar helps monitor scheduled macro catalysts such as inflation, labor, growth and central-bank events and connect them with a research thesis.",
+chart:"Chart provides TradingView technical context. IFIG's workflow is to combine technical confirmation with fundamental research, positioning and risk analysis.",
+support:"IFIG client support is available inside the About section through Telegram, direct phone support and WhatsApp."
+};
+function context(){let id=document.querySelector('.tab-content.active')?.id?.replace('tab-','')||'markets';return ({markets:'Markets',fundamental:'Research',positioning:'CFTC Positioning',crypto:'Digital Assets',forex:'Forex',chart:'Chart',calendar:'Economic Calendar',calculator:'Risk Tools',about:'About IFIG'})[id]||'Global workspace'}
+setInterval(()=>ctx.textContent=context()+' · AI Support',700);
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function add(t,r){let x=document.createElement('div');x.className='ai-row '+r;x.innerHTML=(r==='assistant'?'<b>IF</b>':'')+'<div>'+(r==='assistant'?'<strong>IFIG Intelligence</strong>':'')+'<p>'+esc(t)+'</p></div>';msgs.appendChild(x);msgs.scrollTop=msgs.scrollHeight}
+function answer(q){let s=q.toLowerCase();if(/husniddin|nomonov|founder|ceo/.test(s))return K.ceo;if(/2013|since|origin|history/.test(s))return K.origin;if(/what is ifig|ifig nima|international financial|about ifig/.test(s))return K.ifig;if(/research|fundamental|macro|thesis|inflation|liquidity/.test(s))return K.research;if(/cftc|position|commitment|cot/.test(s))return K.cftc;if(/crypto|bitcoin|btc|ethereum|eth|screener/.test(s))return K.crypto;if(/calculator|risk|position size|lot|reward/.test(s))return K.calc;if(/calendar|economic|cpi|nfp|fomc/.test(s))return K.calendar;if(/chart|technical|tradingview/.test(s))return K.chart;if(/support|telegram|whatsapp|phone|contact/.test(s))return K.support;return "I can answer built-in questions about IFIG, Husniddin Nomonov and the platform. For open-ended AI conversations and live market reasoning, connect the secure IFIG AI backend."}
+const aiHistory=[];
+function readResearchContext(){
+  const get=id=>document.getElementById(id)?.textContent?.trim()||null;
+  const val=id=>document.getElementById(id)?.value||null;
+  return {
+    activeWorkspace:context(),
+    researchAsset:get('research-asset-label')||get('fa-symbol')||val('research-asset')||null,
+    researchScore:get('research-score')||get('fa-score')||null,
+    researchBias:get('research-bias')||null,
+    researchConfidence:get('research-confidence')||null,
+    macro:{
+      rates:val('macro-rates'), inflation:val('macro-inflation'),
+      growth:val('macro-growth'), liquidity:val('macro-liquidity'),
+      usd:val('macro-usd'), sentiment:val('macro-sentiment')
+    },
+    pageTitle:document.title
+  };
+}
+async function ask(q){
+  add(q,'user'); input.value='';
+  aiHistory.push({role:'user',content:q});
+  if(aiHistory.length>12) aiHistory.splice(0,aiHistory.length-12);
+
+  let a;
+  try{
+    const r=await fetch(window.IFIG_AI_ENDPOINT||'/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        message:q,
+        context:readResearchContext(),
+        history:aiHistory.slice(-10)
+      })
+    });
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||'AI service unavailable');
+    a=d.answer||d.message;
+    if(!a) throw new Error('Empty AI response');
+  }catch(e){
+    a=answer(q)+" Live IFIG Intelligence is currently unavailable, so I answered from the built-in project knowledge.";
+  }
+  aiHistory.push({role:'assistant',content:a});
+  if(aiHistory.length>12) aiHistory.splice(0,aiHistory.length-12);
+  setTimeout(()=>add(a,'assistant'),180);
+}
+launch.onclick=()=>panel.classList.toggle('open');close.onclick=()=>panel.classList.remove('open');form.onsubmit=e=>{e.preventDefault();let q=input.value.trim();if(q)ask(q)};document.querySelector('.ifig-ai-quick').onclick=e=>{let b=e.target.closest('[data-q]');if(b){panel.classList.add('open');ask(b.dataset.q)}};document.getElementById('ifig-ai-new').onclick=()=>{aiHistory.length=0;msgs.innerHTML='<div class="ai-row assistant"><b>IF</b><div><strong>IFIG Intelligence</strong><p>New conversation started. Ask me about IFIG, Husniddin Nomonov or the platform.</p></div></div>';};
+})();
+</script>
 </body>
 </html>
